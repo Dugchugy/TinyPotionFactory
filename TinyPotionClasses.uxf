@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>260</x>
+      <y>110</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>/GameTile/
+--
++acceptsFluid(TileSide S): Bool
++producesFluid(TileSide S): Bool
++acceptsItems(): Bool
++producesItems(): Bool</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>550</x>
+      <y>110</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;ENUM&gt;&gt;
+TileSide
+--
+NORTH
+SOUTH
+EAST
+WEST</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>280</y>
+      <w>210</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>Player
+--
++ coins: uint
++ map: 
+--
+
+--
+Responsibilities
+-- records the players coins
+-- player/game interface</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
