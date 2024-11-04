@@ -4,24 +4,28 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>260</x>
-      <y>110</y>
+      <x>300</x>
+      <y>140</y>
       <w>220</w>
-      <h>100</h>
+      <h>150</h>
     </coordinates>
     <panel_attributes>/GameTile/
 --
 +acceptsFluid(TileSide S): Bool
 +producesFluid(TileSide S): Bool
 +acceptsItems(): Bool
-+producesItems(): Bool</panel_attributes>
++producesItems(): Bool
+--
+Responsibilites
+-- base for all tiles
+-- defines tile to tile interface</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>550</x>
-      <y>110</y>
+      <x>570</x>
+      <y>120</y>
       <w>210</w>
       <h>110</h>
     </coordinates>
@@ -37,8 +41,8 @@ WEST</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
-      <y>280</y>
+      <x>10</x>
+      <y>80</y>
       <w>210</w>
       <h>190</h>
     </coordinates>
@@ -52,6 +56,25 @@ WEST</panel_attributes>
 Responsibilities
 -- records the players coins
 -- player/game interface</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>420</x>
+      <y>320</y>
+      <w>270</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>/Item/
+--
++ getName(): str
++ getValue(): int
++ getSprite(): sprite
+--
+Responsibilities
+-- base class for items produced
+-- stores items name + value + sprite</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
