@@ -38,7 +38,7 @@
       <w>96</w>
       <h>128</h>
     </coordinates>
-    <panel_attributes>TileSide
+    <panel_attributes>Game::TileSide
 --
 GetNorth(): Bool
 GetEast(): Bool
@@ -234,10 +234,10 @@ remFluid(Fluid f, ml int): int</panel_attributes>
       <w>168</w>
       <h>56</h>
     </coordinates>
-    <panel_attributes>TilePosition
+    <panel_attributes>Game::TilePosition
 --
-- X: int
-- Y: int</panel_attributes>
++ X: int
++ Y: int</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -291,30 +291,34 @@ remFluid(Fluid f, ml int): int</panel_attributes>
       <x>288</x>
       <y>240</y>
       <w>168</w>
-      <h>152</h>
+      <h>88</h>
     </coordinates>
     <panel_attributes>Game::TileChunk
 --
 - Const Sz : int
 - Tiles : Tile[Sz][Sz]
 --
-</panel_attributes>
++ getTile(TilePosition P) : Tile* </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>512</x>
+      <x>488</x>
       <y>240</y>
-      <w>176</w>
-      <h>152</h>
+      <w>224</w>
+      <h>128</h>
     </coordinates>
     <panel_attributes>Game::Tile
--
-AcceptsFluids(TileSide s) : Bool
-AcceptsItems(TileSide s) : Bool
-ProducesFluids(TileSide s) : Bool
-ProducesItems(TileSide s) : Bool
+--
+- tilePos: TilePosition
+--
++ AcceptsFluids(TileSide s) : Bool
++ AcceptsItems(TileSide s) : Bool
++ ProducesFluids(TileSide s) : Bool
++ ProducesItems(TileSide s) : Bool
++ inputFluid(Fluid f, int ml, TileSide s) : int
++ inputItem(Item i, int q, TileSide s) : int
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -323,11 +327,11 @@ ProducesItems(TileSide s) : Bool
     <coordinates>
       <x>448</x>
       <y>288</y>
-      <w>80</w>
+      <w>56</w>
       <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -345,10 +349,10 @@ ProducesItems(TileSide s) : Bool
     <coordinates>
       <x>472</x>
       <y>160</y>
-      <w>152</w>
+      <w>128</w>
       <h>96</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;170.0;100.0</additional_attributes>
+    <additional_attributes>10.0;10.0;140.0;100.0</additional_attributes>
   </element>
 </diagram>
