@@ -27,6 +27,9 @@ The game will play as an idle factory game. the goal is to compine and connect y
 
 - program basic features
     - basic item classes
+        - store fluids in items
+    - basic fluid classes
+        - fluid registry?
     - basic functional tiles
         - tile event loop
         - tile event ordering
