@@ -269,10 +269,10 @@ void Renderer::createModels() {
      * 3 --- 2
      */
     std::vector<Vertex> vertices = {
-            Vertex(Vector3{1, 1, 0}, Vector2{0, 0}), // 0
-            Vertex(Vector3{-1, 1, 0}, Vector2{1, 0}), // 1
-            Vertex(Vector3{-1, -1, 0}, Vector2{1, 1}), // 2
-            Vertex(Vector3{1, -1, 0}, Vector2{0, 1}) // 3
+            Vertex(Vector3{1, 1, 2}, Vector2{0, 0}), // 0
+            Vertex(Vector3{-1, 1, 2}, Vector2{1, 0}), // 1
+            Vertex(Vector3{-1, -1, 2}, Vector2{1, 1}), // 2
+            Vertex(Vector3{1, -1, 2}, Vector2{0, 1}) // 3
     };
     std::vector<Index> indices = {
             0, 1, 2, 0, 2, 3
