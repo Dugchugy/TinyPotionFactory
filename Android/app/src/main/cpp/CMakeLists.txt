@@ -8,12 +8,7 @@ project("tinypotionfactory")
 # Creates your game shared library. The name must be the same as the
 # one used for loading in your Kotlin/Java or AndroidManifest.txt files.
 add_library(tinypotionfactory SHARED
-        main.cpp
-        AndroidOut.cpp
-        Renderer.cpp
-        Shader.cpp
-        TextureAsset.cpp
-        Utility.cpp)
+        main.cpp)
 
 # Searches for a package provided by the game activity dependency
 find_package(game-activity REQUIRED CONFIG)
