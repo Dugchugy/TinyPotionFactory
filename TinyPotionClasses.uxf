@@ -16,35 +16,27 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>224</x>
-      <y>296</y>
-      <w>184</w>
-      <h>184</h>
+      <x>368</x>
+      <y>88</y>
+      <w>136</w>
+      <h>80</h>
     </coordinates>
-    <panel_attributes>/GameTile/
+    <panel_attributes>&lt;&lt;Abstract&gt;&gt;
+/Game::SimulatedObject/
 --
-+ acceptsFluid(TileSide S): Bool
-+ producesFluid(TileSide S): Bool
-+ acceptsItems(): Bool
-+ producesItems(): Bool
-+ acceptsItemsDrag(): Bool
-+ removeItem(Item I, int Quantity)
-+ insertItem(Item I, int Quantity)
-+ removeFluid(Fluid F, int Quantity)
-+ insertFluid(Fluid F, int Quantity)
---
-Responsibilites
--- base for all tiles
--- defines tile to tile interface</panel_attributes>
++ PreTick() : void
++ tick() : void
++ PostTick() : void
+</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>616</x>
-      <y>168</y>
+      <x>736</x>
+      <y>128</y>
       <w>96</w>
-      <h>88</h>
+      <h>128</h>
     </coordinates>
     <panel_attributes>TileSide
 --
@@ -52,14 +44,17 @@ GetNorth(): Bool
 GetEast(): Bool
 GetSouth(): Bool
 GetWest(): Bool
+GetUp(): Bool
+GetDown(): Bool
+GetHand(): Bool
 TileSide()</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>56</x>
-      <y>40</y>
+      <x>16</x>
+      <y>72</y>
       <w>168</w>
       <h>112</h>
     </coordinates>
@@ -78,8 +73,8 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>800</x>
-      <y>400</y>
+      <x>888</x>
+      <y>376</y>
       <w>192</w>
       <h>136</h>
     </coordinates>
@@ -100,8 +95,8 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>936</x>
-      <y>552</y>
+      <x>1024</x>
+      <y>528</y>
       <w>120</w>
       <h>56</h>
     </coordinates>
@@ -115,8 +110,8 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>952</x>
-      <y>528</y>
+      <x>1040</x>
+      <y>504</y>
       <w>24</w>
       <h>40</h>
     </coordinates>
@@ -126,8 +121,8 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1008</x>
-      <y>464</y>
+      <x>1096</x>
+      <y>440</y>
       <w>40</w>
       <h>24</h>
     </coordinates>
@@ -135,41 +130,10 @@ Responsibilities
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>288</x>
-      <y>104</y>
-      <w>256</w>
-      <h>120</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Interface&gt;&gt;
-SimualtedObj
---
-- ticked: bool
---
-+ reset()
-+ getTicked(): bool
---
-Responsibilities
--- ensures simulated objects aren't updated twice</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
-      <x>304</x>
-      <y>216</y>
-      <w>24</w>
-      <h>96</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>984</x>
-      <y>464</y>
+      <x>1072</x>
+      <y>440</y>
       <w>40</w>
       <h>24</h>
     </coordinates>
@@ -179,8 +143,8 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>384</y>
+      <x>16</x>
+      <y>328</y>
       <w>168</w>
       <h>120</h>
     </coordinates>
@@ -200,8 +164,8 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>784</x>
-      <y>552</y>
+      <x>872</x>
+      <y>528</y>
       <w>120</w>
       <h>56</h>
     </coordinates>
@@ -215,8 +179,8 @@ Responsibilities
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>528</y>
+      <x>928</x>
+      <y>504</y>
       <w>24</w>
       <h>40</h>
     </coordinates>
@@ -226,8 +190,8 @@ Responsibilities
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>768</x>
-      <y>256</y>
+      <x>848</x>
+      <y>232</y>
       <w>168</w>
       <h>112</h>
     </coordinates>
@@ -246,8 +210,8 @@ remItem(Item i, Count c): int
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>248</y>
+      <x>16</x>
+      <y>208</y>
       <w>168</w>
       <h>104</h>
     </coordinates>
@@ -265,24 +229,8 @@ remFluid(Fluid f, ml int): int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>248</x>
-      <y>0</y>
-      <w>168</w>
-      <h>72</h>
-    </coordinates>
-    <panel_attributes>VisibleTile
---
-- pos: TilePosition
-- model:
---
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>592</x>
-      <y>80</y>
+      <x>680</x>
+      <y>56</y>
       <w>168</w>
       <h>56</h>
     </coordinates>
@@ -295,44 +243,8 @@ remFluid(Fluid f, ml int): int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>480</x>
-      <y>312</y>
-      <w>168</w>
-      <h>152</h>
-    </coordinates>
-    <panel_attributes>TileMap
---
-- tiles: GameTile[][]
-</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>256</x>
-      <y>64</y>
-      <w>24</w>
-      <h>248</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;290.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>512</x>
-      <y>216</y>
-      <w>24</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1008</x>
-      <y>432</y>
+      <x>1096</x>
+      <y>408</y>
       <w>80</w>
       <h>24</h>
     </coordinates>
@@ -342,12 +254,101 @@ remFluid(Fluid f, ml int): int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>984</x>
-      <y>432</y>
+      <x>1072</x>
+      <y>408</y>
       <w>40</w>
       <h>24</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>376</x>
+      <y>24</y>
+      <w>120</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>Graphics::GObject3D
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>40</y>
+      <w>24</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>288</x>
+      <y>240</y>
+      <w>168</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Game::TileChunk
+--
+- Const Sz : int
+- Tiles : Tile[Sz][Sz]
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>512</x>
+      <y>240</y>
+      <w>176</w>
+      <h>152</h>
+    </coordinates>
+    <panel_attributes>Game::Tile
+-
+AcceptsFluids(TileSide s) : Bool
+AcceptsItems(TileSide s) : Bool
+ProducesFluids(TileSide s) : Bool
+ProducesItems(TileSide s) : Bool
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>448</x>
+      <y>288</y>
+      <w>80</w>
+      <h>24</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>360</x>
+      <y>160</y>
+      <w>64</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>472</x>
+      <y>160</y>
+      <w>152</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;100.0</additional_attributes>
   </element>
 </diagram>

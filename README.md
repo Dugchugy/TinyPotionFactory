@@ -23,6 +23,7 @@ The game will play as an idle factory game. the goal is to compine and connect y
     - bottling station
         - hand bottling station
         - auto bottling station
+        - rigging
     - witches journal
 
 - program basic features
