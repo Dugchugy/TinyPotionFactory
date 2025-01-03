@@ -12,4 +12,36 @@ The game will play as an idle factory game. the goal is to compine and connect y
     - import rigged models to openGL
     - combined rendering in openGL
 
-    
+- create models
+    - cauldren
+        - hand cauldren
+        - auto cauldren
+        - rigging
+    - well
+        - rigging?
+    - pipe
+    - bottling station
+        - hand bottling station
+        - auto bottling station
+    - witches journal
+
+- program basic features
+    - basic item classes
+    - basic functional tiles
+        - tile event loop
+        - tile event ordering
+    - tile collection (array? list? both?)
+    - basic user interface
+        - gold count
+        - sales options
+
+- program file features
+    - save system
+        - save format for tiles (variable size)
+        - saving non-tile info
+    - simulating ticks
+        - simulate ticks after load
+        - estimate simulation time
+
+
+
