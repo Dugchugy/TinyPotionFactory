@@ -5,3 +5,11 @@ The game will play as an idle factory game. the goal is to compine and connect y
 
 ### Things To Do
 
+- create graphics interface
+    - render in 3D with openGL
+    - import models to openGL
+    - add rigging to models
+    - import rigged models to openGL
+    - combined rendering in openGL
+
+    
