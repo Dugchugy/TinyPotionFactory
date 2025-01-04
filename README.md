@@ -6,11 +6,10 @@ The game will play as an idle factory game. the goal is to compine and connect y
 ### Things To Do
 
 - create graphics interface
-    - render in 3D with openGL
-    - import models to openGL
-    - add rigging to models
-    - import rigged models to openGL
-    - combined rendering in openGL
+    - determine openGL 2D rendering
+    - find model image size
+    - render models
+    - create 2D graphics system
 
 - create models
     - cauldren
