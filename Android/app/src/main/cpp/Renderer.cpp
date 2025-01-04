@@ -29,7 +29,7 @@ void Renderer::init(android_app *app) {
     }
 
     //sets the configuration as needed
-    EGLint numConfigsl;
+    EGLint numConfigs;
     eglChooseConfig(display, attribs,
                     &config, 1, &numConfigs);
 
@@ -57,7 +57,7 @@ void Renderer::init(android_app *app) {
     eglMakeCurrent(display, surface, surface, context);
 
     //sets clear color to a white background
-    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
 } //Renderer::init
 
 void Renderer::beginUpdate() {

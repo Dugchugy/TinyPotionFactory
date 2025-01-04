@@ -13,4 +13,12 @@ void Game::begin(android_app *app) {
 //runs once per frame
 void Game::update(float deltaTime) {
 
+    //starts by begining renderer update
+    renderer.beginUpdate();
+
+    //DRAW HERE
+
+    //ends by ending renderer update
+    renderer.endUpdate();
+
 }
