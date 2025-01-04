@@ -4,10 +4,14 @@
 #include <game-activity/GameActivity.cpp>
 #include <game-text-input/gametextinput.cpp>
 
+#include <chrono>
+
+#include "logging.h"
+#include "Game.h"
+
 extern "C" {
 //includes android c file to make android work (needed for app to work)
 #include <game-activity/native_app_glue/android_native_app_glue.c>
-#include "logging.h"
 
 void handleAppCmd(android_app* app, int32_t cmd){
     //TODO
@@ -15,8 +19,21 @@ void handleAppCmd(android_app* app, int32_t cmd){
 
     if(cmd == APP_CMD_INIT_WINDOW){
         LOGD("initiated window");
+        //creates a new game obejct
+        Game* game = new Game();
+        //sets up the game object
+        game->begin(app);
+        //stores the game in the user data
+        app->userData = game;
     }else if(cmd == APP_CMD_TERM_WINDOW){
         LOGD("exiting app");
+
+        //re-obtains the game from the user data
+        Game* game = reinterpret_cast<Game*>(app->userData);
+        //clears the user data
+        app->userData = nullptr;
+        //deletes the game
+        delete game;
     }
 
 }
@@ -32,13 +49,26 @@ void android_main(android_app* app){
     //vars to store the number of events and the source for events
     int events;
     android_poll_source* pollSource;
+    std::chrono::steady_clock::time_point lastTime = std::chrono::high_resolution_clock::now();
 
     //primary loop, runs while app is running
     do{
+        //gets the current time and calculates time between frames
+        std::chrono::steady_clock::time_point  currentTime = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<float> deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
+
         //requests events from OS
         if(ALooper_pollOnce(0, nullptr, &events, (void**) &pollSource) >= 0){
             //processes the events as needed
             if(pollSource) pollSource->process(app, pollSource);
+        }
+
+        //checks if the game has been initalized
+        if(app->userData){
+            Game* game = reinterpret_cast<Game*>(app->userData);
+
+            game->update(deltaTime.count());
         }
     }while(!app->destroyRequested);
 
