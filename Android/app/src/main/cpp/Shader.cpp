@@ -5,6 +5,7 @@
 #include "Shader.h"
 
 #include "logging.h"
+#include "glm/gtc/type_ptr.hpp"
 #include <GLES2/gl2.h>
 
 void Shader::fromSource(const char *vectCode, const char *fragCode) {
