@@ -61,3 +61,27 @@ void Shader::use() const {
     //uses the created shader program
     glUseProgram(id);
 }// Shader::use
+
+void Shader::setVec2(const std::string &name, glm::vec2 value) const {
+    //sets the vector2 of the passed name to the passed value
+    glUniform2f(glGetUniformLocation(id, name.c_str()),
+                value.x, value.y);
+}
+
+void Shader::setVec3(const std::string &name, glm::vec3 value) const {
+    //sets the vector2 of the passed name to the passed value
+    glUniform3f(glGetUniformLocation(id, name.c_str()),
+                value.x, value.y, value.z);
+}
+
+void Shader::setMat4(const std::string &name, glm::mat4 value) const {
+    //sets the vector2 of the passed name to the passed value
+    glUniformMatrix4fv(glGetUniformLocation(id, name.c_str()),
+                       1, GL_FALSE, glm::value_ptr(value));
+}
+
+void Shader::setFloat(const std::string &name, float value) const {
+    //sets the vector2 of the passed name to the passed value
+    glUniform1f(glGetUniformLocation(id, name.c_str()),
+                value);
+}
