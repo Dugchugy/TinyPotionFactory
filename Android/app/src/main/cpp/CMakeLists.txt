@@ -10,8 +10,7 @@ project("tinypotionfactory")
 add_library(tinypotionfactory SHARED
         main.cpp
         Game.cpp
-        Renderer.cpp
-        Shader.cpp)
+)
 
 # Searches for a package provided by the game activity dependency
 find_package(game-activity REQUIRED CONFIG)
