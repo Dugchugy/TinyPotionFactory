@@ -11,7 +11,7 @@
 
 class Shader {
 public:
-    void fromSource(const char* vectCode, const char* fragCode);
+    void fromSource(const char* vertCode, const char* fragCode);
     void use() const;
 
     void setVec2(const std::string &name, glm::vec2 value) const;

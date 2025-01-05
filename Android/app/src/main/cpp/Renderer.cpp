@@ -58,11 +58,38 @@ void Renderer::init(android_app *app) {
 
     //sets clear color to a white background
     glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
+
+    //creates the vertex shader code
+    constexpr const char* vertexShaderCode =
+            "attribute vec4 vertex;" //input, form: <vec2 pos, vec2 tex>
+            "uniform mat4 projection;" //the projection matrix
+            "uniform mat4 model;" //the model matrix
+            "varying vec2 texCoords;" //output, the coordinates of the texture
+            "void main() {"
+            "   gl_Position = projection * model * vec4(vertex.xy, 0.0, 1.0); "
+            "   texCoords = vertex.zw; "
+            "}"
+            ;
+
+    //creates the fragment shader code
+    constexpr const char* fragmentShaderCode =
+            "precision mediump float;" //sets precision to medium?
+            "varying vec2 texCoords;"
+            "uniform vec3 color;" //defines the color to make the rectangle
+            "void main() {"
+            "   gl_FragColor = vec4(color, 0.0);" //sets the color for the fragment to the passed color with zero alpha
+            ""
+            "}";
+
+    //loads the source for the shader with the created vertex and fragment shaders
+    shader.fromSource(vertexShaderCode, fragmentShaderCode);
 } //Renderer::init
 
 void Renderer::beginUpdate() {
     //clears the screen
     glClear( GL_COLOR_BUFFER_BIT);
+
+    glDRaw
 
 } //Renderer::beginUpdate
 

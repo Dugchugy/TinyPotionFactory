@@ -8,14 +8,14 @@
 #include "glm/gtc/type_ptr.hpp"
 #include <GLES2/gl2.h>
 
-void Shader::fromSource(const char *vectCode, const char *fragCode) {
+void Shader::fromSource(const char *vertCode, const char *fragCode) {
 
     int success{};
     char infoLog[512]{};
 
     //creates a new vertex shader with the passed code and compiles it
     uint32_t vertex = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(vectex, 1 &vertCode, nullptr);
+    glShaderSource(vertex, 1, &vertCode, nullptr);
     glCompileShader(vertex);
 
     //checks that the shader compiled correctly

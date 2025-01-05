@@ -7,6 +7,7 @@
 
 #include <game-activity/native_app_glue/android_native_app_glue.h>
 #include <EGL/egl.h>
+#include "Shader.h"
 
 class Renderer {
 public:
@@ -17,6 +18,8 @@ public:
     void endUpdate();
 
 private:
+    Shader shader;
+
     EGLDisplay display;
     EGLConfig  config;
     EGLSurface surface;
