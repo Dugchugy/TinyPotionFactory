@@ -23,7 +23,7 @@ private:
 
     //voa = vertex area: used to draw, vbo = vertex buffer: stores type of vertex data
     //in GPU memory
-    GLuint vao{}, vbo{};
+    GLuint vao{}, vbo{}, ebo{};
     GLuint shaderProgram{};
 
 };

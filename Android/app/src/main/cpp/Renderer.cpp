@@ -14,19 +14,16 @@ constexpr const char* VertexCode = R"(#version 300 es
 precision mediump float; //specifies that openGL should use medium precision
 
 layout (location=0) in vec2 a_pos; //specifies that the 0 index element is vec2
-layout (location=1) in vec3 col; //reads the color as an input?
 
-out vec3 color;
 
 void main() {
     gl_Position = vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
-    color = col;
 }
 )";
 constexpr const char* FragmentCode = R"(#version 300 es
 precision mediump float; //specifies that openGL should use medium precision
 
-in vec3 color;
+uniform vec3 color;
 out vec4 frag_color;
 
 void main(){
@@ -82,9 +79,15 @@ Renderer::Renderer(android_app* app) {
 
     //defines vertexs to render (will be moved elsewhere later
     float verticies[] = {
-            0, 0.5f, 1.0f, 0.0f, 0.0f,
-            -0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-            0.5f, -0.5f, 0.0f, 0.0f, 1.0f
+            -0.5, 0.5f,
+            -0.5f, -0.5f,
+            0.5f, -0.5f,
+            0.5f, 0.5f,
+    };
+
+    uint32_t indices[] = {
+            0, 1, 2,
+            0, 3, 2
     };
 
     //===============================
@@ -100,15 +103,18 @@ Renderer::Renderer(android_app* app) {
     //moves data from CPU to GPU (STATIC_DRAW: uploads only once and uses forever
     glBufferData(GL_ARRAY_BUFFER, sizeof(verticies), verticies, GL_STATIC_DRAW);
 
+    //creates an index buffer for drawing with
+    glGenBuffers(1, &ebo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
     //generates a vertex array object and binds it to be used
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
     //specifies the attributes for the verticies array in GPU memory
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), nullptr);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*) (2 * sizeof(float )));
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
-    glEnableVertexAttribArray(1);
 
     //===================
     //compiles shaders
@@ -155,6 +161,11 @@ Renderer::Renderer(android_app* app) {
     glDeleteShader(vert);
     glDeleteShader(frag);
 
+    glUseProgram(shaderProgram);
+
+    glUniform3f(glGetUniformLocation(shaderProgram, "color"),
+                1.0f, 1.0f, 1.0f);
+
 
 } //Renderer()
 
@@ -190,8 +201,9 @@ void Renderer::doFrame() {
     glUseProgram(shaderProgram);
 
     glBindVertexArray(vao);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
     //swaps the surface buffer onto the screen
     auto res = eglSwapBuffers(display, surface);
