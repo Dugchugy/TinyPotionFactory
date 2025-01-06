@@ -20,9 +20,7 @@ void handleAppCmd(android_app* app, int32_t cmd){
     if(cmd == APP_CMD_INIT_WINDOW){
         LOGD("initiated window");
         //creates a new game obejct
-        Game* game = new Game();
-        //sets up the game object
-        game->begin(app);
+        Game* game = new Game(app);
         //stores the game in the user data
         app->userData = game;
     }else if(cmd == APP_CMD_TERM_WINDOW){
