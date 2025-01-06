@@ -10,6 +10,8 @@
 
 #include "logging.h"
 
+constexpr const char* VertexCode = R"()";
+constexpr const char* FragmentCode = R"()";
 
 Renderer::Renderer(android_app* app) {
 
@@ -85,9 +87,57 @@ Renderer::Renderer(android_app* app) {
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
     glEnableVertexAttribArray(0);
 
+    //===================
+    //compiles shaders
+    //===================
+
+    auto compileShaders = [](GLenum type, const char* src)-> GLuint {
+        //creates a shader with the specified source and type and compiles it
+        GLuint shader = glCreateShader(type);
+        glShaderSource(shader, 1, &src, nullptr);
+        glCompileShader(shader);
+
+        //checks the shader compiled correctly
+        GLint success;
+        glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+        if(!success) {
+            char infoLog[1024];
+            glGetShaderInfoLog(shader, 1024, nullptr, infoLog);
+            LOGE("Failed to compile shader! info log: \n %s", infoLog);
+        }
+
+        return shader;
+
+    };
+
+    GLuint vert = compileShaders(GL_VERTEX_SHADER, VertexCode);
+    GLuint frag = compileShaders(GL_FRAGMENT_SHADER, FragmentCode);
+
+    //creates a program linking the shaders and links it
+    shaderProgram = glCreateProgram();
+    glAttachShader(shaderProgram, vert);
+    glAttachShader(shaderProgram, frag);
+    glLinkProgram(shaderProgram);
+
+    //checks that it links correctly
+    GLint success;
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+    if(!success) {
+        char infoLog[1024];
+        glGetProgramInfoLog(shaderProgram, 1024, nullptr, infoLog);
+        LOGE("Failed to link shader Program! info log: \n %s", infoLog);
+    }
+
+    //deletes the shaders now that they're linked
+    glDeleteShader(vert);
+    glDeleteShader(frag);
+
+
 } //Renderer()
 
 Renderer::~Renderer() {
+
+    glDeleteProgram(shaderProgram);
 
     //destroys egl items
     eglDestroyContext(display, context);
