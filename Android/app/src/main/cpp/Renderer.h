@@ -21,6 +21,10 @@ private:
     EGLSurface  surface;
     EGLContext  context;
 
+    //voa = vertex area: used to draw, vbo = vertex buffer: stores type of vertex data
+    //in GPU memory
+    GLuint vao{}, vbo{};
+
 };
 
 

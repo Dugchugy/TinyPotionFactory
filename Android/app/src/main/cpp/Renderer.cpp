@@ -6,6 +6,7 @@
 
 #include <cassert>
 #include <GLES/egl.h>
+#include <GLES3/gl3.h>
 
 #include "logging.h"
 
@@ -56,6 +57,34 @@ Renderer::Renderer(android_app* app) {
 
     glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
 
+    //defines vertexs to render (will be moved elsewhere later
+    float verticies[] = {
+            0, 0.5f,
+            -0.5f, -0.5f,
+            0.5f, -0.5f
+    };
+
+    //===============================
+    //Defines data passed to shaders
+    //===============================
+
+    //creates a memory buffer in the GPU's memory (stores it in vbo
+    glGenBuffers(1, &vbo);
+
+    //tells openGL to use the vbo buffer
+    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+
+    //moves data from CPU to GPU (STATIC_DRAW: uploads only once and uses forever
+    glBufferData(GL_ARRAY_BUFFER, sizeof(verticies), verticies, GL_STATIC_DRAW);
+
+    //generates a vertex array object and binds it to be used
+    glGenVertexArrays(1, &vao);
+    glBindVertexArray(vao);
+
+    //specifies the attributes for the verticies array in GPU memory
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+    glEnableVertexAttribArray(0);
+
 } //Renderer()
 
 Renderer::~Renderer() {
@@ -64,6 +93,10 @@ Renderer::~Renderer() {
     eglDestroyContext(display, context);
     eglDestroySurface(display, surface);
     eglTerminate(display);
+
+    glDeleteBuffers(1, &vbo);
+
+    glDeleteVertexArrays(1, &vao);
 
 } //~Renderer()
 
