@@ -14,18 +14,23 @@ constexpr const char* VertexCode = R"(#version 300 es
 precision mediump float; //specifies that openGL should use medium precision
 
 layout (location=0) in vec2 a_pos; //specifies that the 0 index element is vec2
+layout (location=1) in vec3 col; //reads the color as an input?
+
+out vec3 color;
 
 void main() {
     gl_Position = vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
+    color = col;
 }
 )";
 constexpr const char* FragmentCode = R"(#version 300 es
 precision mediump float; //specifies that openGL should use medium precision
 
+in vec3 color;
 out vec4 frag_color;
 
 void main(){
-    frag_color = vec4(1.0, 0.0, 0.0, 1.0);
+    frag_color = vec4(color, 1.0f);
 }
 )";
 
@@ -77,9 +82,9 @@ Renderer::Renderer(android_app* app) {
 
     //defines vertexs to render (will be moved elsewhere later
     float verticies[] = {
-            0, 0.5f,
-            -0.5f, -0.5f,
-            0.5f, -0.5f
+            0, 0.5f, 1.0f, 0.0f, 0.0f,
+            -0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+            0.5f, -0.5f, 0.0f, 0.0f, 1.0f
     };
 
     //===============================
@@ -100,8 +105,10 @@ Renderer::Renderer(android_app* app) {
     glBindVertexArray(vao);
 
     //specifies the attributes for the verticies array in GPU memory
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), nullptr);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*) (2 * sizeof(float )));
     glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 
     //===================
     //compiles shaders
