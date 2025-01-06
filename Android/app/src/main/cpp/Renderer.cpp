@@ -10,8 +10,24 @@
 
 #include "logging.h"
 
-constexpr const char* VertexCode = R"()";
-constexpr const char* FragmentCode = R"()";
+constexpr const char* VertexCode = R"(#version 300 es
+precision mediump float; //specifies that openGL should use medium precision
+
+layout (location=0) in vec2 a_pos; //specifies that the 0 index element is vec2
+
+void main() {
+    gl_Position = vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
+}
+)";
+constexpr const char* FragmentCode = R"(#version 300 es
+precision mediump float; //specifies that openGL should use medium precision
+
+out vec4 frag_color;
+
+void main(){
+    frag_color = vec4(1.0, 0.0, 0.0, 1.0);
+}
+)";
 
 Renderer::Renderer(android_app* app) {
 
@@ -162,6 +178,13 @@ void Renderer::doFrame() {
 
     //clears the screen
     glClear(GL_COLOR_BUFFER_BIT);
+
+    //informs openGL that this program is being used
+    glUseProgram(shaderProgram);
+
+    glBindVertexArray(vao);
+
+    glDrawArrays(GL_TRIANGLES, 0, 3);
 
     //swaps the surface buffer onto the screen
     auto res = eglSwapBuffers(display, surface);
