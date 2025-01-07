@@ -19,9 +19,10 @@ layout (location=0) in vec2 a_pos; //specifies that the 0 index element is vec2
 
 uniform mat4 projection;
 
+uniform mat4 model;
 
 void main() {
-    gl_Position = projection * vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
+    gl_Position = projection * model * vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
 }
 )";
 constexpr const char* FragmentCode = R"(#version 300 es
@@ -170,7 +171,9 @@ Renderer::Renderer(android_app* app) {
     glUniform3f(glGetUniformLocation(shaderProgram, "color"),
                 1.0f, 1.0f, 1.0f);
 
+    //gets links for the model and projection uniform matrices
     ProjectionLink = glGetUniformLocation(shaderProgram, "projection");
+    ModelLink = glGetUniformLocation(shaderProgram, "model");
 
 } //Renderer()
 
@@ -205,11 +208,15 @@ void Renderer::doFrame() {
     float invAspect = (float) height / (float) width;
 
     glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -invAspect, invAspect);
+    glm::mat4 model{1};
+    model = glm::rotate(model, glm::quarter_pi<float>() * 3.0f, {0.0f, 0.0f, 1.0f});
 
     //informs openGL that this program is being used
     glUseProgram(shaderProgram);
 
+    //specifies model and projection matrices
     glUniformMatrix4fv(ProjectionLink, 1, GL_FALSE, glm::value_ptr(projection));
+    glUniformMatrix4fv(ModelLink, 1, GL_FALSE, glm::value_ptr(model));
 
     glBindVertexArray(vao);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
