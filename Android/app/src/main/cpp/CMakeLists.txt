@@ -12,6 +12,7 @@ add_library(tinypotionfactory SHARED
         main.cpp
         Game.cpp
         Renderer.cpp
+        Texture.cpp
 )
 
 add_subdirectory(glm)

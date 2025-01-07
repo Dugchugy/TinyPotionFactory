@@ -16,23 +16,30 @@ constexpr const char* VertexCode = R"(#version 300 es
 precision mediump float; //specifies that openGL should use medium precision
 
 layout (location=0) in vec2 a_pos; //specifies that the 0 index element is vec2
+layout (location=1) in vec2 t_pos; //species the location on the texture to put in this location
 
 uniform mat4 projection;
 
 uniform mat4 model;
 
+out vec2 tex_coords;
+
 void main() {
     gl_Position = projection * model * vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
+    tex_coords = t_pos;
 }
 )";
 constexpr const char* FragmentCode = R"(#version 300 es
 precision mediump float; //specifies that openGL should use medium precision
 
-uniform vec3 color;
+in vec2 tex_coords;
+
+uniform sampler2D tex; //specifies a texture to sample from
+
 out vec4 frag_color;
 
 void main(){
-    frag_color = vec4(color, 1.0f);
+    frag_color = texture(tex, tex_coords);
 }
 )";
 
@@ -82,12 +89,20 @@ Renderer::Renderer(android_app* app) {
 
     glClearColor(0.0f, 1.0f, 0.0f, 1.0f);
 
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    struct Vertex {
+        glm::vec2 position;
+        glm::vec2 tex_position;
+    };
+
     //defines vertexs to render (will be moved elsewhere later
-    float verticies[] = {
-            -0.5, 0.5f,
-            -0.5f, -0.5f,
-            0.5f, -0.5f,
-            0.5f, 0.5f,
+    Vertex verticies[] = {
+            {{-0.5, 0.5f}, {0.0f, 0.0f}},
+            {{-0.5f, -0.5f}, {0.0f, 1.0f}},
+            {{0.5f, -0.5f}, {1.0f, 1.0f}},
+            {{0.5f, 0.5f}, {1.0f, 0.0f}}
     };
 
     uint32_t indices[] = {
@@ -118,8 +133,11 @@ Renderer::Renderer(android_app* app) {
     glBindVertexArray(vao);
 
     //specifies the attributes for the verticies array in GPU memory
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) offsetof(Vertex, position));
     glEnableVertexAttribArray(0);
+
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) offsetof(Vertex, tex_position));
+    glEnableVertexAttribArray(1);
 
     //===================
     //compiles shaders
@@ -168,12 +186,16 @@ Renderer::Renderer(android_app* app) {
 
     glUseProgram(shaderProgram);
 
-    glUniform3f(glGetUniformLocation(shaderProgram, "color"),
-                1.0f, 1.0f, 1.0f);
-
     //gets links for the model and projection uniform matrices
     ProjectionLink = glGetUniformLocation(shaderProgram, "projection");
     ModelLink = glGetUniformLocation(shaderProgram, "model");
+
+    //assign the texture var to use texture 0
+    glUniform1i(glGetUniformLocation(shaderProgram, "tex"), 0);
+
+    tex = std::make_unique<Texture>(app->activity->assetManager, "android_robot.png");
+
+    LOGI("texture is %dx%d", tex->get_width(), tex->get_height());
 
 } //Renderer()
 
@@ -209,7 +231,7 @@ void Renderer::doFrame() {
 
     glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -invAspect, invAspect);
     glm::mat4 model{1};
-    model = glm::rotate(model, glm::quarter_pi<float>() * 3.0f, {0.0f, 0.0f, 1.0f});
+    //model = glm::rotate(model, glm::quarter_pi<float>() * 3.0f, {0.0f, 0.0f, 1.0f});
 
     //informs openGL that this program is being used
     glUseProgram(shaderProgram);

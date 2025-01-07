@@ -37,8 +37,9 @@ Texture::Texture(AAssetManager *assetMan, const std::string &filePath) {
         return;
     }
 
-    //creates a new texture
+    //creates a new texture and binds it to texture 0
     glGenTextures(1, &id);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, id);
 
     //allocates space for the texture and passes the required data

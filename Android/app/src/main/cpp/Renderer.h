@@ -5,8 +5,12 @@
 #ifndef TINY_POTION_FACTORY_RENDERER_H
 #define TINY_POTION_FACTORY_RENDERER_H
 
+#include <memory>
+
 #include <GLES/egl.h>
 #include <game-activity/native_app_glue/android_native_app_glue.h>
+
+#include "Texture.h"
 
 class Renderer {
 public:
@@ -27,6 +31,8 @@ private:
     GLuint shaderProgram{};
 
     GLint ProjectionLink, ModelLink;
+
+    std::unique_ptr<Texture> tex;
 
 };
 
