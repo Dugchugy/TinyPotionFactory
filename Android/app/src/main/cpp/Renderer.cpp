@@ -9,15 +9,19 @@
 #include <GLES3/gl3.h>
 
 #include "logging.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 constexpr const char* VertexCode = R"(#version 300 es
 precision mediump float; //specifies that openGL should use medium precision
 
 layout (location=0) in vec2 a_pos; //specifies that the 0 index element is vec2
 
+uniform mat4 projection;
+
 
 void main() {
-    gl_Position = vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
+    gl_Position = projection * vec4(a_pos, 0, 1.0f); //tells openGL to draw in this position
 }
 )";
 constexpr const char* FragmentCode = R"(#version 300 es
@@ -166,6 +170,7 @@ Renderer::Renderer(android_app* app) {
     glUniform3f(glGetUniformLocation(shaderProgram, "color"),
                 1.0f, 1.0f, 1.0f);
 
+    ProjectionLink = glGetUniformLocation(shaderProgram, "projection");
 
 } //Renderer()
 
@@ -197,8 +202,14 @@ void Renderer::doFrame() {
     //clears the screen
     glClear(GL_COLOR_BUFFER_BIT);
 
+    float invAspect = (float) height / (float) width;
+
+    glm::mat4 projection = glm::ortho(-1.0f, 1.0f, -invAspect, invAspect);
+
     //informs openGL that this program is being used
     glUseProgram(shaderProgram);
+
+    glUniformMatrix4fv(ProjectionLink, 1, GL_FALSE, glm::value_ptr(projection));
 
     glBindVertexArray(vao);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);

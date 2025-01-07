@@ -26,6 +26,8 @@ private:
     GLuint vao{}, vbo{}, ebo{};
     GLuint shaderProgram{};
 
+    GLint ProjectionLink;
+
 };
 
 
