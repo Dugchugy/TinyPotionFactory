@@ -45,6 +45,9 @@ Texture::Texture(AAssetManager *assetMan, const std::string &filePath) {
     glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGBA8, width, height);
     glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height,
                     GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+    //frees the loaded image data
+    stbi_image_free(data);
 } //Texture::Texture
 
 Texture::~Texture() {
