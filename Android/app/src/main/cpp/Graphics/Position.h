@@ -18,14 +18,30 @@ namespace GRAPHICS {
         Position(int x, int y) {this->x = x; this->y = y;}
 
         //getters for the x and y values
+
+        /// @brief gets the current value of x
+        /// @return the x value
         int getX() {return x;}
+
+        /// @brief gets the current value of y
+        /// @return the y value
         int getY() {return y;}
 
         //setters for the x and y values
+
+        /// @brief sets x to the passed argument
+        /// @param x the new value for x
         void setX(int x) {this->x = x;}
+
+        /// @brief sets y to the passed argument
+        /// @param y the new value for y
         void setY(int y) {this->y = y;}
 
         //setter for both x and y at once
+
+        /// @brief sets both x and y at the same time.
+        /// @param x the new value for x
+        /// @param y the new value for y
         void setPos(int x, int y) {this->x = x; this->y = y;}
 
 
