@@ -19,6 +19,9 @@ namespace GRAPHICS {
         void setX(int x) {this->x = x;}
         void setY(int y) {this->y = y;}
 
+        //setter for both x and y at once
+        void setPos(int x, int y) {this->x = x; this->y = y;}
+
 
     private:
         //stores the x and y coords of the object
