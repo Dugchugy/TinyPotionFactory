@@ -8,8 +8,14 @@ namespace GRAPHICS {
     public:
 
         // constructors for the postion class
-        Position();
-        Position(int x, int y);
+
+        /// @brief initalizes the Position with x and y set to 0
+        Position() {this->x = 0, this->y = 0;}
+
+        /// @brief initializes the position with set x and y values
+        /// @param x the x coordinate to use
+        /// @param y the y coordinate to use
+        Position(int x, int y) {this->x = x; this->y = y;}
 
         //getters for the x and y values
         int getX() {return x;}
