@@ -7,6 +7,10 @@ namespace GRAPHICS {
     class Position{
     public:
 
+        // constructors for the postion class
+        Position();
+        Position(int x, int y);
+
         //getters for the x and y values
         int getX() {return x;}
         int getY() {return y;}
