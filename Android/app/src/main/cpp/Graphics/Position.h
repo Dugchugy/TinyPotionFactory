@@ -2,8 +2,28 @@
 #define TINY_POTION_FACTORY_GRAPHIC_POSITION_H
 
 namespace GRAPHICS {
-    
-}
+
+
+    class Position{
+    public:
+
+        //getters for the x and y values
+        int getX() {return x;}
+        int getY() {return y;}
+
+        //setters for the x and y values
+        void setX(int x) {this->x = x;}
+        void setY(int y) {this->y = y;}
+
+
+    private:
+        //stores the x and y coords of the object
+        int x;
+        int y;
+    }; //Position
+
+
+}//Graphics namespace
 
 
 #endif //end of Header define
