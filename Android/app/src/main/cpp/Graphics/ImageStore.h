@@ -26,13 +26,13 @@ namespace GRAPHICS{
     protected:
 
         /// @brief clears all mappings stored in the image store, functionall reseting it. very unsafe
-        void Clear() {ImageSet.clear();}
+        void Clear();
 
 
     private:
 
         /// @brief stores the map of all images loaded with the image store
-        std::unordered_map<std::string, Image> ImageSet;
+        std::unordered_map<std::string, Image*> ImageSet;
 
     };
 
