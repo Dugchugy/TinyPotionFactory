@@ -12,6 +12,12 @@ namespace GRAPHICS{
 
     public:
 
+        /// @brief default constructor, creates an empty image store
+        ImageStore();
+
+        /// @brief descructor, destroys the current image Store and releases its memory
+        ~ImageStore();
+
         /// @brief loads an image from the resouce stores with the specified path
         /// @param path the path to find the iamge to load
         /// @return the image found at the passed path (may be loaded)
