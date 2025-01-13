@@ -13,10 +13,6 @@ namespace GRAPHICS{
         /// @brief default constructor, creates an empty image
         Image() {}; 
 
-        /// @brief create a new image loaded from the specified filename in the resource path
-        /// @param filename the resource path to pull the image from
-        Image(std::string filename) {};
-
         /// @brief Destroys the image after its deallocated.
         ~Image() {};
 
