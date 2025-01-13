@@ -11,6 +11,11 @@ namespace GRAPHICS {
         /// @return the current psotion pointer
         Position* getPosition() {return &this->pos;}
 
+        /// @brief adds the passed X and Y coords to the GObjects position
+        /// @param X the amount to add to the X coord
+        /// @param Y the amount to add to the Y coord
+        void Move(int X, int Y) {pos.setPos(pos.getX() + X, pos.getY() + Y);}
+
     private:
         Position pos; 
     }; // GObject
