@@ -20,7 +20,7 @@ namespace GRAPHICS{
     protected:
 
         /// @brief clears all mappings stored in the image store, functionall reseting it. very unsafe
-        void Clear();
+        void Clear() {ImageSet.clear();}
 
 
     private:
