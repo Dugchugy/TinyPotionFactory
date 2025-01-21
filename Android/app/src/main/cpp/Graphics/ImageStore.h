@@ -21,7 +21,7 @@ namespace GRAPHICS{
         /// @brief loads an image from the resouce stores with the specified path
         /// @param path the path to find the iamge to load
         /// @return the image found at the passed path (may be loaded)
-        Image* load_image_from_path(std::string path);
+        Image* load_image_from_path(const std::string& path);
 
     protected:
 

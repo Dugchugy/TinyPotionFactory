@@ -15,7 +15,7 @@ namespace GRAPHICS {
         /// @brief Draws the passed image on the screen at the passed position
         /// @param pos the position of the image, position is in world space.
         /// @param i the image to draw.
-        virtual void DrawImage(Position pos, Image i) = 0;
+        virtual void DrawImage(Position pos, Image& i) = 0;
 
     }; //DisplayCamera
 
