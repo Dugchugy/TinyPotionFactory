@@ -11,7 +11,7 @@ namespace GRAPHICS{
         Clear();
     }
 
-    Image* ImageStore::load_image_from_path(std::string path) {
+    Image* ImageStore::load_image_from_path(const std::string& path) {
         //checks if the iamge has been loaded before, if so, returns the loaded image
         try{
             return ImageSet[path];
