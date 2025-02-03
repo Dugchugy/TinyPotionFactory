@@ -114,6 +114,13 @@ namespace Graphics{
         glGenVertexArrays(1, &vao);
         glBindVertexArray(vao);
 
+        //specifies the attributes for the verticies array in GPU memory
+        glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) offsetof(Vertex, position));
+        glEnableVertexAttribArray(0);
+
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*) offsetof(Vertex, tex_position));
+        glEnableVertexAttribArray(1);
+
 
         // a simple lambda to compile shaders more easily
         auto compileShaders = [](GLenum type, const char* src)-> GLuint {
@@ -178,9 +185,45 @@ namespace Graphics{
 
     virtual void DisplayCameraAndroid::DrawImage(Position pos, Image& i) {
 
+        //determines the absolute position of the image on the screen.
         Position AbsPos = pos - this->getPosition();
 
-        //TODO
+        //determines the position of the bottom right corner
+        Position AbsPos2 = AbsPos + Position(i.getWidth(), i.getHeight());
+
+        //determines the float versions of the position data
+        float X1 = (float) AbsPos.getX() / 512.0f;
+        float Y1 = (float) AbsPos.getY() / 512.0f;
+        float X2 = (float) AbsPos2.getX() / 512.0f;
+        float Y2 = (float) AbsPos2.getY() / 512.0f;
+
+        //creates an array of verticies to render with (of form (X, Y), (texX, texY))
+        Vertex verticies[] = {
+            {{X1, Y1}, {0.0f, 0.0f}},
+            {{X1, Y2}, {0.0f, 1.0f}},
+            {{X2, Y2}, {1.0f, 1.0f}},
+            {{X2, Y1}, {1.0f, 0.0f}}
+        };
+
+        //uses indices to determine the triangles needed
+        uint32_t indices[] = {
+            0, 1, 2,
+            0, 3, 2
+        };
+
+        //assign the texture var to use texture from the image
+        glUniform1i(glGetUniformLocation(shaderProgram, "tex"), i.SetupTexture());
+
+        //moves data from CPU to GPU (STATIC_DRAW: uploads only once and uses forever
+        glBufferData(GL_ARRAY_BUFFER, sizeof(verticies), verticies, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+        //biunds the vao and ebo to the GPU
+        glBindVertexArray(vao);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+
+        //draws the image
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
     }// end of DisplayCameraAndroid::DrawImage(Position pos, Image& i)
 
