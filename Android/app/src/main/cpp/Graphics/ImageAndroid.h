@@ -3,11 +3,8 @@
 
 #include <string>
 #include "Graphics/Image.h"
-
+#include <GLES3/gl3.h>
 #include <android/asset_manager.h>
-
-#define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
 
 namespace GRAPHICS{
 
@@ -31,7 +28,7 @@ namespace GRAPHICS{
 
     private:
 
-        stbi_uc * ImgData;
+        GLuint id{};
 
     }; // ImageAndroid
 
