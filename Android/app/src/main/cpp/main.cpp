@@ -7,14 +7,15 @@
 #include <chrono>
 
 #include "logging.h"
-#include "Game.h"
+#include "Graphics\ImageAndroid.h"
+#include "Graphics\DisplayCameraAndroid.h"
 
 extern "C" {
 //includes android c file to make android work (needed for app to work)
 #include <game-activity/native_app_glue/android_native_app_glue.c>
 
 void handleAppCmd(android_app* app, int32_t cmd){
-    //TODO
+    
     LOGD("Processing app command:");
 
     if(cmd == APP_CMD_INIT_WINDOW){

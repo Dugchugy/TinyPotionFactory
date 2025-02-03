@@ -56,6 +56,15 @@ namespace GRAPHICS{
 
     } // end of ImageAndroid::ImageAndroid(AAssetManager *assetMan, const std::string& filename)
 
+    virtual int ImageAndroid::SetupTexture(){
+        //sets the active texture to texture 0 and binds ID to it
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, id);
+
+        //returns 0;
+        return 0;
+    }
+
     ImageAndroid::~ImageAndroid() {
         glDeleteTextures(1, &id);
 

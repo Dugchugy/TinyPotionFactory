@@ -12,9 +12,6 @@ namespace GRAPHICS{
 
     public:
 
-        /// @brief default constructor, creates an empty image
-        ImageAndroid(); 
-
         /// @brief create a new image loaded from the specified filename in the resource path
         /// @param filename the resource path to pull the image from
         ImageAndroid(AAssetManager *assetMan, const std::string& filename);
