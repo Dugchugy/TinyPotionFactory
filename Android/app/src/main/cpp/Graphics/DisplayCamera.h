@@ -17,6 +17,12 @@ namespace GRAPHICS {
         /// @param i the image to draw.
         virtual void DrawImage(Position pos, Image& i) = 0;
 
+        /// @brief used to set up the frame so that the Draw Image functions can be ran
+        virtual void PrepFrame() = 0;
+
+        /// @brief used to finish up the rendering of the frame
+        virtual void finishFrame() = 0;
+
     }; //DisplayCamera
 
 } //GRAPHICS
