@@ -32,7 +32,7 @@ namespace GRAPHICS{
         /// @return the images height in pixels
         int getHeight() {return height;}
 
-    private: 
+    protected: 
 
         //the width and heigh of the texture in pixels
         int width;
