@@ -44,19 +44,19 @@ namespace GRAPHICS {
         /// @param y the new value for y
         void setPos(int x, int y) {this->x = x; this->y = y;}
 
+        friend Position operator -(const Position& A, const Position& B){
+            return Position(A.x - B.x, A.y - B.y);
+        }
+
+        friend Position operator +(const Position& A, const Position& B){
+            return Position(A.x + B.x, A.y + B.y);
+        }
+
     private:
         //stores the x and y coords of the object
         int x;
         int y;
     }; //Position
-
-    Position operator +(const Position& A, const Position& B){
-        return Position(A.x + B.x, A.y + B.y);
-    }
-
-    Position operator -(const Position& A, const Position& B){
-        return Position(A.x - B.x, A.y - B.y);
-    }
 
 
 }//Graphics namespace
