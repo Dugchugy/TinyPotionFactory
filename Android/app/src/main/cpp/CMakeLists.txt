@@ -13,9 +13,13 @@ add_library(tinypotionfactory SHARED
         Game.cpp
         Renderer.cpp
         Texture.cpp
+        Graphics/DisplayCameraAndroid.cpp
+        Graphics/ImageAndroid.cpp
+        Graphics/ImageStore.cpp
 )
 
 add_subdirectory(glm)
+add_subdirectory(Graphics)
 
 # Searches for a package provided by the game activity dependency
 find_package(game-activity REQUIRED CONFIG)
