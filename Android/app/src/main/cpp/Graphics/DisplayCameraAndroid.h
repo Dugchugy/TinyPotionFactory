@@ -30,6 +30,9 @@ namespace GRAPHICS {
         /// @brief used to set up the frame so that the Draw Image functions can be ran
         virtual void PrepFrame();
 
+        /// @brief used to finish up the rendering of the frame
+        virtual void finishFrame();
+
     private: 
 
         EGLDisplay display;
