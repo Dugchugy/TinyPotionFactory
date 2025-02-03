@@ -1,7 +1,7 @@
 #ifndef TINY_POTION_FACTORY_GRAPHIC_GOBJECT_H
 #define TINY_POTION_FACTORY_GRAPHIC_GOBJECT_H
 
-#include "Graphics/Position.h"
+#include "Position.h"
 
 namespace GRAPHICS {
 

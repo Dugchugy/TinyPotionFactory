@@ -5,16 +5,25 @@
 #include "Game.h"
 #include "logging.h"
 
+using namespace GRAPHICS;
+
 //runs once at begining of game
 Game::Game(android_app *app) {
     //initalizes the renderer for future use
-    renderer = new Renderer(app);
+    cam = new DisplayCameraAndroid(app);
+
+    //initalizes the image to draw on screen
+    img = new ImageAndroid(app->activity->assetManager, "android_robot.png");
 }
 
 //deletes the renderer
 Game::~Game() {
-    if(renderer != nullptr){
-        delete renderer;
+    if(cam != nullptr){
+        delete cam;
+    }
+
+    if(img != nullptr){
+        delete img;
     }
 }
 
@@ -25,8 +34,14 @@ void Game::update(float deltaTime) {
     //renderer.beginUpdate();
 
     //DRAW HERE
-    if(renderer) {
-        renderer->doFrame();
+    if(cam) {
+        cam->PrepFrame();
+
+        if(img) {
+            cam->DrawImage(Position(-256, -256), *img);
+        }
+
+        cam->finishFrame();
     }else{
         LOGI("failed to update, renderer null");
     }

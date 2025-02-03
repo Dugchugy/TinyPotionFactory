@@ -13,9 +13,6 @@ add_library(tinypotionfactory SHARED
         Game.cpp
         Renderer.cpp
         Texture.cpp
-        Graphics/DisplayCameraAndroid.cpp
-        Graphics/ImageAndroid.cpp
-        Graphics/ImageStore.cpp
 )
 
 add_subdirectory(glm)
@@ -30,6 +27,8 @@ target_link_libraries(tinypotionfactory
         game-activity::game-activity
 
         glm
+
+        Graphics
 
         # EGL and other dependent libraries required for drawing
         # and interacting with Android system

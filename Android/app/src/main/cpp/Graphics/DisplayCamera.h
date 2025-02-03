@@ -1,9 +1,9 @@
 #ifndef TINY_POTION_FACTORY_GRAPHIC_DISPLAY_CAMERA_H
 #define TINY_POTION_FACTORY_GRAPHIC_DISPLAY_CAMERA_H
 
-#include "Graphics/GObject.h"
-#include "Graphics/Position.h"
-#include "Graphics/Image.h"
+#include "GObject.h"
+#include "Position.h"
+#include "Image.h"
 
 namespace GRAPHICS {
 

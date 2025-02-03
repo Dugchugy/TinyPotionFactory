@@ -7,8 +7,7 @@
 #include <chrono>
 
 #include "logging.h"
-#include "Graphics\ImageAndroid.h"
-#include "Graphics\DisplayCameraAndroid.h"
+#include "Game.h"
 
 extern "C" {
 //includes android c file to make android work (needed for app to work)

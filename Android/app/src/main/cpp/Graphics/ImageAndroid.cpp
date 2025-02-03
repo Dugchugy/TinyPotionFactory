@@ -1,4 +1,4 @@
-#include "Graphics/ImageAndroid.h"
+#include "ImageAndroid.h"
 
 #include <android/asset_manager.h>
 #include <GLES3/gl3.h>

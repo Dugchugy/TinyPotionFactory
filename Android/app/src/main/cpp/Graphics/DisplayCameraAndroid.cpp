@@ -1,4 +1,4 @@
-#include "Graphics/DisplayCameraAndroid.h"
+#include "DisplayCameraAndroid.h"
 
 #include <cassert>
 #include <GLES/egl.h>
@@ -9,7 +9,7 @@
 
 #include "logging.h"
 
-#include "Graphic/Position.h"
+#include "Position.h"
 
 /// @brief Acts as the vertex shader code. loaded directly into the graphics card on run
 constexpr const char* VertexCode = R"(#version 300 es

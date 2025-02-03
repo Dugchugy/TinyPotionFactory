@@ -2,7 +2,7 @@
 #define TINY_POTION_FACTORY_GRAPHIC_IMAGE_ANDROID_H
 
 #include <string>
-#include "Graphics/Image.h"
+#include "Image.h"
 #include <GLES3/gl3.h>
 #include <android/asset_manager.h>
 

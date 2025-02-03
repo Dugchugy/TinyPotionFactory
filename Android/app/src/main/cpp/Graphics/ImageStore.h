@@ -4,7 +4,7 @@
 #include <unordered_map>
 #include <string>
 
-#include "Graphics/Image.h"
+#include "Image.h"
 
 namespace GRAPHICS{
 

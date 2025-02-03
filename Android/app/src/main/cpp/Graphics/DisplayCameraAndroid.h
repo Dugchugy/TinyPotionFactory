@@ -1,7 +1,7 @@
 #ifndef TINY_POTION_FACTORY_GRAPHIC_DISPLAY_CAMERA_ANDROID_H
 #define TINY_POTION_FACTORY_GRAPHIC_DISPLAY_CAMERA_ANDROID_H
 
-#include "Graphics/DisplayCamera.h"
+#include "DisplayCamera.h"
 
 #include <memory>
 

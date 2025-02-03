@@ -1,4 +1,4 @@
-#include "Graphics/ImageStore.h"
+#include "ImageStore.h"
 #include <stdexcept>
 
 namespace GRAPHICS{

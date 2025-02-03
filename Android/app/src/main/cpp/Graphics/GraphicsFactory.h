@@ -1,10 +1,10 @@
 #ifndef TINY_POTION_FACTORY_GRAPHIC_FACTORY_H
 #define TINY_POTION_FACTORY_GRAPHIC_FACTORY_H
 
-#include "Graphics/Image.h"
-#include "Graphics/ImageStore.h"
+#include "Image.h"
+#include "ImageStore.h"
 #include <string>
-#include "Graphics/DisplayCamera.h"
+#include "DisplayCamera.h"
 
 namespace GRAPHICS{
 
