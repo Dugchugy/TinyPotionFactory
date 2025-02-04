@@ -16,7 +16,6 @@ add_library(tinypotionfactory SHARED
 )
 
 add_subdirectory(glm)
-add_subdirectory(Graphics)
 
 # Searches for a package provided by the game activity dependency
 find_package(game-activity REQUIRED CONFIG)
@@ -27,8 +26,6 @@ target_link_libraries(tinypotionfactory
         game-activity::game-activity
 
         glm
-
-        Graphics
 
         # EGL and other dependent libraries required for drawing
         # and interacting with Android system
