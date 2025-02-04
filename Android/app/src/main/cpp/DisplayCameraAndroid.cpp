@@ -45,7 +45,7 @@ void main(){
 }
 )";
 
-namespace Graphics{
+namespace GRAPHICS{
 
 
     DisplayCameraAndroid::DisplayCameraAndroid(android_app* app){
@@ -183,10 +183,10 @@ namespace Graphics{
         eglTerminate(display);
     } // end of DisplayCameraAndroid::~DisplayCameraAndroid();
 
-    virtual void DisplayCameraAndroid::DrawImage(Position pos, Image& i) {
+    void DisplayCameraAndroid::DrawImage(Position pos, Image& i) {
 
         //determines the absolute position of the image on the screen.
-        Position AbsPos = pos - this->getPosition();
+        Position AbsPos = pos - *(this->getPosition());
 
         //determines the position of the bottom right corner
         Position AbsPos2 = AbsPos + Position(i.getWidth(), i.getHeight());
@@ -228,7 +228,7 @@ namespace Graphics{
     }// end of DisplayCameraAndroid::DrawImage(Position pos, Image& i)
 
 
-    virtual void DisplayCameraAndroid::PrepFrame() {
+    void DisplayCameraAndroid::PrepFrame() {
 
         int height, width;
         eglQuerySurface(display, surface, EGL_WIDTH, &width);
@@ -256,7 +256,7 @@ namespace Graphics{
     }// end of DisplayCameraAndroid::PrepFrame() 
 
 
-    virtual void DisplayCameraAndroid::finishFrame() {
+    void DisplayCameraAndroid::finishFrame() {
 
         //swaps the surface buffer onto the screen
         auto res = eglSwapBuffers(display, surface);

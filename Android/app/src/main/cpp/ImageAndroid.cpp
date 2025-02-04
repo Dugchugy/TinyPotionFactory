@@ -19,7 +19,7 @@ namespace GRAPHICS{
 
         //loads the texture from the assets
         AAsset* asset = AAssetManager_open(assetMan,
-                                        filePath.c_str(),
+                                        filename.c_str(),
                                         AASSET_MODE_BUFFER);
 
         //gets the length and buffer loaded
@@ -27,13 +27,13 @@ namespace GRAPHICS{
         const void * buffer = AAsset_getBuffer(asset);
 
         if(!buffer){
-            LOGE("failed to load asset at path %s", filePath.c_str());
+            LOGE("failed to load asset at path %s", filename.c_str());
             AAsset_close(asset);
             return;
         }
 
         //reads the image from the asset buffer
-        data = stbi_load_from_memory((const uint8_t *) buffer, length,
+        stbi_uc * data = stbi_load_from_memory((const uint8_t *) buffer, length,
                                         &width, &height, nullptr, 4);
 
         if(!data){
@@ -56,7 +56,7 @@ namespace GRAPHICS{
 
     } // end of ImageAndroid::ImageAndroid(AAssetManager *assetMan, const std::string& filename)
 
-    virtual int ImageAndroid::SetupTexture(){
+    int ImageAndroid::SetupTexture(){
         //sets the active texture to texture 0 and binds ID to it
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, id);

@@ -13,7 +13,7 @@ namespace GRAPHICS{
 
     Image* ImageStore::load_image_from_path(const std::string& path) {
         //checks if the iamge has been loaded before, if so, returns the loaded image
-        try{
+        /*try{
             return ImageSet[path];
         }catch(std::out_of_range e){
 
@@ -24,7 +24,7 @@ namespace GRAPHICS{
             ImageSet[path] = img;
 
             return img;
-        }
+        }*/
     }
 
     void ImageStore::Clear() {

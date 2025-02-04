@@ -7,8 +7,6 @@
 #include <android/asset_manager.h>
 #include <GLES3/gl3.h>
 
-#define STB_IMAGE_IMPLEMENTATION
-
 #include "logging.h"
 #include "stb_image.h"
 

@@ -7,6 +7,8 @@
 
 #include <GLES/egl.h>
 #include <game-activity/native_app_glue/android_native_app_glue.h>
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 namespace GRAPHICS {
 
@@ -47,6 +49,11 @@ namespace GRAPHICS {
 
         
         GLuint shaderProgram{};
+
+        struct Vertex {
+            glm::vec2 position;
+            glm::vec2 tex_position;
+        };
 
     }; //DisplayCameraAndroid
 
