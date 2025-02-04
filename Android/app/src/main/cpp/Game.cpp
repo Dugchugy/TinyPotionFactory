@@ -14,6 +14,8 @@ Game::Game(android_app *app) {
 
     //initalizes the image to draw on screen
     img = new ImageAndroid(app->activity->assetManager, "android_robot.png");
+
+    LOGI("game initalized");
 }
 
 //deletes the renderer
@@ -37,11 +39,17 @@ void Game::update(float deltaTime) {
     if(cam) {
         cam->PrepFrame();
 
+        LOGI("frame prepped");
+
         if(img) {
             cam->DrawImage(Position(-256, -256), *img);
         }
 
+        LOGI("images drawn");
+
         cam->finishFrame();
+
+        LOGI("frame finished");
     }else{
         LOGI("failed to update, renderer null");
     }

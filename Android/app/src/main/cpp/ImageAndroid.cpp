@@ -16,6 +16,7 @@ namespace GRAPHICS{
     /// @param filename the resource path to pull the image from
     ImageAndroid::ImageAndroid(AAssetManager *assetMan, const std::string& filename) {
 
+        LOGI("loading image from file %s", filename.c_str());
 
         //loads the texture from the assets
         AAsset* asset = AAssetManager_open(assetMan,
@@ -41,6 +42,8 @@ namespace GRAPHICS{
             return;
         }
 
+        LOGI("successfully loaded image from %s", filename.c_str());
+
         //creates a new texture and binds it to texture 0
         glGenTextures(1, &id);
         glActiveTexture(GL_TEXTURE0);
@@ -53,6 +56,8 @@ namespace GRAPHICS{
 
         //frees the loaded image data
         stbi_image_free(data);
+
+        LOGI("finished image constructor!");
 
     } // end of ImageAndroid::ImageAndroid(AAssetManager *assetMan, const std::string& filename)
 
