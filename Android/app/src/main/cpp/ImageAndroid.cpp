@@ -34,7 +34,7 @@ namespace GRAPHICS{
         }
 
         //reads the image from the asset buffer
-        stbi_uc * data = stbi_load_from_memory((const uint8_t *) buffer, length,
+        data = stbi_load_from_memory((const uint8_t *) buffer, length,
                                         &width, &height, nullptr, 4);
 
         if(!data){
@@ -43,6 +43,14 @@ namespace GRAPHICS{
         }
 
         LOGI("successfully loaded image from %s", filename.c_str());
+
+
+
+        LOGI("finished image constructor!");
+
+    } // end of ImageAndroid::ImageAndroid(AAssetManager *assetMan, const std::string& filename)
+
+    int ImageAndroid::SetupTexture(){
 
         //creates a new texture and binds it to texture 0
         glGenTextures(1, &id);
@@ -54,24 +62,15 @@ namespace GRAPHICS{
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height,
                         GL_RGBA, GL_UNSIGNED_BYTE, data);
 
-        //frees the loaded image data
-        stbi_image_free(data);
-
-        LOGI("finished image constructor!");
-
-    } // end of ImageAndroid::ImageAndroid(AAssetManager *assetMan, const std::string& filename)
-
-    int ImageAndroid::SetupTexture(){
-        //sets the active texture to texture 0 and binds ID to it
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, id);
-
         //returns 0;
         return 0;
     }
 
     ImageAndroid::~ImageAndroid() {
         glDeleteTextures(1, &id);
+
+        //frees the loaded image data
+        stbi_image_free(data);
 
     } // end of ImageAndroid::~ImageAndroid()
 

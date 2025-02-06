@@ -222,15 +222,15 @@ namespace GRAPHICS{
         //assign the texture var to use texture from the image
         glUniform1i(glGetUniformLocation(shaderProgram, "tex"), i.SetupTexture());
 
+        //binds the vao and ebo to the GPU
+        glBindVertexArray(vao);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+
         //moves data from CPU to GPU (STATIC_DRAW: uploads only once and uses forever
         glBufferData(GL_ARRAY_BUFFER, sizeof(verticies), verticies, GL_DYNAMIC_DRAW);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
 
         LOGI("loaded verticies data");
-
-        //biunds the vao and ebo to the GPU
-        glBindVertexArray(vao);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 
         LOGI("bound vao and ebo data");
 

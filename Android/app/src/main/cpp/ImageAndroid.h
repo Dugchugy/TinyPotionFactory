@@ -1,6 +1,7 @@
 #ifndef TINY_POTION_FACTORY_GRAPHIC_IMAGE_ANDROID_H
 #define TINY_POTION_FACTORY_GRAPHIC_IMAGE_ANDROID_H
 
+#include "stb_image.h"
 #include <string>
 #include "Image.h"
 #include <GLES3/gl3.h>
@@ -24,6 +25,8 @@ namespace GRAPHICS{
         virtual int SetupTexture();
 
     private:
+
+        stbi_uc * data;
 
         GLuint id{};
 

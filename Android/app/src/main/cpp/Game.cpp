@@ -9,6 +9,7 @@ using namespace GRAPHICS;
 
 //runs once at begining of game
 Game::Game(android_app *app) {
+
     //initalizes the renderer for future use
     cam = new DisplayCameraAndroid(app);
 
