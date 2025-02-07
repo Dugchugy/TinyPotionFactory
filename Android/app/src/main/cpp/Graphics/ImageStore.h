@@ -2,6 +2,7 @@
 #define TINY_POTION_FACTORY_GRAPHIC_IMAGE_STORE_H
 
 #include <unordered_map>
+#include <functional>
 #include <string>
 
 #include "Image.h"
@@ -19,13 +20,15 @@ namespace GRAPHICS{
         ~ImageStore();
 
         /// @brief loads an image from the resouce stores with the specified path
-        /// @param path the path to find the iamge to load
+        /// @param path the path to find the image to load
+        /// @param f the allocator function to use to laod the image if needed
         /// @return the image found at the passed path (may be loaded)
-        Image* load_image_from_path(const std::string& path);
+        Image* load_image_from_path(const std::string& path,
+                                    const std::function<Image* (const std::string&)>& f);
 
     protected:
 
-        /// @brief clears all mappings stored in the image store, functionall reseting it. very unsafe
+        /// @brief clears all mappings stored in the image store, functionally reseting it. very unsafe
         void Clear();
 
 

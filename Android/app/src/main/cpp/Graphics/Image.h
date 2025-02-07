@@ -10,15 +10,6 @@ namespace GRAPHICS{
     class Image{
 
     public:
-        /// @brief default constructor, creates an empty image
-        Image() {}; 
-
-        /// @brief create a new image loaded from the specified filename in the resource path
-        /// @param filename the resource path to pull the image from
-        Image(const std::string& filename) {};
-
-        /// @brief Destroys the image after its deallocated.
-        ~Image() {};
 
         /// @brief sets up the texture to prepare for it to be rendered
         /// @return returns the ID that this texture can be referenced at.
