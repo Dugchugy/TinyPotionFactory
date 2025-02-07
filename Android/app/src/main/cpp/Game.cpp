@@ -40,17 +40,14 @@ void Game::update(float deltaTime) {
     if(cam) {
         cam->PrepFrame();
 
-        LOGI("frame prepped");
 
         if(img) {
-            cam->DrawImage(Position(-256, -256), *img);
+            cam->DrawImage(Position(512, 512), *img);
         }
 
-        LOGI("images drawn");
 
         cam->finishFrame();
 
-        LOGI("frame finished");
     }else{
         LOGI("failed to update, renderer null");
     }

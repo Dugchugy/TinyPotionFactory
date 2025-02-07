@@ -191,17 +191,17 @@ namespace GRAPHICS{
         Position AbsPos = pos - *(this->getPosition());
 
         //determines the position of the bottom right corner
-        Position AbsPos2 = AbsPos + Position(i.getWidth(), i.getHeight());
+        Position AbsPos2 = AbsPos - Position(i.getWidth(), i.getHeight());
 
-        LOGI("drawing image from (%i, %i) to (%i, %i)", AbsPos.getX(), AbsPos.getY(), AbsPos2.getX(), AbsPos2.getY());
+        //LOGI("drawing image from (%i, %i) to (%i, %i)", AbsPos.getX(), AbsPos.getY(), AbsPos2.getX(), AbsPos2.getY());
 
         //determines the float versions of the position data
-        float X1 = (float) AbsPos.getX() / 512.0f;
-        float Y1 = (float) AbsPos.getY() / 512.0f;
-        float X2 = (float) AbsPos2.getX() / 512.0f;
-        float Y2 = (float) AbsPos2.getY() / 512.0f;
+        float X1 = (float) AbsPos.getX() / 1024.0f;
+        float Y1 = (float) AbsPos.getY() / 1024.0f;
+        float X2 = (float) AbsPos2.getX() / 1024.0f;
+        float Y2 = (float) AbsPos2.getY() / 1024.0f;
 
-        LOGI("drawing from (%f, %f) to (%f, %f)", X1, Y1, X2, Y2);
+        //LOGI("drawing from (%f, %f) to (%f, %f)", X1, Y1, X2, Y2);
 
         //creates an array of verticies to render with (of form (X, Y), (texX, texY))
         Vertex verticies[] = {
@@ -217,8 +217,6 @@ namespace GRAPHICS{
             0, 3, 2
         };
 
-        LOGI("created redering data");
-
         //assign the texture var to use texture from the image
         glUniform1i(glGetUniformLocation(shaderProgram, "tex"), i.SetupTexture());
 
@@ -230,14 +228,8 @@ namespace GRAPHICS{
         glBufferData(GL_ARRAY_BUFFER, sizeof(verticies), verticies, GL_DYNAMIC_DRAW);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
 
-        LOGI("loaded verticies data");
-
-        LOGI("bound vao and ebo data");
-
         //draws the image
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
-
-        LOGI("drew");
 
     }// end of DisplayCameraAndroid::DrawImage(Position pos, Image& i)
 
