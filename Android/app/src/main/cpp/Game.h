@@ -5,8 +5,8 @@
 #ifndef TINY_POTION_FACTORY_GAME_H
 #define TINY_POTION_FACTORY_GAME_H
 
-#include "DisplayCameraAndroid.h"
-#include "ImageAndroid.h"
+#include "Graphics/DisplayCameraAndroid.h"
+#include "Graphics/ImageAndroid.h"
 
 #include <game-activity/native_app_glue/android_native_app_glue.h>
 

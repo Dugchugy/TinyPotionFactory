@@ -13,9 +13,9 @@ add_library(tinypotionfactory SHARED
         Game.cpp
         Renderer.cpp
         Texture.cpp
-        DisplayCameraAndroid.cpp
-        ImageStore.cpp
-        ImageAndroid.cpp
+        Graphics/DisplayCameraAndroid.cpp
+        Graphics/ImageStore.cpp
+        Graphics/ImageAndroid.cpp
 )
 
 add_subdirectory(glm)
