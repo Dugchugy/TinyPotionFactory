@@ -18,11 +18,11 @@ namespace GRAPHICS{
         ImageAndroid(AAssetManager *assetMan, const std::string& filename);
 
         /// @brief Destroys the image after its deallocated.
-        ~ImageAndroid();
+        ~ImageAndroid() override;
 
         /// @brief sets up the texture to prepare for it to be rendered
         /// @return returns the ID that this texture can be referenced at.
-        virtual int SetupTexture();
+        int SetupTexture() override;
 
     private:
 

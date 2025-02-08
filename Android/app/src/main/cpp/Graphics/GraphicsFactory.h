@@ -22,7 +22,7 @@ namespace GRAPHICS{
         /// @return the current image store.
         ImageStore* GetImageStore() {
             if(store == nullptr){
-                store = genImageStore();
+                store = this->genImageStore();
             }
 
             return store;
@@ -39,7 +39,7 @@ namespace GRAPHICS{
 
         /// @brief creates new camera object and returns it
         /// @return the new camera to be used
-        virtual DisplayCamera getCamera() const = 0;
+        virtual DisplayCamera* getCamera() const = 0;
 
     private:
 

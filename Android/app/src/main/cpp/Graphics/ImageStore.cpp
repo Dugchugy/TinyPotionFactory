@@ -30,7 +30,7 @@ namespace GRAPHICS{
 
     void ImageStore::Clear() {
         //loops through all the images in the image store
-        for(auto i: ImageSet){
+        for(const auto &i: ImageSet){
 
             //deletes each image
             delete i.second;

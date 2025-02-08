@@ -11,6 +11,8 @@ namespace GRAPHICS{
 
     public:
 
+        virtual ~Image() = default;
+
         /// @brief sets up the texture to prepare for it to be rendered
         /// @return returns the ID that this texture can be referenced at.
         virtual int SetupTexture() = 0;
