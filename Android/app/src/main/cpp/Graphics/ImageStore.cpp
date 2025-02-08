@@ -11,8 +11,7 @@ namespace GRAPHICS{
         Clear();
     }
 
-    Image* ImageStore::load_image_from_path(const std::string& path,
-                                            const std::function<Image* (const std::string&)>& f) {
+    Image* ImageStore::load_image_from_path(const std::string& path) {
         //checks if the iamge has been loaded before, if so, returns the loaded image
         try{
             return ImageSet[path];
@@ -20,7 +19,7 @@ namespace GRAPHICS{
 
 
             //creates a new image with teh specifeid path
-            Image* img = f(path);
+            Image* img = LoadNeededImage(path);
 
             ImageSet[path] = img;
 

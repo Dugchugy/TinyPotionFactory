@@ -62,6 +62,8 @@ namespace GRAPHICS{
         glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, width, height,
                         GL_RGBA, GL_UNSIGNED_BYTE, data);
 
+        LOGI("image set up");
+
         //returns 0;
         return 0;
     }

@@ -17,19 +17,19 @@ namespace GRAPHICS{
         ImageStore();
 
         /// @brief descructor, destroys the current image Store and releases its memory
-        ~ImageStore();
+        virtual ~ImageStore();
 
         /// @brief loads an image from the resouce stores with the specified path
         /// @param path the path to find the image to load
-        /// @param f the allocator function to use to laod the image if needed
         /// @return the image found at the passed path (may be loaded)
-        Image* load_image_from_path(const std::string& path,
-                                    const std::function<Image* (const std::string&)>& f);
+        Image* load_image_from_path(const std::string& path);
 
     protected:
 
         /// @brief clears all mappings stored in the image store, functionally reseting it. very unsafe
         void Clear();
+
+        [[nodiscard]] virtual Image* LoadNeededImage(const std::string& path) const = 0;
 
 
     private:

@@ -5,7 +5,6 @@
 #include "ImageStore.h"
 #include <string>
 #include "DisplayCamera.h"
-#include <bits/stdc++.h>
 
 namespace GRAPHICS{
 
@@ -32,9 +31,7 @@ namespace GRAPHICS{
         /// @param path the path to load the image from
         /// @return the image at the resouce path, may have been cached.
         Image* getImage(const std::string& path) {
-            return GetImageStore()->load_image_from_path(path, [this](const std::string& path) -> Image*{
-                return this->_constructImage(path);
-            });
+            return GetImageStore()->load_image_from_path(path);
         }
 
         /// @brief creates new camera object and returns it
@@ -50,10 +47,6 @@ namespace GRAPHICS{
         /// @brief an abstract function used to allocate an image store as needed
         /// @return the allocated image store of the known device type
         virtual ImageStore* genImageStore() = 0;
-
-        /// @brief DO NOT USE! calls the image constructor to construct an image. should use getImage instead
-        /// @return the image constructed from the path
-        virtual Image* _constructImage(const std::string& path) const = 0;
 
     }; // GraphicsFactory
 

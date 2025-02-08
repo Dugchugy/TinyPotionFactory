@@ -7,6 +7,8 @@
 #include "Image.h"
 #include "ImageAndroid.h"
 #include "ImageStore.h"
+#include "ImageStoreAndroid.h"
+#include <game-activity/native_app_glue/android_native_app_glue.h>
 
 namespace GRAPHICS {
 
@@ -16,15 +18,14 @@ namespace GRAPHICS {
 
         GraphicsFactoryAndroid(android_app* app){ this-> app = app;}
 
-        [[nodiscard]] DisplayCamera* getCamera() const override { return new DisplayCameraAndroid(app);}
+        [[nodiscard]] DisplayCamera* getCamera() const override {
+            LOGI("creating enw DisplayCamera");
+            return new DisplayCameraAndroid(app);
+        }
 
     protected:
 
-        ImageStore* genImageStore() override { return new ImageStore();}
-
-        [[nodiscard]] Image* _constructImage(const std::string& path) const override {
-            return new ImageAndroid(app->activity->assetManager, path);
-        }
+        ImageStore* genImageStore() override { return new ImageStoreAndroid(this->app);}
 
     private:
 
