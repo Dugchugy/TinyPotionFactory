@@ -19,21 +19,21 @@ namespace GRAPHICS {
 
         /// @brief creates a new camera and sets up the rendering system to use that camera
         /// @param app the android app used by the camera, require to link rendering
-        DisplayCameraAndroid(android_app* app);
+        explicit DisplayCameraAndroid(android_app* app);
 
         /// @brief deconstructor for the display camera, destroy the context and the rendering pipeline
-        ~DisplayCameraAndroid();
+        ~DisplayCameraAndroid() override;
 
         /// @brief Draws the passed image on the screen at the passed position
         /// @param pos the position of the image, position is in world space.
         /// @param i the image to draw.
-        virtual void DrawImage(Position pos, Image& i);
+        void DrawImage(Position pos, Image& i) override;
 
         /// @brief used to set up the frame so that the Draw Image functions can be ran
-        virtual void PrepFrame();
+        void PrepFrame() override;
 
         /// @brief used to finish up the rendering of the frame
-        virtual void finishFrame();
+        void finishFrame() override;
 
     private: 
 

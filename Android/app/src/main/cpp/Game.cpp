@@ -4,17 +4,20 @@
 
 #include "Game.h"
 #include "logging.h"
+#include "Graphics/GraphicsFactoryAndroid.h"
 
 using namespace GRAPHICS;
 
 //runs once at begining of game
 Game::Game(android_app *app) {
 
+    GraphicsFactoryAndroid fact(app);
+
     //initalizes the renderer for future use
-    cam = new DisplayCameraAndroid(app);
+    cam = fact.getCamera();
 
     //initalizes the image to draw on screen
-    img = new ImageAndroid(app->activity->assetManager, "android_robot.png");
+    img = fact.getImage("android_robot.png");
 
     LOGI("game initalized");
 }

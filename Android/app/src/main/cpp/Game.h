@@ -5,8 +5,8 @@
 #ifndef TINY_POTION_FACTORY_GAME_H
 #define TINY_POTION_FACTORY_GAME_H
 
-#include "Graphics/DisplayCameraAndroid.h"
-#include "Graphics/ImageAndroid.h"
+#include "Graphics/DisplayCamera.h"
+#include "Graphics/Image.h"
 
 #include <game-activity/native_app_glue/android_native_app_glue.h>
 
@@ -21,9 +21,9 @@ public:
     ~Game();
 
 private:
-    DisplayCameraAndroid* cam = nullptr;
+    DisplayCamera* cam = nullptr;
 
-    ImageAndroid* img = nullptr;
+    Image* img = nullptr;
 };
 
 
