@@ -1,5 +1,6 @@
 #include "ImageStore.h"
 #include <stdexcept>
+#include "logging.h"
 
 namespace GRAPHICS{
 
@@ -14,12 +15,11 @@ namespace GRAPHICS{
     Image* ImageStore::load_image_from_path(const std::string& path) {
         //checks if the iamge has been loaded before, if so, returns the loaded image
         try{
-            return ImageSet[path];
+            return ImageSet.at(path);
         }catch(std::out_of_range& e){
 
-
             //creates a new image with teh specifeid path
-            Image* img = LoadNeededImage(path);
+            Image* img = this->LoadNeededImage(path);
 
             ImageSet[path] = img;
 

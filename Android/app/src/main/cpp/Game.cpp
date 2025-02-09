@@ -11,13 +11,13 @@ using namespace GRAPHICS;
 //runs once at begining of game
 Game::Game(android_app *app) {
 
-    GraphicsFactoryAndroid fact(app);
+    fact = new GraphicsFactoryAndroid(app);
 
     //initalizes the renderer for future use
-    cam = fact.getCamera();
+    cam = fact->getCamera();
 
     //initalizes the image to draw on screen
-    img = fact.getImage("android_robot.png");
+    img = fact->getImage("android_robot.png");
 
     LOGI("game initalized");
 }
@@ -30,6 +30,10 @@ Game::~Game() {
 
     if(img != nullptr){
         delete img;
+    }
+
+    if(fact != nullptr){
+        delete fact;
     }
 }
 

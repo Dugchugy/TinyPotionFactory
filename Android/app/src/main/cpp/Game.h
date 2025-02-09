@@ -7,6 +7,7 @@
 
 #include "Graphics/DisplayCamera.h"
 #include "Graphics/Image.h"
+#include "Graphics/GraphicsFactory.h"
 
 #include <game-activity/native_app_glue/android_native_app_glue.h>
 
@@ -24,6 +25,10 @@ private:
     DisplayCamera* cam = nullptr;
 
     Image* img = nullptr;
+
+    GraphicsFactory* fact = nullptr;
+
+
 };
 
 

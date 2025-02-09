@@ -14,7 +14,7 @@ namespace GRAPHICS {
 
     protected:
 
-        [[nodiscard]] Image* LoadNeededImage(const std::string& path) const override {
+        Image* LoadNeededImage(const std::string& path) const override {
             return new ImageAndroid(this->app->activity->assetManager, path);
         }
 

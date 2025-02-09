@@ -15,7 +15,7 @@ namespace GRAPHICS{
         GraphicsFactory() {store = nullptr;}
 
         /// @brief destructor, clears the iamge store if it has been allocated
-        ~GraphicsFactory() {if(store != nullptr) delete store;};
+        virtual ~GraphicsFactory() {if(store != nullptr) delete store;};
 
         /// @brief gets the current isntance of the image store
         /// @return the current image store.
