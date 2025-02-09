@@ -11,8 +11,6 @@ project("tinypotionfactory")
 add_library(tinypotionfactory SHARED
         main.cpp
         Game.cpp
-        Renderer.cpp
-        Texture.cpp
         Graphics/DisplayCameraAndroid.cpp
         Graphics/ImageStore.cpp
         Graphics/ImageAndroid.cpp
