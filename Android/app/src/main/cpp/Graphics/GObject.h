@@ -7,6 +7,14 @@ namespace GRAPHICS {
 
     class GObject {
     public:
+
+        /// @breif creates a new GraphicsObject at the passed position
+        /// @param pos the position of the Graphics Object
+        explicit GObject(Position pos) {this->pos = pos;}
+
+        /// @breif creates a new graphics object at 0, 0
+        GObject() : GObject(Position(0, 0)) {}
+
         /// @brief gets a pointer to the current position of the object
         /// @return the current psotion pointer
         Position* getPosition() {return &this->pos;}
