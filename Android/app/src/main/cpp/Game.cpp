@@ -5,6 +5,7 @@
 #include "Game.h"
 #include "logging.h"
 #include "Graphics/GraphicsFactoryAndroid.h"
+#include "Graphics/GObject2D.h"
 
 using namespace GRAPHICS;
 
@@ -17,7 +18,7 @@ Game::Game(android_app *app) {
     cam = fact->getCamera();
 
     //initalizes the image to draw on screen
-    img = fact->getImage("android_robot.png");
+    obj = new GObject2D(Position(512, 512), "android_robot.png", *fact);
 
     LOGI("game initalized");
 }
@@ -28,8 +29,8 @@ Game::~Game() {
         delete cam;
     }
 
-    if(img != nullptr){
-        delete img;
+    if(obj != nullptr){
+        delete obj;
     }
 
     if(fact != nullptr){
@@ -48,8 +49,8 @@ void Game::update(float deltaTime) {
         cam->PrepFrame();
 
 
-        if(img) {
-            cam->DrawImage(Position(512, 512), *img);
+        if(obj) {
+            obj->Draw(*cam);
         }
 
 

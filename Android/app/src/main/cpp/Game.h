@@ -6,7 +6,7 @@
 #define TINY_POTION_FACTORY_GAME_H
 
 #include "Graphics/DisplayCamera.h"
-#include "Graphics/Image.h"
+#include "Graphics/GObject2D.h"
 #include "Graphics/GraphicsFactory.h"
 
 #include <game-activity/native_app_glue/android_native_app_glue.h>
@@ -24,7 +24,7 @@ public:
 private:
     DisplayCamera* cam = nullptr;
 
-    Image* img = nullptr;
+    GObject2D* obj = nullptr;
 
     GraphicsFactory* fact = nullptr;
 
