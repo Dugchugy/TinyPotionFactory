@@ -39,7 +39,7 @@ namespace GRAPHICS {
 
         /// @brief draws the GraphicsObject using the current camera
         /// @param cam the camera to draw the graphics object with
-        void Draw(DisplayCamera& cam){
+        virtual void Draw(DisplayCamera& cam){
             cam.DrawImage(*this->getPosition() - this->offset, *this->im);
         }
 
