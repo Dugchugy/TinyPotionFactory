@@ -28,7 +28,12 @@ namespace GAME
         uint width;
         uint height;
 
-        
+        uint xoffset;
+        uint yoffset;
+
+        void increaseHeight(uint increase);
+
+        void increaseWidth(uint increase);
 
     }; // GameGrid
 
