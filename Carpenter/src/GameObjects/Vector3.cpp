@@ -39,3 +39,19 @@ float Vector3::z() {
 Engine::Vec3f Vector3::toVec() {
     return { _x, _y, _z };
 }
+
+Vector3 operator+( Vector3 const& v1, Vector3 const& v2 ) {
+    return Vector3( v1._x + v2._x, v1._y + v2._y, v1._z + v2._z );
+}
+
+Vector3 operator-( Vector3 const& v1, Vector3 const& v2 ) {
+    return Vector3( v1._x - v2._x, v1._y - v2._y, v1._z - v2._z );
+}
+
+Vector3 operator*( Vector3 const& v1, float const& s ) {
+    return Vector3( v1._x * s, v1._y * s, v1._z * s );
+}
+
+bool operator==( Vector3 const& v1, Vector3 const& v2 ) {
+    return v1._x == v2._x && v1._y == v2._y && v1._z == v2._z;
+}

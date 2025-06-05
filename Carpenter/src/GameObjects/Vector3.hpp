@@ -36,6 +36,30 @@ public:
    /// @return the vector as a Vec3f struct
    Engine::Vec3f toVec();
 
+   /// @brief preforms componentwise add of two vector3s
+   /// @param v1 the first vector
+   /// @param v2 the second vector
+   /// @return the sum
+   friend Vector3 operator+( Vector3 const& v1, Vector3 const& v2 );
+
+   /// @brief preforms componentwise subtraction of two vector3s
+   /// @param v1 the first vector
+   /// @param v2 the second vector
+   /// @return the sum
+   friend Vector3 operator-( Vector3 const& v1, Vector3 const& v2 );
+
+   /// @brief scales the vector by a constant
+   /// @param v1 the vector
+   /// @param s the scaling factor
+   /// @return the vector scaled by the scaling factor
+   friend Vector3 operator*( Vector3 const& v1, float const& s );
+
+   /// @brief performs a component wise check to see if two vector3s are equal
+   /// @param v1 the first vector
+   /// @param v2 the second vector
+   /// @return true if x, y, and z match for both vectors, false otherwise
+   friend bool operator==( Vector3 const& v1, Vector3 const& v2 );
+
 private:
 
    float _x;
