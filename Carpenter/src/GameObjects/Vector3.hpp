@@ -8,6 +8,9 @@ public:
    /// @breif constructs a Vector3 with zero for all aspects
    Vector3() : Vector3( 0, 0, 0 ) {}
 
+   /// @brief constructs a Vector3 with all attributes having the same value x
+   Vector3( float x ) : Vector3( x, x, x ) {}
+
    /// @brief constructs a Vector3 with the specified X, Y, and Z coordinates
    Vector3( float x, float y, float z );
 
