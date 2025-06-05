@@ -1,3 +1,4 @@
+#include "Vector3.hpp"
 
 namespace PotionParts {
 
@@ -20,7 +21,7 @@ public:
    Vector3& rotation();
 
    /// @brief returns the current scale
-   Vector3& scale()
+   Vector3& scale();
 
 private:
 

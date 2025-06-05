@@ -1,13 +1,15 @@
+#include<Utils.hpp>
+
 namespace PotionParts {
 
 class Vector3 {
 public:
 
    /// @breif constructs a Vector3 with zero for all aspects
-   Vector3() : Vector3(0, 0, 0) {}
+   Vector3() : Vector3( 0, 0, 0 ) {}
 
    /// @brief constructs a Vector3 with the specified X, Y, and Z coordinates
-   Vector3(float x, float y, float z);
+   Vector3( float x, float y, float z );
 
    /// @brief gets the x value
    float x();
@@ -19,16 +21,21 @@ public:
    float z();
 
    /// @brief sets the x value
-   void xIs(float x);
+   void xIs( float x );
 
    /// @brief sets the y value
-   void yIs(float y);
+   void yIs( float y );
 
    /// @brief sets the z value
-   void zIs(float z);
+   void zIs( float z );
 
    /// @brief sets all 3 values
-   void set(float x, float y, float z);
+   void set( float x, float y, float z );
+
+   /// @brief converts the vector into a Vec3f for engine compatability
+   /// @return the vector as a Vec3f struct
+   Engine::Vec3f toVec();
+
 private:
 
    float _x;
