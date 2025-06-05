@@ -6,13 +6,13 @@ class Transform {
 public:
 
    /// @brief constructs a default transform with zero position and rotation and 1 scale
-   Transform();
+   Transform() : Transform( Vector3() ) {}
 
    /// @brief constructs a transform with the specified position
-   Transform( float position );
+   Transform( Vector3 position ) : Transform( position, Vector3(), Vector3(1) ) {}
 
    /// @brief constructs a transform with the specified position, rotation, and scale
-   Transform( float position, float rotation, float scale );
+   Transform( Vector3 position, Vector3 rotation, Vector3 scale );
 
    /// @brief returns the current position
    Vector3& position();
