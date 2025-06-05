@@ -4,7 +4,7 @@ class Vector3 {
 public:
 
    /// @breif constructs a Vector3 with zero for all aspects
-   Vector3();
+   Vector3() : Vector3(0, 0, 0) {}
 
    /// @brief constructs a Vector3 with the specified X, Y, and Z coordinates
    Vector3(float x, float y, float z);
