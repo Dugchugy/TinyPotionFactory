@@ -12,13 +12,13 @@ public:
    Vector3( float x, float y, float z );
 
    /// @brief gets the x value
-   float x();
+   float x() const;
 
    /// @brief gets the y value
-   float y();
+   float y() const;
 
    /// @brief gets the z value
-   float z();
+   float z() const;
 
    /// @brief sets the x value
    void xIs( float x );
@@ -34,7 +34,7 @@ public:
 
    /// @brief converts the vector into a Vec3f for engine compatability
    /// @return the vector as a Vec3f struct
-   Engine::Vec3f toVec();
+   Engine::Vec3f toVec() const;
 
    /// @brief preforms componentwise add of two vector3s
    /// @param v1 the first vector
