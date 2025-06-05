@@ -1,6 +1,6 @@
 #include "Transform.hpp"
-#include <Graphics/mesh.hpp>
-#include <Graphics/texture.hpp>
+#include <Graphics/Mesh.hpp>
+#include <Graphics/Texture.hpp>
 
 namespace PotionParts {
 
