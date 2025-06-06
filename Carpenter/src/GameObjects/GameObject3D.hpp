@@ -1,5 +1,5 @@
 #include "Model.hpp"
-#include "Transform.hpp
+#include "Transform.hpp"
 #include <Graphics/Renderer.hpp>
 
 namespace PotionParts {
