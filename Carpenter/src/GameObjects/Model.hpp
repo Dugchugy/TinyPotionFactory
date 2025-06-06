@@ -4,13 +4,12 @@
 
 namespace PotionParts {
 
+/// @brief stores both a mesh and a texture to be used for rendering a model
 class Model {
 public:
-
-private:
-
+   Engine::Mesh mesh
+   Engine:: Texture text
    
-
 }; //Model
 
 } //PotionParts
