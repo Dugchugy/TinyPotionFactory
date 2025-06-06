@@ -1,20 +1,17 @@
-#include <GameObject.hpp>
-#include <Graphics/Mesh.hpp>
-#include <Graphics/Texture.hpp>
+#include "Model.hpp"
+#include "Transform.hpp
 #include <Graphics/Renderer.hpp>
 
 namespace PotionParts {
 
-class GameObject3D : public Engine::GameObject {
+class GameObject3D {
 public:
 
-    Engine::Graphics::Mesh mesh;
-    Engine::Graphics::Texture text;
+    Transform transform;
+    Model model;
 
-    /// @brief Creates a new graphcis object 3D with the specifed mesh and texture
-    /// @param newMesh the mesh to use for the object
-    /// @param texture teh texture to use for this object
-    GameObject3D(Engine::Graphics::Mesh newMesh, Engine::Graphics::Texture texture);
+    /// @brief Creates a new game object 3D with the specifed Model using the specified Transform
+    GameObject3D(Transform t, Model m);
 
     /// @brief Draws the game object using the appropriate renderer
     /// @param renderer the renderer that will be used to draw the object
