@@ -7,8 +7,8 @@ namespace PotionParts {
 /// @brief stores both a mesh and a texture to be used for rendering a model
 class Model {
 public:
-   Engine::Mesh mesh
-   Engine:: Texture text
+   Engine::Graphics::Mesh mesh
+   Engine::Graphics::Texture text
    
 }; //Model
 
