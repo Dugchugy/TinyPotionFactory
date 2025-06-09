@@ -10,8 +10,10 @@ public:
    Engine::Graphics::Mesh mesh
    Engine::Graphics::Texture text
 
+   Model( Engine::Graphics::Mesh m, Engine::Graphics::Texture t );
+
    /// @brief draws this mesh using the given renderer and transform
-   void Draw(Engine::Graphics::Renderer renderer, Transform transform);
+   void Draw( Engine::Graphics::Renderer renderer, Transform transform );
    
 }; //Model
 
