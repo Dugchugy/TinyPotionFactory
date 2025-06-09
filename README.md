@@ -20,6 +20,7 @@ The game will play as an idle factory game. the goal is to combine and connect y
     - witches journal [x]
 
 - program basic features
+    - load STL files as models
     - basic item classes
         - store fluids in items
     - basic fluid classes
