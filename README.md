@@ -1,31 +1,26 @@
 # TinyPotionFactory
 A small mobile game where you make potions to sell
 
-The game will play as an idle factory game. the goal is to compine and connect your processing devices as eiffeicntly as possible to make and sell as many potions as your can
+The game will play as an idle factory game. the goal is to combine and connect your processing devices as eiffeicntly as possible to make and sell as many potions as your can
 
 ### Things To Do
 
-- create graphics interface
-    - determine openGL 2D rendering
-    - find model image size
-    - render models
-    - create 2D graphics system
-
 - create models
     - cauldren
-        - hand cauldren
+        - hand cauldren [x]
         - auto cauldren
         - rigging
-    - well
+    - well [x]
         - rigging?
     - pipe
     - bottling station
         - hand bottling station
         - auto bottling station
         - rigging
-    - witches journal
+    - witches journal [x]
 
 - program basic features
+    - load STL files as models
     - basic item classes
         - store fluids in items
     - basic fluid classes
