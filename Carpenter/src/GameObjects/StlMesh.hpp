@@ -1,0 +1,18 @@
+#ifndef STLMESH_HPP
+#define STLMESH_HPP
+
+namespace PotionParts {
+
+class StlMesh : public Engine::Graphics::Mesh {
+
+   /// @brief loads a mesh from an STL file
+   /// @param filename the path at read the STL file from
+   /// reads the passed filename assuming it to be a binary STL file and uses that file to specify the triangles in the mesh
+
+   StlMesh( Std::String filename );
+
+}; //StlMesh
+
+} //PotionParts 
+
+#endif //STLMESH_HPP
