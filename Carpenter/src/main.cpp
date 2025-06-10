@@ -9,18 +9,19 @@ class ExampleScene : public Scene {
   private:
   PotionParts::GameObject3D g3D;
   float time = 0;
+  UI::UILabel label;
 
   public:
   ExampleScene() : Scene("ExampleScene"), 
-    g3D(PotionParts::GameObject3D(Graphics::Cube(), Graphics::Texture("Assets/placeholder.png"))) {
-      g3D.Position = {0, 0, 10};
-      g3D.Scale = {1, 1, 1};
+    g3D(PotionParts::GameObject3D(Graphics::Cube(), Graphics::Texture("Assets/placeholder.png"), 
+    PotionParts::Transform(PotionParts::Vector3(0, 0, 10)))), label("Label", "Hello World") {
+       AddChild(&label);
     }
 
   void Draw() override {
     Scene::Draw();
 
-    g3D.Rotation = {-35, time, 0};
+    g3D.transform.rotation().yIs(time);
 
     g3D.draw(Game::getInstance().GetRenderer());
   }
