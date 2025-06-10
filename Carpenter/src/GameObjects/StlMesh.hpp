@@ -1,6 +1,10 @@
 #ifndef STLMESH_HPP
 #define STLMESH_HPP
 
+#include <String>
+
+#include <Graphics/Mesh.hpp>
+
 namespace PotionParts {
 
 class StlMesh : public Engine::Graphics::Mesh {
