@@ -1,3 +1,6 @@
+#ifndef TRANSFORM_HPP
+#define TRANSFORM_HPP
+
 #include "Vector3.hpp"
 
 namespace PotionParts {
@@ -32,3 +35,5 @@ private:
 }; // transform
 
 } //PotionParts
+
+#endif //TRANSFORM_HPP

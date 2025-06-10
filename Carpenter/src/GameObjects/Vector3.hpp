@@ -1,3 +1,6 @@
+#ifndef VECTOR3_HPP
+#define VECTOR3_HPP
+
 #include<Utils.hpp>
 
 namespace PotionParts {
@@ -72,3 +75,5 @@ private:
 };
 
 } //PotionParts
+
+#endif //VECTOR3_HPP

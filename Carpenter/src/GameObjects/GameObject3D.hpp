@@ -1,3 +1,6 @@
+#ifndef GAMEOBJECT3D_HPP
+#define GAMEOBJECT3D_HPP
+
 #include "Model.hpp"
 #include "Transform.hpp"
 #include <Graphics/Renderer.hpp>
@@ -20,3 +23,5 @@ public:
 }; //GameObject3D
 
 } // PotionParts
+
+#endif //GAMEOBJECT3D_HPP
