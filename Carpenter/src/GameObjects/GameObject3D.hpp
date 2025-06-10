@@ -14,11 +14,17 @@ public:
     Model model;
 
     /// @brief Creates a new game object 3D with the specifed Model using the specified Transform
-    GameObject3D(Transform t, Model m);
+    GameObject3D( Transform t, Model m );
+
+    /// @brief Creates a new game object 3D with the specifed mesh and texture
+    GameObject3D( Engine::Graphics::Mesh mesh, Engine::Graphics::Texture text );
+
+    /// @brief Creates a new game object 3D with the specifed mesh and texture
+    GameObject3D( Engine::Graphics::Mesh mesh, Engine::Graphics::Texture text, Transform t );
 
     /// @brief Draws the game object using the appropriate renderer
     /// @param renderer the renderer that will be used to draw the object
-    void draw(Engine::Graphics::Renderer renderer);
+    void draw( Engine::Graphics::Renderer renderer );
 
 }; //GameObject3D
 
