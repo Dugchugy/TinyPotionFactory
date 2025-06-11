@@ -20,6 +20,10 @@ public:
    /// @brief AssetStream destructor
    ~AssetStream();
 
+   /// @brief the equals operator
+   /// sets this AssetStream equal to the passed AssetStream
+   AssetStream operator=( AssetStream a );
+
    /// @brief takes the underlying void* from the asset
    /// @return the void* used by this asset stream to store the assets data
    /// this also sets the pointer in the AssetStream to nullptr ensuring the AssetStream doesn't unexpected free the memory. this moves full responsibility for freeing the memory to the caller of takeAsset, returning the AssetStream to an unopened state
