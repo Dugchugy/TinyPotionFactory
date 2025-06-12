@@ -40,15 +40,19 @@ public:
 
    /// @brief extraction operator for floats
    /// pulls 4 bytes out of the AssetStream and returns them as a float
-   AssetStream& operator>>( float& f );
+   AssetStream& operator>>( float& x );
 
    /// @brief extraction operator for ints
    /// pulls 4 bytes out of the AssetStream and returns them as an int
-   AssetStream& operator>>( int& i );
+   AssetStream& operator>>( int& x );
 
    /// @brief extraction operator for bytes
    /// pull a byte out of the AssetStream and return it
    AssetStream& operator>>( uint8& x );
+
+   /// @brief extraction operator for Vector3s
+   /// pull 12 bytes out of the AssetStream and return them as a Vector3
+   AssetStream& operator>>( Vector3& x );
 
 private:
    
