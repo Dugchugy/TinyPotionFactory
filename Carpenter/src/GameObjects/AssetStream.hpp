@@ -34,6 +34,22 @@ public:
    /// must be called before reading data from the AssetStream.
    void open();
 
+   /// @brief skips some bytes
+   /// moves the index in the asset forward by bytes.
+   void skipBytes( int bytes );
+
+   /// @brief extraction operator for floats
+   /// pulls 4 bytes out of the AssetStream and returns them as a float
+   AssetStream& operator>>( float& f );
+
+   /// @brief extraction operator for ints
+   /// pulls 4 bytes out of the AssetStream and returns them as an int
+   AssetStream& operator>>( int& i );
+
+   /// @brief extraction operator for bytes
+   /// pull a byte out of the AssetStream and return it
+   AssetStream& operator>>( uint8& x );
+
 private:
    
     void* Asset
