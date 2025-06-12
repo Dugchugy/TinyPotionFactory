@@ -15,14 +15,14 @@ public:
 
    /// @brief the copy constructor for the Asset stream, copies it's filename and opens a copy of the asset if it is open
    /// @param a the asset to copy
-   AssetStream( AssetStream a )
+   AssetStream( const AssetStream& a )
 
    /// @brief AssetStream destructor
    ~AssetStream();
 
    /// @brief the equals operator
    /// sets this AssetStream equal to the passed AssetStream
-   AssetStream operator=( AssetStream a );
+   const AssetStream& operator=( const AssetStream& a );
 
    /// @brief takes the underlying void* from the asset
    /// @return the void* used by this asset stream to store the assets data
