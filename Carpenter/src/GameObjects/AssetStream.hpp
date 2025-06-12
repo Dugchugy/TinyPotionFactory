@@ -10,8 +10,8 @@ class AssetStream {
 public:
 
    /// @brief creates an AssetStream to access the asset at the passed path
-   /// @param filename the path to the Asset this stream will access
-   AssetStream( std::string filename );
+   /// @param path the path to the Asset this stream will access
+   AssetStream( std::string path );
 
    /// @brief the copy constructor for the Asset stream, copies it's filename and opens a copy of the asset if it is open
    /// @param a the asset to copy
@@ -56,7 +56,9 @@ public:
 
 private:
    
-    void* Asset
+    void* _asset
+
+    std::String _path
 
 }; //AssetStream
 
