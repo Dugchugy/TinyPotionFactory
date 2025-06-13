@@ -57,8 +57,8 @@ public:
 private:
    
     void* _asset
-
     std::String _path
+    int _remainingSize
 
 }; //AssetStream
 
