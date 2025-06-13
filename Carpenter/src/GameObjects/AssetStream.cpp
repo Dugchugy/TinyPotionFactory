@@ -38,3 +38,9 @@ const &AssetStream AssetStream::operator= ( const &AssetStream a ) {
 
    return a;
 }
+
+void* AssetStream::takeAsset() {
+   void* tmp = _asset;
+   _asset = nullptr;
+   return tmp;
+}
