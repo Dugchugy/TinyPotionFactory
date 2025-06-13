@@ -7,6 +7,7 @@ using namespace PotionParts;
 AssetStream::AssetStream( std::string path ) {
    _asset = nullptr;
    _path = path;
+   _remainingSize = 0;
 }
 
 AssetStream::~AssetStream() {
@@ -25,6 +26,7 @@ AssetStream::AssetStream( const AssetStream& a ) {
    memcpy( &a._asset, &_asset );
 
    _path = a._path;
+   _remainingSize = a._remainingSize;
 }
 
 const &AssetStream AssetStream::operator= ( const &AssetStream a ) {
@@ -35,6 +37,7 @@ const &AssetStream AssetStream::operator= ( const &AssetStream a ) {
    _asset = tmp;
 
    _path = a._path;
+   _remainingSize = a._remainingSize;
 
    return a;
 }
@@ -46,11 +49,11 @@ void* AssetStream::takeAsset() {
 
    void* tmp = _asset;
    _asset = nullptr;
+   _remainingSize = 0;
    return tmp;
 }
 
 void AssetStream::open() {
-   int fileSize = 0
    int fileError= 0
 
    if ( _asset != nullptr ) {
@@ -58,7 +61,7 @@ void AssetStream::open() {
       _asset = nullptr
    }
 
-   emscripten_mget_data( _path, &_asset, &fileSize, &fileError );
+   emscripten_mget_data( _path, &_asset, &_remainingSize, &fileError );
 
    if ( fileError ) {
       // throw error
