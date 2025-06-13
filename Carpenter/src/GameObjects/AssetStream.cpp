@@ -64,11 +64,29 @@ void AssetStream::open() {
       _asset = nullptr
    }
 
-   _positiion = 0;
+   _position = 0;
 
    emscripten_mget_data( _path, &_asset, &_size, &fileError );
 
    if ( fileError ) {
       // throw error
    }
+}
+
+
+AssetStream& AssetStream::operator>>( float& x ) {
+   if ( _asset == nullptr ) {
+      // throw error
+   }
+
+   if ( _size - _position < 4 ) {
+      // throw error
+   }
+
+   void* current = _asset + _position;
+   x = *( (float*) current);
+
+   _position += 4;
+
+   return this;
 }
