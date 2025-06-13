@@ -40,7 +40,27 @@ const &AssetStream AssetStream::operator= ( const &AssetStream a ) {
 }
 
 void* AssetStream::takeAsset() {
+   if ( _asset == nullptr ) {
+      // throw error
+   }
+
    void* tmp = _asset;
    _asset = nullptr;
    return tmp;
+}
+
+void AssetStream::open() {
+   int fileSize = 0
+   int fileError= 0
+
+   if ( _asset != nullptr ) {
+      free( _asset );
+      _asset = nullptr
+   }
+
+   emscripten_mget_data( _path, &_asset, &fileSize, &fileError );
+
+   if ( fileError ) {
+      // throw error
+   }
 }
