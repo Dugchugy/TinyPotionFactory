@@ -135,3 +135,14 @@ AssetStream& AssetStream::operator>>( uint8& x ) {
 
    return this;
 }
+
+AssetStream& AssetStream::operator>>( Vector3& x ){
+   float f1, f2, f3;
+   this >> f1 >> f2 >> f3;
+
+   x.xIs( f1 );
+   x.yIs( f2 );
+   x.zIs( f3 );
+
+   return this;
+}
