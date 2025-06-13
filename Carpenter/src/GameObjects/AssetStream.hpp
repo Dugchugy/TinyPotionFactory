@@ -57,9 +57,9 @@ public:
 private:
    
     void* _asset
-    void* _position
+    int _position
     std::String _path
-    int _remainingSize
+    int _size
 
 }; //AssetStream
 
