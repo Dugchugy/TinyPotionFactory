@@ -90,3 +90,37 @@ AssetStream& AssetStream::operator>>( float& x ) {
 
    return this;
 }
+
+AssetStream& AssetStream::operator>>( int& x ) {
+   if ( _asset == nullptr ) {
+      // throw error
+   }
+
+   if ( _size - _position < 4 ) {
+      // throw error
+   }
+
+   void* current = _asset + _position;
+   x = *( (int*) current);
+
+   _position += 4;
+
+   return this;
+}
+
+AssetStream& AssetStream::operator>>( uint8& x ) {
+   if ( _asset == nullptr ) {
+      // throw error
+   }
+
+   if ( _size - _position < 1 ) {
+      // throw error
+   }
+
+   void* current = _asset + _position;
+   x = *( (uint8*) current);
+
+   _position += 1;
+
+   return this;
+}
