@@ -73,6 +73,17 @@ void AssetStream::open() {
    }
 }
 
+void AssetStream::skipBytes( const int& bytes ) {
+   if ( _asset == nullptr ) {
+      // throw error
+   }
+
+   if ( _size - _position < bytes ) {
+      // throw error
+   }
+
+   _position += bytes;
+}
 
 AssetStream& AssetStream::operator>>( float& x ) {
    if ( _asset == nullptr ) {
