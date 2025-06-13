@@ -57,6 +57,7 @@ public:
 private:
    
     void* _asset
+    void* _position
     std::String _path
     int _remainingSize
 
