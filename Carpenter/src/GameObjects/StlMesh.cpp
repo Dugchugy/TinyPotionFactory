@@ -1,33 +1,28 @@
 #include "StlMesh.hpp"
 
 #include <emscripten.h>
+#include "AssetStream.h"
 
 using namespace PotionParts;
 
 StlMesh::StlMesh( Std::String filename ){
 
-   void* fileContent = nullptr;
+   sltAsset = AssetStream( filename );
+   stlAsset.open();
 
-   int fileSize = 0;
-   int fileError = 0;
+   // skips the 80 byte header
+   stlAsset.skipBytes( 80 );
 
-   emscripten_mget_data( filename, &fileContent, &fileSize, &fileError );
+   int triangles = 0;
+   stlAsset >> triangles;
 
-   if ( fileError ) {
-      //throw error
-   }
+   for ( i = 0, i < triangles; i++ ) {
+      Vector3 normal, v1, v2, v3;
 
-   // skips the 80 byte header and 4 byte triangle count
-   int i = 84;
+      stlAsset >> normal >> v1 >> v2 >> v3;
 
-   while ( i < fileSize ) {
-      if( fileSize - i >= 50 ) {
-         // first 12 are the normal (calculated by mesh) so they are ignored
-         
-         i += 50;
-      } else {
-         i = fileSize;
-      }
+      // skip two byte mesh number
+      stlAsset.skipBytes( 2 )
    }
 
    free( fileContent );
