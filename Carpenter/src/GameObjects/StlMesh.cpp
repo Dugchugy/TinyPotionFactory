@@ -21,10 +21,10 @@ StlMesh::StlMesh( Std::String filename ){
 
       stlAsset >> normal >> v1 >> v2 >> v3;
 
+      stlAsset.AddTriangle( v1, v2, v3 );
+
       // skip two byte mesh number
       stlAsset.skipBytes( 2 )
    }
-
-   free( fileContent );
 
 } //StlMesh( Std::String )
