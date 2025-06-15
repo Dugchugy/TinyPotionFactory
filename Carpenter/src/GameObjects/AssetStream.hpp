@@ -1,8 +1,11 @@
 #ifndef ASSETSTREAM_HPP
 #define ASSETSTREAM_HPP
 
-#include <String>
-#include <emscripten>
+#include <string>
+#include <emscripten.h>
+#include <cstdint>
+
+#include "Vector3.hpp"
 
 namespace PotionParts {
 
@@ -15,7 +18,7 @@ public:
 
    /// @brief the copy constructor for the Asset stream, copies it's filename and opens a copy of the asset if it is open
    /// @param a the asset to copy
-   AssetStream( const AssetStream& a )
+   AssetStream( const AssetStream& a );
 
    /// @brief AssetStream destructor
    ~AssetStream();
@@ -36,7 +39,7 @@ public:
 
    /// @brief skips some bytes
    /// moves the index in the asset forward by bytes.
-   void skipBytes( int bytes );
+   void skipBytes( const int& bytes );
 
    /// @brief extraction operator for floats
    /// pulls 4 bytes out of the AssetStream and returns them as a float
@@ -48,7 +51,7 @@ public:
 
    /// @brief extraction operator for bytes
    /// pull a byte out of the AssetStream and return it
-   AssetStream& operator>>( uint8& x );
+   AssetStream& operator>>( uint8_t& x );
 
    /// @brief extraction operator for Vector3s
    /// pull 12 bytes out of the AssetStream and return them as a Vector3
@@ -56,10 +59,10 @@ public:
 
 private:
    
-    void* _asset
-    int _position
-    std::String _path
-    int _size
+    uint8_t* _asset;
+    int _position;
+    std::string _path;
+    int _size;
 
 }; //AssetStream
 

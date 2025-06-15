@@ -1,6 +1,6 @@
 #include "AssetStream.hpp"
-
-#include <emscripten>
+#include <cstring>
+#include <stdlib.h>
 
 using namespace PotionParts;
 
@@ -24,17 +24,19 @@ AssetStream::AssetStream( const AssetStream& a ) {
       _asset = nullptr;
    }
 
-   memcpy( &a._asset, &_asset );
+   _asset = (uint8_t *) malloc( a._size );
+
+   memcpy( &_asset, &a._asset, a._size );
 
    _path = a._path;
    _size = a._size;
    _position = a._position;
 }
 
-const &AssetStream AssetStream::operator= ( const &AssetStream a ) {
+/*const &AssetStream AssetStream::operator= ( const &AssetStream a ) {
    cpy = AssetStream( a );
 
-   void* tmp = cpy._asset;
+   unit8_t* tmp = cpy._asset;
    cpy._asset = _asset;
    _asset = tmp;
 
@@ -43,7 +45,7 @@ const &AssetStream AssetStream::operator= ( const &AssetStream a ) {
    _position = a._position;
 
    return a;
-}
+}*/
 
 void* AssetStream::takeAsset() {
    if ( _asset == nullptr ) {
@@ -57,16 +59,16 @@ void* AssetStream::takeAsset() {
 }
 
 void AssetStream::open() {
-   int fileError= 0
+   int fileError= 0;
 
    if ( _asset != nullptr ) {
       free( _asset );
-      _asset = nullptr
+      _asset = nullptr;
    }
 
    _position = 0;
 
-   emscripten_mget_data( _path, &_asset, &_size, &fileError );
+   emscripten_wget_data( _path.c_str(), ( (void**) &_asset) , &_size, &fileError );
 
    if ( fileError ) {
       // throw error
@@ -99,7 +101,7 @@ AssetStream& AssetStream::operator>>( float& x ) {
 
    _position += 4;
 
-   return this;
+   return *this;
 }
 
 AssetStream& AssetStream::operator>>( int& x ) {
@@ -116,10 +118,10 @@ AssetStream& AssetStream::operator>>( int& x ) {
 
    _position += 4;
 
-   return this;
+   return *this;
 }
 
-AssetStream& AssetStream::operator>>( uint8& x ) {
+AssetStream& AssetStream::operator>>( uint8_t& x ) {
    if ( _asset == nullptr ) {
       // throw error
    }
@@ -129,20 +131,20 @@ AssetStream& AssetStream::operator>>( uint8& x ) {
    }
 
    void* current = _asset + _position;
-   x = *( (uint8*) current);
+   x = *( (uint8_t*) current);
 
    _position += 1;
 
-   return this;
+   return *this;
 }
 
 AssetStream& AssetStream::operator>>( Vector3& x ){
    float f1, f2, f3;
-   this >> f1 >> f2 >> f3;
+   *this >> f1 >> f2 >> f3;
 
    x.xIs( f1 );
    x.yIs( f2 );
    x.zIs( f3 );
 
-   return this;
+   return *this;
 }
