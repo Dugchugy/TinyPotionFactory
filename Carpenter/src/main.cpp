@@ -14,7 +14,7 @@ class ExampleScene : public Scene {
 
   public:
   ExampleScene() : Scene("ExampleScene"), 
-    g3D(PotionParts::GameObject3D( Graphics::Cube(), Graphics::Texture( "Assets/placeholder.png" ), PotionParts::Transform( PotionParts::Vector3( 0, 0, 10 ) ) ) ), label("Label", "Hello World" ), cald( PotionParts::GameObject3D( PotionParts::StMesh( "Assets/Caldren.stl" ), Graphics::Texture( "Assets/placeholder.png" ), PotionParts::Transform( PotionParts::Vector3( 0, 2, 10 ) ) ) ) {
+    g3D(PotionParts::GameObject3D( Graphics::Cube(), Graphics::Texture( "Assets/placeholder.png" ), PotionParts::Transform( PotionParts::Vector3( 0, 0, 10 ) ) ) ), label("Label", "Hello World" ), cald( PotionParts::GameObject3D( PotionParts::StMesh( "Assets/Cauldren.stl" ), Graphics::Texture( "Assets/placeholder.png" ), PotionParts::Transform( PotionParts::Vector3( 0, 2, 10 ) ) ) ) {
        AddChild(&label);
     }
 
