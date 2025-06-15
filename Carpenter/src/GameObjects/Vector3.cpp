@@ -37,7 +37,19 @@ float Vector3::z() const {
 }
 
 Engine::Vec3f Vector3::toVec() const {
-    return { _x, _y, _z };
+   return { _x, _y, _z };
+}
+
+Engine::Graphics::Vertex Vector3::toVertex(float u, float v) const {
+   Engine::Graphics::Vertex vert;
+
+   vert.x = _x;
+   vert.y = _y;
+   vert.z = _z;
+   vert.u = u;
+   vert.v = v;
+
+   return vert;
 }
 
 Vector3 operator+( Vector3 const& v1, Vector3 const& v2 ) {

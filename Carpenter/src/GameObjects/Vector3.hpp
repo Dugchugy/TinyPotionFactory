@@ -2,6 +2,7 @@
 #define VECTOR3_HPP
 
 #include<Utils.hpp>
+#include <Graphics/Mesh.hpp>
 
 namespace PotionParts {
 
@@ -41,6 +42,12 @@ public:
    /// @brief converts the vector into a Vec3f for engine compatability
    /// @return the vector as a Vec3f struct
    Engine::Vec3f toVec() const;
+
+   /// @brief creates a new vertex from this vector3 using the passed U and V values
+   /// @param u the u coordinate for the texture for this vertex
+   /// @param v the V coordinate for the texture for this vertex
+   /// @return a vertex created from this Vector3
+   Engine::Graphics::Vertex toVertex(float u, float v) const;
 
    /// @brief preforms componentwise add of two vector3s
    /// @param v1 the first vector

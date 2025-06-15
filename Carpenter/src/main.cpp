@@ -2,6 +2,7 @@
 #include <UI/UILabel.hpp>
 #include <Graphics/Shapes.hpp>
 #include "GameObjects/GameObject3D.hpp"
+#include "GameObjects/StlMesh.hpp"
 
 using namespace Engine;
 
@@ -13,8 +14,17 @@ class ExampleScene : public Scene {
   UI::UILabel label;
 
   public:
-  ExampleScene() : Scene("ExampleScene"), 
-    g3D(PotionParts::GameObject3D( Graphics::Cube(), Graphics::Texture( "Assets/placeholder.png" ), PotionParts::Transform( PotionParts::Vector3( 0, 0, 10 ) ) ) ), label("Label", "Hello World" ), cald( PotionParts::GameObject3D( PotionParts::StMesh( "Assets/Cauldren.stl" ), Graphics::Texture( "Assets/placeholder.png" ), PotionParts::Transform( PotionParts::Vector3( 0, 2, 10 ) ) ) ) {
+  ExampleScene() : 
+     Scene("ExampleScene"), 
+     g3D(PotionParts::GameObject3D( 
+        Graphics::Cube(), 
+        Graphics::Texture( "Assets/placeholder.png" ), 
+        PotionParts::Transform( PotionParts::Vector3( -1, 0, 10 ) ) ) ),
+     label("Label", "Hello World" ),
+     cald( PotionParts::GameObject3D(
+        PotionParts::StlMesh( "Assets/Cauldren.stl" ),
+        Graphics::Texture( "Assets/placeholder.png" ), 
+        PotionParts::Transform( PotionParts::Vector3( 1, 0, 10 ) ) ) ) {
        AddChild(&label);
     }
 
@@ -22,9 +32,10 @@ class ExampleScene : public Scene {
     Scene::Draw();
 
     g3D.transform.rotation().yIs(time);
+    cald.transform.rotation().xIs(time);
 
     g3D.draw(Game::getInstance().GetRenderer());
-    cald draw(Game::getInstance().GetRenderer());
+    cald.draw(Game::getInstance().GetRenderer());
   }
 
   void Update(float dt) override {
