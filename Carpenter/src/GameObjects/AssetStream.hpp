@@ -57,6 +57,11 @@ public:
    /// pull 12 bytes out of the AssetStream and return them as a Vector3
    AssetStream& operator>>( Vector3& x );
 
+   /// @brief extraction operator for strings
+   /// extracts one line from the stream. 
+   /// extracts bytes one at a time until either the current line ends or the file ends
+   AssetStream& operator>>( std::string& x );
+
 private:
    
     uint8_t* _asset;
