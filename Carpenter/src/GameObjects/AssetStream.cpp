@@ -87,7 +87,7 @@ void AssetStream::skipBytes( const int& bytes ) {
    _position += bytes;
 }
 
-std::string readUntil( char end ) {
+std::string AssetStream::readUntil( char end ) {
    
    std::string result = "";
 
@@ -175,13 +175,19 @@ AssetStream& AssetStream::operator>>( uint8_t& x ) {
    return *this;
 }
 
-AssetStream& AssetStream::operator>>( Vector3& x ){
+AssetStream& AssetStream::operator>>( Vector3& x ) {
    float f1, f2, f3;
    *this >> f1 >> f2 >> f3;
 
    x.xIs( f1 );
    x.yIs( f2 );
    x.zIs( f3 );
+
+   return *this;
+}
+
+AssetStream& AssetStream::operator>>( std:: string& x ) {
+   x = readUntil( '\n' );
 
    return *this;
 }
