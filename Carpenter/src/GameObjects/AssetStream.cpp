@@ -87,6 +87,26 @@ void AssetStream::skipBytes( const int& bytes ) {
    _position += bytes;
 }
 
+std::string readUntil( char end ) {
+   
+   std::string result = "";
+
+   char c;
+   *this >> c;
+
+   try {
+      while ( c != end ) {
+         result = result + c;
+         *this >> c;
+      }
+
+   } catch ( Exception e ) {
+      // error handling
+   }
+
+   return result;
+}
+
 AssetStream& AssetStream::operator>>( float& x ) {
    if ( _asset == nullptr ) {
       // throw error
