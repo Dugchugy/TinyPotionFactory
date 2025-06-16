@@ -121,6 +121,23 @@ AssetStream& AssetStream::operator>>( int& x ) {
    return *this;
 }
 
+AssetStream& AssetStream::operator>>( char& x ) {
+   if ( _asset == nullptr ) {
+      // throw error
+   }
+
+   if ( _size - _position < 1 ) {
+      // throw error
+   }
+
+   void* current = _asset + _position;
+   x = *( (char*) current);
+
+   _position += 1;
+
+   return *this;
+}
+
 AssetStream& AssetStream::operator>>( uint8_t& x ) {
    if ( _asset == nullptr ) {
       // throw error
