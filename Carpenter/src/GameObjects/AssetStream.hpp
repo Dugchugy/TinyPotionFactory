@@ -41,6 +41,11 @@ public:
    /// moves the index in the asset forward by bytes.
    void skipBytes( const int& bytes );
 
+   /// @brief reads bytes until the specified character is read or the file ends.
+   /// @param end the character to end the read on
+   /// the resulting string will not include the specified character
+   std::string readUntil( char end );
+
    /// @brief extraction operator for floats
    /// pulls 4 bytes out of the AssetStream and returns them as a float
    AssetStream& operator>>( float& x );
