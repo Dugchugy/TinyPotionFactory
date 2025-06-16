@@ -21,8 +21,16 @@ StlMesh::StlMesh( std::string filename ){
 
       stlAsset >> normal >> v1 >> v2 >> v3;
 
-      AddTriangle( v1.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v3.toVertex( 1, 1 ) );
+      Vector3 calcNorm = cross( v2-v1, v3-v1 );
 
+      normal.normalize();
+      calcNorm.normalize();
+
+      if( equalError( normal, calcNorm, 0.001f) ) {
+         AddTriangle( v1.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v3.toVertex( 1, 1 ) );
+      } else {
+         AddTriangle( v3.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v1.toVertex( 1, 1 ) );
+      }
       // skip two byte mesh number
       stlAsset.skipBytes( 2 );
    }
