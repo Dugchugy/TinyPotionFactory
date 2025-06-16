@@ -58,6 +58,10 @@ public:
    /// pull a byte out of the AssetStream and return it
    AssetStream& operator>>( uint8_t& x );
 
+   /// @brief extraction operator for chars
+   /// pull a byte out of the AssetStream and return it as a char
+   AssetStream& operator>>( char& x );
+
    /// @brief extraction operator for Vector3s
    /// pull 12 bytes out of the AssetStream and return them as a Vector3
    AssetStream& operator>>( Vector3& x );
