@@ -4,6 +4,7 @@
 #include <string>
 #include <emscripten.h>
 #include <cstdint>
+#include <exception>
 
 #include "Vector3.hpp"
 
@@ -79,6 +80,13 @@ private:
     int _size;
 
 }; //AssetStream
+
+
+class AccessException : public std::exception {
+
+   virtual const char* what() const throw();
+
+}; //AccessException 
 
 } //PotionParts
 
