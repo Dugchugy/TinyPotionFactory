@@ -96,6 +96,12 @@ class NotOpenedException : public std::exception {
 
 }; // NotOpenedException 
 
+class EndOfFileException : public std::exception {
+
+   virtual const char* what() const throw();
+
+}; // EndOfFileException
+
 } //PotionParts
 
 #endif //ASSETSTREAM_HPP
