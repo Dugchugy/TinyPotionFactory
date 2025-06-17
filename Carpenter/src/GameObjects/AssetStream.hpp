@@ -83,6 +83,9 @@ private:
 
 
 class AccessException : public std::exception {
+public:
+   
+   AccessException( int err ) : ErrorNum( err ) {}
 
    virtual const char* what() const throw();
 
