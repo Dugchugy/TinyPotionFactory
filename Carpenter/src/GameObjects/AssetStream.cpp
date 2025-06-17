@@ -191,3 +191,15 @@ AssetStream& AssetStream::operator>>( std:: string& x ) {
 
    return *this;
 }
+
+const char* AccessException::what() const {
+   return "Failed to access asset file";
+}
+
+const char* NotOpenedException::what() const {
+   return "Failed to stream asset, file has not been opened";
+}
+
+const char* EndOfFileException::what() const {
+   return "Failed to stream asset, end of file reached"
+}
