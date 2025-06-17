@@ -86,7 +86,15 @@ class AccessException : public std::exception {
 
    virtual const char* what() const throw();
 
+   public int ErrorNum;
+
 }; //AccessException 
+
+class NotOpenedException : public std::exception {
+
+   virtual const char* what() const throw();
+
+}; // NotOpenedException 
 
 } //PotionParts
 
