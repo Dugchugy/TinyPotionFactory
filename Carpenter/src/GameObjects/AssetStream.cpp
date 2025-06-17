@@ -50,6 +50,7 @@ AssetStream::AssetStream( const AssetStream& a ) {
 void* AssetStream::takeAsset() {
    if ( _asset == nullptr ) {
       // throw error
+      throw NotOpenedException();
    }
 
    void* tmp = _asset;
@@ -72,16 +73,17 @@ void AssetStream::open() {
 
    if ( fileError ) {
       // throw error
+      throw AccessException( fileError );
    }
 }
 
 void AssetStream::skipBytes( const int& bytes ) {
    if ( _asset == nullptr ) {
-      // throw error
+      throw NotOpenedException();
    }
 
    if ( _size - _position < bytes ) {
-      // throw error
+      throw EndOfFileException();
    }
 
    _position += bytes;
@@ -100,8 +102,8 @@ std::string AssetStream::readUntil( char end ) {
          *this >> c;
       }
 
-   } catch ( Exception e ) {
-      // error handling
+   } catch ( EndOfFileException e ) {
+      // skip, returns result
    }
 
    return result;
@@ -109,11 +111,11 @@ std::string AssetStream::readUntil( char end ) {
 
 AssetStream& AssetStream::operator>>( float& x ) {
    if ( _asset == nullptr ) {
-      // throw error
+      throw NotOpenedException();
    }
 
    if ( _size - _position < 4 ) {
-      // throw error
+      throw EndOfFileException();
    }
 
    void* current = _asset + _position;
@@ -126,11 +128,11 @@ AssetStream& AssetStream::operator>>( float& x ) {
 
 AssetStream& AssetStream::operator>>( int& x ) {
    if ( _asset == nullptr ) {
-      // throw error
+      throw NotOpenedException();
    }
 
    if ( _size - _position < 4 ) {
-      // throw error
+      throw EndOfFileException();
    }
 
    void* current = _asset + _position;
@@ -143,11 +145,11 @@ AssetStream& AssetStream::operator>>( int& x ) {
 
 AssetStream& AssetStream::operator>>( char& x ) {
    if ( _asset == nullptr ) {
-      // throw error
+      throw NotOpenedException();
    }
 
    if ( _size - _position < 1 ) {
-      // throw error
+      throw EndOfFileException();
    }
 
    void* current = _asset + _position;
@@ -160,11 +162,11 @@ AssetStream& AssetStream::operator>>( char& x ) {
 
 AssetStream& AssetStream::operator>>( uint8_t& x ) {
    if ( _asset == nullptr ) {
-      // throw error
+      throw NotOpenedException();
    }
 
    if ( _size - _position < 1 ) {
-      // throw error
+      throw EndOfFileException();
    }
 
    void* current = _asset + _position;
