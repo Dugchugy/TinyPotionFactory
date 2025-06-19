@@ -3,6 +3,10 @@
 
 using namespace PotionParts;
 
+Model::Model(): 
+   subMeshs( std::vector<Engine::Graphics::Mesh>() ),
+   textures(std::vector<Engine:: Graphics::Texture>() ) {}
+
 Model::Model( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : Model() {
    addMesh( m, t );
 }
