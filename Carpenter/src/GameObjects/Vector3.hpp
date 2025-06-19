@@ -2,6 +2,7 @@
 #define VECTOR3_HPP
 
 #include<Utils.hpp>
+#include <Graphics/Mesh.hpp>
 
 namespace PotionParts {
 
@@ -41,6 +42,33 @@ public:
    /// @brief converts the vector into a Vec3f for engine compatability
    /// @return the vector as a Vec3f struct
    Engine::Vec3f toVec() const;
+
+   /// @brief calcualtes the magintude of this Vector3
+   /// @return 
+   float mag() const;
+
+   /// @brief normalizes this vector3 by dividing all of its values by its magnitude (should have magnitude 1 after)
+   void normalize();
+
+   /// @brief creates a new vertex from this vector3 using the passed U and V values
+   /// @param u the u coordinate for the texture for this vertex
+   /// @param v the V coordinate for the texture for this vertex
+   /// @return a vertex created from this Vector3
+   Engine::Graphics::Vertex toVertex(float u, float v) const;
+
+   /// @brief compares two vector3s to see if they're equal within a specified error amount
+   /// @param v1 the first vector
+   /// @param v2 the second vector
+   /// @param err maximum allowed magnitude of difference between v1 and v2
+   /// @return true if v1 is withing err of v2, otherwise false
+   friend bool equalError( Vector3 v1, Vector3 v2, float err );
+
+   /// @brief calculates the cross product of 2 3D vectors
+   /// @param a the first vector inm the cross product
+   /// @param b the second vector in the cross product
+   /// @return the cross product of the two vectors
+   /// the value is calculated as {(a.y*b.z) - (a.z*b.y), (a.x*b.z)-(a.z*b.x), (a.x*b.y)-(a.y*b.x)}
+   friend Vector3 cross( Vector3 const& a, Vector3 const& b );
 
    /// @brief preforms componentwise add of two vector3s
    /// @param v1 the first vector
