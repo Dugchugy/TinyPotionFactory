@@ -12,9 +12,11 @@ Model::Model( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : Model() 
 }
 
 void Model::draw(Engine::Graphics::Renderer renderer, Transform transform) {
-   renderer.UseTexture( text, GL_TEXTURE0 );
-   renderer.DrawMesh( &mesh, 
-      transform.position().toVec(), 
-      transform.scale().toVec(), 
-      transform.rotation().toVec() );
+   for ( int i = 0; i < subMeshs.length(); i++ ) {
+      renderer.UseTexture( textures[ i ], GL_TEXTURE0 );
+      renderer.DrawMesh( &subMeshs[ i ], 
+         transform.position().toVec(), 
+         transform.scale().toVec(), 
+         transform.rotation().toVec() );
+   }
 }
