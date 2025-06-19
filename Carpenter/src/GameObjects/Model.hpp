@@ -5,20 +5,27 @@
 #include <Graphics/Mesh.hpp>
 #include <Graphics/Texture.hpp>
 #include <Graphics/Renderer.hpp>
+#includd <vector>
 
 namespace PotionParts {
 
 /// @brief stores both a mesh and a texture to be used for rendering a model
 class Model {
 public:
-   Engine::Graphics::Mesh mesh;
-   Engine::Graphics::Texture text;
+
+   Model();
 
    Model( Engine::Graphics::Mesh m, Engine::Graphics::Texture t );
+
+   addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t );
 
    /// @brief draws this mesh using the given renderer and transform
    void draw( Engine::Graphics::Renderer renderer, Transform transform );
    
+private:
+
+   std::vector<Engine::Graphics::Mesh> subMeshs;
+   std::vector<Engine::Graphics::Texture> textures;
 }; //Model
 
 } //PotionParts
