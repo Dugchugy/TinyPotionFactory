@@ -26,11 +26,15 @@ StlMesh::StlMesh( std::string filename ){
       normal.normalize();
       calcNorm.normalize();
 
-      if( equalError( normal, calcNorm, 0.001f) ) {
+      /*if( equalError( normal, calcNorm, 0.001f) ) {
          AddTriangle( v1.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v3.toVertex( 1, 1 ) );
       } else {
          AddTriangle( v3.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v1.toVertex( 1, 1 ) );
-      }
+      }*/
+
+      AddTriangle( v1.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v3.toVertex( 1, 1 ) );
+      AddTriangle( v3.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v1.toVertex( 1, 1 ) );
+      
       // skip two byte mesh number
       stlAsset.skipBytes( 2 );
    }
