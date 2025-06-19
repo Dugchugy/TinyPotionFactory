@@ -3,7 +3,9 @@
 
 using namespace PotionParts;
 
-Model::Model( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : mesh(m), text(t) {}
+Model::Model( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : Model() {
+   addMesh( m, t );
+}
 
 void Model::draw(Engine::Graphics::Renderer renderer, Transform transform) {
    renderer.UseTexture( text, GL_TEXTURE0 );
