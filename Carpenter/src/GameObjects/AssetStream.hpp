@@ -89,7 +89,7 @@ public:
 
    virtual const char* what() const throw();
 
-   public int ErrorNum;
+   int ErrorNum;
 
 }; //AccessException 
 
