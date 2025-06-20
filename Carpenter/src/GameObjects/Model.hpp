@@ -15,13 +15,13 @@ public:
    Model( ModelBase* base );
 
    /// @brief draws this Model using the given renderer and transform
-   void draw( Engine::Graphics::Renderer renderer, Transform transform );
+   void draw( Engine::Graphics::Renderer renderer, const Transform transform ) const;
 
 private:
 
-   ModelBase* base;
+   ModelBase* _base;
 
-}
+}; //Model
 
 /// @brief stores both a mesh and a texture to be used for rendering a model. model itself references the model base to determine its rendering process
 class ModelBase {
@@ -34,13 +34,20 @@ public:
    void addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t );
 
    /// @brief draws this mesh using the given renderer and transform
-   void draw( Engine::Graphics::Renderer renderer, Transform transform );
+   void draw( Engine::Graphics::Renderer renderer, const Transform transform ) const;
    
 private:
 
    std::vector<Engine::Graphics::Mesh> subMeshs;
    std::vector<Engine::Graphics::Texture> textures;
 }; //ModelBase
+
+/// @brief Singleton class that is used to load models from asset files. keeps memory usage down by reducing number of duplicate models loaded
+class ModelManager {
+
+
+
+}; //ModelManager
 
 } //PotionParts
 
