@@ -9,6 +9,20 @@
 
 namespace PotionParts {
 
+class Model {
+public:
+
+   Model( ModelBase* base );
+
+   /// @brief draws this Model using the given renderer and transform
+   void draw( Engine::Graphics::Renderer renderer, Transform transform );
+
+private:
+
+   ModelBase* base;
+
+}
+
 /// @brief stores both a mesh and a texture to be used for rendering a model. model itself references the model base to determine its rendering process
 class ModelBase {
 public:
