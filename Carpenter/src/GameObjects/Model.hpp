@@ -44,8 +44,16 @@ private:
 
 /// @brief Singleton class that is used to load models from asset files. keeps memory usage down by reducing number of duplicate models loaded
 class ModelManager {
+public:
+  /// @brief gets the model manager Singleton. if it does not exist, creates it
+  static ModelManager & GetManager();
 
+  
 
+private:
+   ModelManager();
+
+   static ModelManager manager;
 
 }; //ModelManager
 
