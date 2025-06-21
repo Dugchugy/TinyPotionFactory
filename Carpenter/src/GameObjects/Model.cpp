@@ -40,9 +40,17 @@ ModelManager::ModelManager() {
 } //ModelManager::ModelManager()
 
 
-static ModelManager & ModelManager::getModelManager() {
+static ModelManager & ModelManager::getManager() {
    if ( manager == nullptr ) {
       manager = new ModelManager();
    }
    return *manager;
+}
+
+ModelBase * checkLoaded( std::string filename ){
+   try{
+      return &modelMap.get( filename );
+   } catch( OutOfBoundsException e ) {
+      return nullptr;
+   }
 }
