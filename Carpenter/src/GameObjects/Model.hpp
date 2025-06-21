@@ -48,12 +48,17 @@ public:
   /// @brief gets the model manager Singleton. if it does not exist, creates it
   static ModelManager & GetManager();
 
-  
+  /// @brief loads an STL model from the passed filename
+  /// @param filename the path to the STL file. must end in '.stl'
+  /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
+  Model loadStlModel( std::string filename );
 
 private:
    ModelManager();
 
    static ModelManager manager;
+
+   std::unordered_map<std::string, ModelBase> modelMap;
 
 }; //ModelManager
 
