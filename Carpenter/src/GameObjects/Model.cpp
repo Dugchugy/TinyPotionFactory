@@ -38,3 +38,11 @@ ModelManager::ModelManager() {
    modelMap = std::unnordered_map<std::string, ModelBase>();
 
 } //ModelManager::ModelManager()
+
+
+static ModelManager & ModelManager::getModelManager() {
+   if ( manager == nullptr ) {
+      manager = new ModelManager();
+   }
+   return *manager;
+}
