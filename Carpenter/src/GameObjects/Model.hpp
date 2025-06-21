@@ -59,7 +59,7 @@ private:
    /// @brief checks if a model has been loaded before and returns a pointer to it if it has
    ModelBase* checkLoaded( std::string filename )
 
-   static ModelManager manager;
+   static ModelManager * manager;
 
    std::unordered_map<std::string, ModelBase> modelMap;
 
