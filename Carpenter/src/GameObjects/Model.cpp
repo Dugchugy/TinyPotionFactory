@@ -54,3 +54,21 @@ ModelBase * checkLoaded( std::string filename ){
       return nullptr;
    }
 }
+
+Model loadStlModel( std::string filename ) {
+
+   ModelBase* base = checkLoaded( filename );
+
+   if ( base == nullptr ) {
+      StlMesh mesh( filename );
+      Engine::Graphics::Texture text( "Assets/Placeholder.png" );
+
+      base = new ModelBase( mesh, text );
+
+      modelMap.add( filename, *base );
+
+      base = checkLoaded( filename );
+   }
+
+   return Model( base );
+}
