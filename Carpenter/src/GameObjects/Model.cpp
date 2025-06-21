@@ -31,4 +31,10 @@ void ModelBase::draw(Engine::Graphics::Renderer renderer, const Transform transf
          transform.scale().toVec(), 
          transform.rotation().toVec() );
    }
-}
+} //ModelBase::draw( render, texture )
+
+ModelManager::ModelManager() {
+
+   modelMap = std::unnordered_map<std::string, ModelBase>();
+
+} //ModelManager::ModelManager()
