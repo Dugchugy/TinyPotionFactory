@@ -46,7 +46,7 @@ private:
 class ModelManager {
 public:
   /// @brief gets the model manager Singleton. if it does not exist, creates it
-  static ModelManager & GetManager();
+  static ModelManager & getManager();
 
   /// @brief loads an STL model from the passed filename
   /// @param filename the path to the STL file. must end in '.stl'
