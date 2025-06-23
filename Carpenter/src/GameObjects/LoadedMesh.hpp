@@ -15,7 +15,7 @@ struct Tri {
 class LoadedMesh : public Engine::Graphics::Mesh {
 
    /// @brief creates a mesh from an array of triangles
-   LoadedMesh( Tri[] triangles );
+   LoadedMesh( std::vector<Tri> triangles );
 
 }
 
