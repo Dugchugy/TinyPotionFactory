@@ -2,6 +2,7 @@
 #define LOADEDNESH_HPP
 
 #include<Graphics/Mesh.hpp>
+#include<vector>
 
 namespace PotionParts {
 
@@ -12,6 +13,9 @@ struct Tri {
 }
 
 class LoadedMesh : public Engine::Graphics::Mesh {
+
+   /// @brief creates a mesh from an array of triangles
+   LoadedMesh( Tri[] triangles );
 
 }
 
