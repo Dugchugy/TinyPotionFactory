@@ -1,4 +1,6 @@
 #include "Model.hpp"
+#include "StlMesh.hpp"
+#include <Graphics/Shapes.hpp>
 
 
 using namespace PotionParts;
@@ -6,25 +8,25 @@ using namespace PotionParts;
 
 Model::Model( ModelBase* base ) : _base( base ) {}
 
-Model::Draw(Engine::Graphics::Renderer renderer, const Transform transform) const {
-   _base->Draw( renderer, transform );
+void Model::draw(Engine::Graphics::Renderer renderer, const Transform transform) const {
+   _base->draw( renderer, transform );
 }
 
 ModelBase::ModelBase(): 
    subMeshs( std::vector<Engine::Graphics::Mesh>() ),
    textures(std::vector<Engine:: Graphics::Texture>() ) {}
 
-ModelBase::ModelBase( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : Model() {
+ModelBase::ModelBase( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : ModelBase() {
    addMesh( m, t );
 }
 
 void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) {
-   subMeshs.push( m );
-   textures.push( t );
+   subMeshs.push_back( m );
+   textures.push_back( t );
 }
 
-void ModelBase::draw(Engine::Graphics::Renderer renderer, const Transform transform) const {
-   for ( int i = 0; i < subMeshs.length(); i++ ) {
+void ModelBase::draw(Engine::Graphics::Renderer renderer, Transform transform) {
+   for ( int i = 0; i < subMeshs.size(); i++ ) {
       renderer.UseTexture( textures[ i ], GL_TEXTURE0 );
       renderer.DrawMesh( &subMeshs[ i ], 
          transform.position().toVec(), 
@@ -35,27 +37,28 @@ void ModelBase::draw(Engine::Graphics::Renderer renderer, const Transform transf
 
 ModelManager::ModelManager() {
 
-   modelMap = std::unnordered_map<std::string, ModelBase>();
+   modelMap = std::unordered_map<std::string, ModelBase>();
 
 } //ModelManager::ModelManager()
 
 
-static ModelManager & ModelManager::getManager() {
+ModelManager & ModelManager::getManager() {
+   static ModelManager* manager;
    if ( manager == nullptr ) {
       manager = new ModelManager();
    }
    return *manager;
 }
 
-ModelBase * checkLoaded( std::string filename ){
+ModelBase * ModelManager::checkLoaded( std::string filename ){
    try{
-      return &modelMap.get( filename );
-   } catch( OutOfBoundsException e ) {
+      return &modelMap.at( filename );
+   } catch( std::out_of_range e ) {
       return nullptr;
    }
 }
 
-Model loadStlModel( std::string filename ) {
+Model ModelManager::loadStlModel( std::string filename ) {
 
    ModelBase* base = checkLoaded( filename );
 
@@ -64,10 +67,28 @@ Model loadStlModel( std::string filename ) {
       Engine::Graphics::Texture text( "Assets/Placeholder.png" );
 
       base = new ModelBase( mesh, text );
-
-      modelMap.add( filename, *base );
+      modelMap.insert( { filename, *base } );
+      delete base;
 
       base = checkLoaded( filename );
+   }
+
+   return Model( base );
+}
+
+Model ModelManager::loadCube( std::string textFilename ) {
+
+   ModelBase* base = checkLoaded( textFilename );
+
+   if ( base == nullptr ) {
+      Engine::Graphics::Cube cube;
+      Engine::Graphics::Texture text( textFilename.c_str() );
+
+      base = new ModelBase( cube, text );
+      modelMap.insert( { textFilename, *base } );
+      delete base;
+
+      base = checkLoaded( textFilename );
    }
 
    return Model( base );
