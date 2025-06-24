@@ -45,15 +45,18 @@ private:
 /// @brief Singleton class that is used to load models from asset files. keeps memory usage down by reducing number of duplicate models loaded
 class ModelManager {
 public:
-  /// @brief gets the model manager Singleton. if it does not exist, creates it
-  static ModelManager & getManager();
+   /// @brief gets the model manager Singleton. if it does not exist, creates it
+   static ModelManager & getManager();
 
-  /// @brief loads an STL model from the passed filename
-  /// @param filename the path to the STL file. must end in '.stl'
-  /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
-  Model loadStlModel( std::string filename );
+   /// @brief loads an STL model from the passed filename
+   /// @param filename the path to the STL file. must end in '.stl'
+   /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
+   Model loadStlModel( std::string filename );
 
-  Model loadCube( char* textFilename );
+   /// @brief loads a cube mesh with the appropriate texture
+   /// @param textFilename the path to the PNG texture. must be a PNG file
+   /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
+   Model loadCube( char* textFilename );
 
 private:
    ModelManager();
