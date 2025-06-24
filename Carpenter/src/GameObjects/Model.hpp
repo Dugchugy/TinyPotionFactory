@@ -53,6 +53,9 @@ public:
   /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
   Model loadStlModel( std::string filename );
 
+  /// @brief loads a cube mesh with the appropriate texture
+  /// @param textFilename the path to the PNG texture. must be a PNG file
+  /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
   Model loadCube( std::string textFilename );
 
 private:
