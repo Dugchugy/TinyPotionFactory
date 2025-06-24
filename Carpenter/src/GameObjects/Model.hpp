@@ -53,7 +53,7 @@ public:
   /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
   Model loadStlModel( std::string filename );
 
-  Model loadCube( std::string textFilename );
+  Model loadCube( char* textFilename );
 
 private:
    ModelManager();
@@ -63,7 +63,7 @@ private:
 
    static ModelManager* manager;
 
-   std::unordered_map<std::string, ModelBase> modelMap;
+   std::unordered_map<std::string, ModelBase*> modelMap;
 
 }; //ModelManager
 

@@ -1,6 +1,7 @@
 #include "Model.hpp"
 #include "StlMesh.hpp"
 #include <Graphics/Shapes.hpp>
+#include <iostream>
 
 
 using namespace PotionParts;
@@ -37,7 +38,7 @@ void ModelBase::draw(Engine::Graphics::Renderer renderer, Transform transform) {
 
 ModelManager::ModelManager() {
 
-   modelMap = std::unordered_map<std::string, ModelBase>();
+   modelMap = std::unordered_map<std::string, ModelBase*>();
 
 } //ModelManager::ModelManager()
 
@@ -51,9 +52,9 @@ ModelManager & ModelManager::getManager() {
 }
 
 ModelBase * ModelManager::checkLoaded( std::string filename ){
-   try{
-      return &modelMap.at( filename );
-   } catch( std::out_of_range e ) {
+   if ( modelMap.contains( filename ) ) {
+      return modelMap.at( filename );
+   } else {
       return nullptr;
    }
 }
@@ -67,8 +68,7 @@ Model ModelManager::loadStlModel( std::string filename ) {
       Engine::Graphics::Texture text( "Assets/Placeholder.png" );
 
       base = new ModelBase( mesh, text );
-      modelMap.insert( { filename, *base } );
-      delete base;
+      modelMap.insert( { filename, base } );
 
       base = checkLoaded( filename );
    }
@@ -76,20 +76,22 @@ Model ModelManager::loadStlModel( std::string filename ) {
    return Model( base );
 }
 
-Model ModelManager::loadCube( std::string textFilename ) {
+Model ModelManager::loadCube( char* textFilename ) {
 
-   ModelBase* base = checkLoaded( textFilename );
+   ModelBase* base = checkLoaded( std::string( textFilename ) );
 
    if ( base == nullptr ) {
       Engine::Graphics::Cube cube;
-      Engine::Graphics::Texture text( textFilename.c_str() );
+      Engine::Graphics::Texture text( textFilename );
 
       base = new ModelBase( cube, text );
-      modelMap.insert( { textFilename, *base } );
-      delete base;
-
-      base = checkLoaded( textFilename );
+      modelMap.insert( { std::string( textFilename ), base } );
    }
+
+   /*Engine::Graphics::Cube cube;
+   Engine::Graphics::Texture text( textFilename );
+
+   ModelBase* base = new ModelBase( cube, text );*/
 
    return Model( base );
 }
