@@ -15,9 +15,13 @@ struct TexCoords {
    float v;
 };
 
-Vector3 parseVertex( std::string line );
+Vector3 parseVertex( std::string & line );
 
+TexCoords parseUV( std::string & line );
 
+Vector3 parseNormal( std::string & line );
+
+std::vector<Tri> parseFace( std::string & line, std::vector<Vector3> vertexes, std::vector<TexCoords> uVs );
 
 }
 
