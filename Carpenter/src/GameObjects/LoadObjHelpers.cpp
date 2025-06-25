@@ -2,7 +2,7 @@
 
 using namespace PotionParts;
 
-std::vector<std::string> splitString( const std::string & str, char c ){
+std::vector<std::string> PotionParts::splitString( const std::string & str, char c ){
    std::vector<std::string> subStrs;
 
    std::string currStr = "";
@@ -12,7 +12,7 @@ std::vector<std::string> splitString( const std::string & str, char c ){
          subStrs.push_back( currStr );
          currStr = "";
       } else {
-         subStrs = subStrs + str[i];
+         currStr = currStr + str[i];
       }
    }
 
@@ -21,7 +21,7 @@ std::vector<std::string> splitString( const std::string & str, char c ){
    return subStrs;
 }
 
-Vector3 parseVertex( std::string & line ) {
+Vector3 PotionParts::parseVertex( std::string & line ) {
    std::vector<std::string> split = splitString( line, ' ' );
 
    if ( split.size() != 4 ) {
@@ -39,7 +39,7 @@ Vector3 parseVertex( std::string & line ) {
    return Vector3( x, y, z );
 }
 
-TexCoords parseUV( std::string & line ){
+TexCoords PotionParts::parseUV( std::string & line ){
    std::vector<std::string> split = splitString( line, ' ' );
 
    if ( split.size() != 3 ) {
@@ -56,7 +56,7 @@ TexCoords parseUV( std::string & line ){
    return { u, v };
 }
 
-Vector3 parseNormal( std::string & line ) {
+Vector3 PotionParts::parseNormal( std::string & line ) {
    std::vector<std::string> split = splitString( line, ' ' );
 
    if ( split.size() != 4 ) {
@@ -74,7 +74,7 @@ Vector3 parseNormal( std::string & line ) {
    return Vector3( x, y, z );
 }
 
-std::vector<Tri> parseFace( std::string & line, const std::vector<Vector3> & vertexes,
+std::vector<Tri> PotionParts::parseFace( std::string & line, const std::vector<Vector3> & vertexes,
                             const std::vector<TexCoords> & uVs ) {
    std::vector<std::string> split = splitString( line, ' ' );
 
