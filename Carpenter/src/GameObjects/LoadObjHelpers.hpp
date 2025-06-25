@@ -15,7 +15,7 @@ struct TexCoords {
    float v;
 };
 
-std::vector<std::string> splitString( const std::string & str );
+std::vector<std::string> splitString( const std::string & str, char c );
 
 Vector3 parseVertex( std::string & line );
 
