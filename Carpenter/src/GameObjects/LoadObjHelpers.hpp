@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include <exception>
 
 #include "Vector3.hpp"
 #include "LoadedMesh.hpp"
@@ -26,6 +27,12 @@ Vector3 parseNormal( std::string & line );
 std::vector<Tri> parseFace( std::string & line, const std::vector<Vector3> & vertexes, const std::vector<TexCoords> & uVs );
 
 TexCoords operator+( const TexCoords & x, const TexCoords & y );
+
+class InvalidLineException : public std:: exception {
+public:
+   const char* what();
+
+}; //InvalidLineException 
 
 
 }
