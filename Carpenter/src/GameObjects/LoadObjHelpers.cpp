@@ -56,6 +56,24 @@ TexCoords parseUV( std::string & line ){
    return { u, v };
 }
 
+Vector3 parseNormal( std::string & line ) {
+   std::vector<std::string> split = splitString( line, ' ' );
+
+   if ( split.size() != 4 ) {
+      throw InvalidLineException();
+   }
+
+   if ( split[0] != "vn" ) {
+      throw InvalidLineException();
+   }
+
+   float x = stof( split[1], nullptr );
+   float y = stof( split[2], nullptr );
+   float z = stof( split[3], nullptr );
+
+   return Vector3( x, y, z );
+}
+
 TexCoords operator+( const TexCoords & x, const TexCoords & y ) {
    return { x.u + y.u, x.v + y.v };
 }
