@@ -33,10 +33,27 @@ Vector3 parseVertex( std::string & line ) {
    }
 
    float x = stof( split[1], nullptr );
-   float y = stof( split[1], nullptr );
-   float z = stof( split[1], nullptr );
+   float y = stof( split[2], nullptr );
+   float z = stof( split[3], nullptr );
 
    return Vector3( x, y, z );
+}
+
+TexCoords parseUV( std::string & line ){
+   std::vector<std::string> split = splitString( line, ' ' );
+
+   if ( split.size() != 3 ) {
+      throw InvalidLineException();
+   }
+
+   if ( split[0] != "vt" ) {
+      throw InvalidLineException();
+   }
+
+   float u = stof( split[1], nullptr );
+   float v = stof( split[2], nullptr );
+
+   return { u, v };
 }
 
 TexCoords operator+( const TexCoords & x, const TexCoords & y ) {
