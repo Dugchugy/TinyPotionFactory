@@ -30,7 +30,7 @@ TexCoords operator+( const TexCoords & x, const TexCoords & y );
 
 class InvalidLineException : public std:: exception {
 public:
-   const char* what();
+   virtual const char* what() const throw();
 
 }; //InvalidLineException 
 
