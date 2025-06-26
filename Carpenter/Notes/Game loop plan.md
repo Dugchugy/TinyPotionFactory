@@ -1,8 +1,12 @@
 # plan for basic game structure and event loop
 
+## `TileGrid`
+
 most block placement will be done on grid. grid will contain be an array of pointers to tile Objects that handle the basic functionality of the tiles. if no tile is present then the pointer will be set to null.
 
 the grid will have functions to look up tiles based on their position. if there is no tile in this position it will instead return a default TileObject. the grid will also have an update and draw function that calls the function on all the tiles it contains
+
+each grid will be 16 by 16 tiles and store the grid position of it's bottom left corner.
 
 ## `TileObject`
 
