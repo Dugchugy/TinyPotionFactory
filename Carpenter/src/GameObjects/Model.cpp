@@ -3,6 +3,8 @@
 #include <Graphics/Shapes.hpp>
 #include <iostream>
 
+#include "LoadObjHelpers.hpp"
+
 
 using namespace PotionParts;
 
@@ -87,11 +89,6 @@ Model ModelManager::loadCube( char* textFilename ) {
       base = new ModelBase( cube, text );
       modelMap.insert( { std::string( textFilename ), base } );
    }
-
-   /*Engine::Graphics::Cube cube;
-   Engine::Graphics::Texture text( textFilename );
-
-   ModelBase* base = new ModelBase( cube, text );*/
 
    return Model( base );
 }

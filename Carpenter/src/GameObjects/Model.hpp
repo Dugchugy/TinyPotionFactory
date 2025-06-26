@@ -58,6 +58,13 @@ public:
    /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
    Model loadCube( char* textFilename );
 
+   /// @brief loads an OBJ model from the passed filename
+   /// @param filename the the path to the .obj file
+   /// @return the model read from the file
+   /// checks the internal cache before loading the file and only loads it if it hasn't been loaded before
+   /// also loads any .mtl files required by the .obj file as well as any textures
+   Model loadObjModel( std::string filename );
+
 private:
    ModelManager();
 

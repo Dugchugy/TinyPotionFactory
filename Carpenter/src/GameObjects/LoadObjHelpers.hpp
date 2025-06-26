@@ -34,7 +34,6 @@ public:
 
 }; //InvalidLineException 
 
-
 }
 
 #endif //LOADOBJHELPERS_HPP
