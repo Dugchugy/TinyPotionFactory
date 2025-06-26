@@ -1,0 +1,1 @@
+# plan for basic game structure and event loop
