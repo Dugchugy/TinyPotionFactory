@@ -1,10 +1,12 @@
 #include "Model.hpp"
-#include "StlMesh.hpp"
+
 #include <Graphics/Shapes.hpp>
 #include <iostream>
+#include <vector>
 
 #include "LoadObjHelpers.hpp"
-
+#include "StlMesh.hpp"
+#include "AssetStream.hpp"
 
 using namespace PotionParts;
 
@@ -88,6 +90,68 @@ Model ModelManager::loadCube( char* textFilename ) {
 
       base = new ModelBase( cube, text );
       modelMap.insert( { std::string( textFilename ), base } );
+   }
+
+   return Model( base );
+}
+
+Model ModelManager::loadObjModel( std::string filename ) {
+   
+
+   ModelBase* base = checkLoaded( std::string( filename ) );
+
+   if ( base == nullptr ) {
+
+      base = new ModelBase();
+
+      std::vector< Vector3 > verts;
+      std::vector< TexCoords > uvs;
+      std::vector< Tri > Tris;
+
+      AssetStream stream( filename );
+      stream.open();
+      std::string line = "";
+      stream >> line;
+
+      while ( line != "" ) {
+
+         if( line[0] == 'o' ) {
+            if ( Tris.size() > 0 ) {
+               base->addMesh( LoadedMesh( Tris ), 
+                  Engine::Graphics::Texture( "Assets/placeholder.png" ) );
+            }
+
+            verts = std::vector< Vector3 >();
+            uvs = std::vector< TexCoords >();
+            Tris = std::vector< Tri >();
+         }
+
+         if( line[0] == 'v' && line[1] == ' ' ) {
+            verts.push_back( parseVertex( line ) );
+         }
+
+         if( line[0] == 'v' && line[1] == 't' ) {
+            uvs.push_back( parseUV( line ) );
+         }
+
+         if( line[0] == 'f' ) {
+            std::vector< Tri > newTris = parseFace( line, verts, uvs );
+            while ( newTris.size() > 0 ) {
+               Tris.push_back( newTris.back() );
+               newTris.pop_back();
+            }
+         }
+
+         //all others (comment on unknown) are skipped
+         stream >> line;
+      }
+
+      if ( Tris.size() > 0 ) {
+         base->addMesh( LoadedMesh( Tris ), 
+            Engine::Graphics::Texture( "Assets/placeholder.png" ) );
+      }
+
+      modelMap.insert( { filename, base } );
    }
 
    return Model( base );

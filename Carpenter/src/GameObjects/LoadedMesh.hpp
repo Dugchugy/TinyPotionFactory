@@ -13,6 +13,7 @@ struct Tri {
 }; //Tri
 
 class LoadedMesh : public Engine::Graphics::Mesh {
+public:
 
    /// @brief creates a mesh from an array of triangles
    LoadedMesh( std::vector<Tri> triangles );

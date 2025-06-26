@@ -24,7 +24,7 @@ class ExampleScene : public Scene {
       label("Label", "Hello World" ),
       cald( PotionParts::GameObject3D( 
          PotionParts::Transform( PotionParts::Vector3( 1, 0, 10 ) ),
-         PotionParts::ModelManager::getManager().loadStlModel( "Assets/cauldren.stl" ) ) ) {
+         PotionParts::ModelManager::getManager().loadObjModel( "Assets/cauldren.obj" ) ) ) {
         AddChild(&label);
      }
 
