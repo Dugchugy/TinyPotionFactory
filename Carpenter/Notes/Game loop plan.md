@@ -6,6 +6,10 @@ it should be possible to take the entire grid and all objects on it and serializ
 
 ## Objects
 
+### `TileIdentifier`
+
+contains 2 parts, an enum and an index. the Enum determines what type of file it is and index is used to uniquely identify among tiles of that type. used to seializably identify each tile
+
 ### `TileGrid`
 
 most block placement will be done on grid. grid will contain be an array of pointers to tile Objects that handle the basic functionality of the tiles. if no tile is present then the pointer will be set to null.
