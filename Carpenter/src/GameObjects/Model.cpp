@@ -32,6 +32,7 @@ void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t )
 
 void ModelBase::draw(Engine::Graphics::Renderer renderer, Transform transform) {
    for ( int i = 0; i < subMeshs.size(); i++ ) {
+      std::cout << "drawing mesh " << i << " of model\n";
       renderer.UseTexture( textures[ i ], GL_TEXTURE0 );
       renderer.DrawMesh( &subMeshs[ i ], 
          transform.position().toVec(), 
@@ -113,14 +114,16 @@ Model ModelManager::loadObjModel( std::string filename ) {
       std::string line = "";
       stream >> line;
 
+      Engine::Graphics::Texture text( "Assets/placeholder.png" );
+
       while ( line != "" ) {
 
          if( line[0] == 'o' ) {
             if ( Tris.size() > 0 ) {
-               base->addMesh( LoadedMesh( Tris ), 
-                  Engine::Graphics::Texture( "Assets/placeholder.png" ) );
+               std::cout << "new object has " << Tris.size() << " tris\n";
+               base->addMesh( LoadedMesh( Tris ), text );
             }
-
+            std::cout << "starting object: " << line << "\n";
             verts = std::vector< Vector3 >();
             uvs = std::vector< TexCoords >();
             Tris = std::vector< Tri >();
@@ -135,6 +138,7 @@ Model ModelManager::loadObjModel( std::string filename ) {
          }
 
          if( line[0] == 'f' ) {
+            //std::cout << "parsing face: " << line << "\n";
             std::vector< Tri > newTris = parseFace( line, verts, uvs );
             while ( newTris.size() > 0 ) {
                Tris.push_back( newTris.back() );
@@ -147,12 +151,15 @@ Model ModelManager::loadObjModel( std::string filename ) {
       }
 
       if ( Tris.size() > 0 ) {
-         base->addMesh( LoadedMesh( Tris ), 
-            Engine::Graphics::Texture( "Assets/placeholder.png" ) );
+         std::cout << "adding last object\n";
+         std::cout << "new object has " << Tris.size() << " tris\n";
+         base->addMesh( LoadedMesh( Tris ), text );
       }
 
       modelMap.insert( { filename, base } );
    }
+
+   std::cout << "returning model\n";
 
    return Model( base );
 }

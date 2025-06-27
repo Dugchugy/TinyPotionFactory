@@ -100,7 +100,7 @@ std::string AssetStream::readUntil( char end ) {
    char c;
    *this >> c;
 
-   while ( c != end && _position < _size ) {
+   while ( ( c != end ) && ( _position < ( _size - 1 ) ) ) {
       result = result + c;
       *this >> c;
    }
@@ -152,7 +152,7 @@ AssetStream& AssetStream::operator>>( char& x ) {
       throw NotOpenedException();
    }
 
-   if ( _size - _position <= 1 ) {
+   if ( _size - _position < 1 ) {
       std::cout << "thowing EndOfFileException from line 156\n";
       throw EndOfFileException();
    }

@@ -1,5 +1,6 @@
 #include <Game.hpp>
 #include <UI/UILabel.hpp>
+#include <iostream>
 #include <Graphics/Shapes.hpp>
 #include "GameObjects/GameObject3D.hpp"
 #include "GameObjects/StlMesh.hpp"
@@ -29,13 +30,16 @@ class ExampleScene : public Scene {
      }
 
    void Draw() override {
-     Scene::Draw();
+
+      std::cout << "starting draw\n";
+      Scene::Draw();
  
-     g3D.transform.rotation().yIs(time);
-     cald.transform.rotation().xIs(time);
+      g3D.transform.rotation().yIs(time);
+      cald.transform.rotation().xIs(time);
  
-     g3D.draw(Game::getInstance().GetRenderer());
-     cald.draw(Game::getInstance().GetRenderer());
+      g3D.draw(Game::getInstance().GetRenderer());
+      std::cout << "rendering cauld\n";
+      cald.draw(Game::getInstance().GetRenderer());
    }
 
    void Update(float dt) override {
