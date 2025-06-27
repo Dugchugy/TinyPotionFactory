@@ -1,5 +1,7 @@
 #include "LoadObjHelpers.hpp"
 
+#include <iostream>
+
 using namespace PotionParts;
 
 std::vector<std::string> PotionParts::splitString( const std::string & str, char c ){
@@ -25,10 +27,12 @@ Vector3 PotionParts::parseVertex( std::string & line ) {
    std::vector<std::string> split = splitString( line, ' ' );
 
    if ( split.size() != 4 ) {
+      std::cout << "thowing InvalidLineException from line 30\n";
       throw InvalidLineException();
    }
 
    if ( split[0] != "v" ) {
+      std::cout << "thowing InvalidLineException from line 35\n";
       throw InvalidLineException();
    }
 
@@ -43,10 +47,12 @@ TexCoords PotionParts::parseUV( std::string & line ){
    std::vector<std::string> split = splitString( line, ' ' );
 
    if ( split.size() != 3 ) {
+      std::cout << "thowing InvalidLineException from line 50\n";
       throw InvalidLineException();
    }
 
    if ( split[0] != "vt" ) {
+      std::cout << "thowing InvalidLineException from line 55\n";
       throw InvalidLineException();
    }
 
@@ -60,10 +66,12 @@ Vector3 PotionParts::parseNormal( std::string & line ) {
    std::vector<std::string> split = splitString( line, ' ' );
 
    if ( split.size() != 4 ) {
+      std::cout << "thowing InvalidLineException from line 69\n";
       throw InvalidLineException();
    }
 
    if ( split[0] != "vn" ) {
+      std::cout << "thowing InvalidLineException from line 74\n";
       throw InvalidLineException();
    }
 
@@ -79,11 +87,13 @@ std::vector<Tri> PotionParts::parseFace( std::string & line, const std::vector<V
    std::vector<std::string> split = splitString( line, ' ' );
 
    if ( split[0] != "f" ) {
+      std::cout << "thowing InvalidLineException from line 90\n";
       throw InvalidLineException();
    }
 
    if ( split.size() < 4 ) {
       // must have at least 3 verticies for a face (triangle)
+      std::cout << "thowing InvalidLineException from line 96\n";
       throw InvalidLineException();
    }
 

@@ -1,6 +1,7 @@
 #include "AssetStream.hpp"
 #include <cstring>
 #include <stdlib.h>
+#include <iostream>
 
 using namespace PotionParts;
 
@@ -50,6 +51,7 @@ AssetStream::AssetStream( const AssetStream& a ) {
 void* AssetStream::takeAsset() {
    if ( _asset == nullptr ) {
       // throw error
+      std::cout << "thowing NotOpenedException from line 54\n";
       throw NotOpenedException();
    }
 
@@ -79,10 +81,12 @@ void AssetStream::open() {
 
 void AssetStream::skipBytes( const int& bytes ) {
    if ( _asset == nullptr ) {
+      std::cout << "thowing NotOpenedException from line 84\n";
       throw NotOpenedException();
    }
 
    if ( _size - _position < bytes ) {
+      std::cout << "thowing EndOfFileException from line 89\n";
       throw EndOfFileException();
    }
 
@@ -96,14 +100,9 @@ std::string AssetStream::readUntil( char end ) {
    char c;
    *this >> c;
 
-   try {
-      while ( c != end ) {
-         result = result + c;
-         *this >> c;
-      }
-
-   } catch ( EndOfFileException e ) {
-      // skip, returns result
+   while ( c != end && _position < _size ) {
+      result = result + c;
+      *this >> c;
    }
 
    return result;
@@ -111,10 +110,12 @@ std::string AssetStream::readUntil( char end ) {
 
 AssetStream& AssetStream::operator>>( float& x ) {
    if ( _asset == nullptr ) {
+      std::cout << "thowing NotOpenedException from line 113\n";
       throw NotOpenedException();
    }
 
    if ( _size - _position < 4 ) {
+      std::cout << "thowing EndOfFileException from line 118\n";
       throw EndOfFileException();
    }
 
@@ -128,10 +129,12 @@ AssetStream& AssetStream::operator>>( float& x ) {
 
 AssetStream& AssetStream::operator>>( int& x ) {
    if ( _asset == nullptr ) {
+      std::cout << "thowing NotOpenedException from line 132\n";
       throw NotOpenedException();
    }
 
    if ( _size - _position < 4 ) {
+      std::cout << "thowing EndOfFileException from line 137\n";
       throw EndOfFileException();
    }
 
@@ -145,10 +148,12 @@ AssetStream& AssetStream::operator>>( int& x ) {
 
 AssetStream& AssetStream::operator>>( char& x ) {
    if ( _asset == nullptr ) {
+      std::cout << "thowing NotOpenedException from line 151\n";
       throw NotOpenedException();
    }
 
-   if ( _size - _position < 1 ) {
+   if ( _size - _position <= 1 ) {
+      std::cout << "thowing EndOfFileException from line 156\n";
       throw EndOfFileException();
    }
 
@@ -162,10 +167,12 @@ AssetStream& AssetStream::operator>>( char& x ) {
 
 AssetStream& AssetStream::operator>>( uint8_t& x ) {
    if ( _asset == nullptr ) {
+      std::cout << "thowing NotOpenedException from line 170\n";
       throw NotOpenedException();
    }
 
    if ( _size - _position < 1 ) {
+      std::cout << "thowing EndOfFileException from line 175\n";
       throw EndOfFileException();
    }
 
