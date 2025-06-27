@@ -155,3 +155,7 @@ std::vector<Tri> PotionParts::parseFace( std::string & line, const std::vector<V
 TexCoords operator+( const TexCoords & x, const TexCoords & y ) {
    return { x.u + y.u, x.v + y.v };
 }
+
+const char* InvalidLineException::what() const throw() {
+
+}
