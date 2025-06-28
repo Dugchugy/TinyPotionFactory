@@ -123,8 +123,9 @@ Model ModelManager::loadObjModel( std::string filename ) {
                base->addMesh( LoadedMesh( Tris ), text );
             }
             std::cout << "starting object: " << line << "\n";
-            verts = std::vector< Vector3 >();
-            uvs = std::vector< TexCoords >();
+            //verts = std::vector< Vector3 >();
+            //uvs = std::vector< TexCoords >();
+            // no need to clear verts/uvs. face indicies are global
             Tris = std::vector< Tri >();
          }
 

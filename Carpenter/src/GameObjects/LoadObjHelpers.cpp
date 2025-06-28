@@ -108,8 +108,9 @@ std::vector<Tri> PotionParts::parseFace( std::string & line, const std::vector<V
    for ( int i = 1; i < split.size(); i++ ) {
       std::vector<std::string> indicies = splitString( split[i], '/' );
 
-      int vertIndex = stoi( indicies[0], nullptr );
-      int uvIndex = stoi( indicies[1], nullptr ); 
+      // indicies all start at 1
+      int vertIndex = stoi( indicies[0], nullptr ) - 1;
+      int uvIndex = stoi( indicies[1], nullptr ) - 1; 
 
       faceVertexes.push_back( vertexes[ vertIndex ] );
       faceUvs.push_back( uVs[ uvIndex ] );

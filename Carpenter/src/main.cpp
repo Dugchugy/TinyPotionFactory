@@ -3,7 +3,6 @@
 #include <iostream>
 #include <Graphics/Shapes.hpp>
 #include "GameObjects/GameObject3D.hpp"
-#include "GameObjects/StlMesh.hpp"
 #include "GameObjects/Model.hpp"
 
 using namespace Engine;
