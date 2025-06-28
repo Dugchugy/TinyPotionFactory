@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "LoadObjHelpers.hpp"
-#include "StlMesh.hpp"
 #include "AssetStream.hpp"
 
 using namespace PotionParts;
@@ -69,7 +68,7 @@ Model ModelManager::loadStlModel( std::string filename ) {
    ModelBase* base = checkLoaded( filename );
 
    if ( base == nullptr ) {
-      StlMesh mesh( filename );
+      LoadedMesh mesh = loadStlMesh( filename );
       Engine::Graphics::Texture text( "Assets/Placeholder.png" );
 
       base = new ModelBase( mesh, text );

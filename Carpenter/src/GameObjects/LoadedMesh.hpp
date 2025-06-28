@@ -20,6 +20,8 @@ public:
 
 }; //LoadedMesh
 
+LoadedMesh loadStlMesh( std::string filename );
+
 }
 
 #endif //LOADEDMESH_HPP
