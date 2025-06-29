@@ -3,6 +3,8 @@
 #include "AssetStream.hpp"
 #include "LoadObjHelpers.hpp"
 
+#include <iostream>
+
 using namespace PotionParts;
 
 LoadedMesh::LoadedMesh( std::vector<Tri> triangles ) {
@@ -44,6 +46,8 @@ LoadedMesh PotionParts::loadStlMesh( std::string filename ) {
       // skip two byte mesh number
       stlAsset.skipBytes( 2 );
    }
+
+   std::cout << "loaded: " << triangles.size() << " triangles\n";
 
    return LoadedMesh( triangles );
 

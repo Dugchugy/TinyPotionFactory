@@ -18,7 +18,7 @@ void Model::draw(Engine::Graphics::Renderer renderer, const Transform transform)
 
 ModelBase::ModelBase(): 
    subMeshs( std::vector<Engine::Graphics::Mesh>() ),
-   textures(std::vector<Engine:: Graphics::Texture>() ) {}
+   textures( std::vector<Engine:: Graphics::Texture>() ) {}
 
 ModelBase::ModelBase( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : ModelBase() {
    addMesh( m, t );
@@ -89,6 +89,9 @@ Model ModelManager::loadCube( char* textFilename ) {
       Engine::Graphics::Texture text( textFilename );
 
       base = new ModelBase( cube, text );
+
+      base->addMesh( cube, text );
+
       modelMap.insert( { std::string( textFilename ), base } );
    }
 
@@ -119,7 +122,7 @@ Model ModelManager::loadObjModel( std::string filename ) {
             if ( Tris.size() > 0 ) {
                std::cout << "new object has " << Tris.size() << " tris\n";
                base->addMesh( LoadedMesh( Tris ), 
-                  Engine::Graphics::Texture( "Assets/Placeholder.png") );
+                  Engine::Graphics::Texture( "Assets/Placeholder_2.png") );
             }
             std::cout << "starting object: " << line << "\n";
             //verts = std::vector< Vector3 >();
@@ -153,7 +156,7 @@ Model ModelManager::loadObjModel( std::string filename ) {
          std::cout << "adding last object\n";
          std::cout << "new object has " << Tris.size() << " tris\n";
          base->addMesh( LoadedMesh( Tris ), 
-            Engine::Graphics::Texture( "Assets/Placeholder.png") );
+            Engine::Graphics::Texture( "Assets/Placeholder_3.png") );
       }
 
       modelMap.insert( { filename, base } );
