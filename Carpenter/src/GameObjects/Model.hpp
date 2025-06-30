@@ -21,11 +21,18 @@ public:
 
    /// @brief draws this mesh using the given renderer and transform
    void draw( Engine::Graphics::Renderer& renderer, Transform transform );
+
+std::vectorTexturedMesh> getMeshes();
    
 private:
 
-   std::vector<Engine::Graphics::Mesh> subMeshs;
-   std::vector<Engine::Graphics::Texture> textures;
+   struct TexturesdMesh {
+      Engine::Graphics::Mesh mesh;
+      Engine::Graphics::Texture texture;
+   }; 
+
+   std::vectorTexturedMesh> meshes;
+
 }; //ModelBase
 
 class Model {
