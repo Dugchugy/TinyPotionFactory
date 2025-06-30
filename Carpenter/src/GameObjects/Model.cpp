@@ -32,8 +32,8 @@ void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t )
 void ModelBase::draw(Engine::Graphics::Renderer& renderer, Transform transform) {
    for ( int i = 0; i < subMeshs.size(); i++ ) {
       std::cout << "drawing mesh " << i << " of model\n";
-      renderer.UseTexture( textures[ i ], GL_TEXTURE0 );
-      renderer.DrawMesh( &subMeshs[ i ], 
+      renderer.UseTexture( meshes[ i ].texture, GL_TEXTURE0 );
+      renderer.DrawMesh( & ( meshes[ i ].mesh ), 
          transform.position().toVec(), 
          transform.scale().toVec(), 
          transform.rotation().toVec() );
