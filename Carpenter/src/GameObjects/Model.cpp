@@ -25,8 +25,7 @@ ModelBase::ModelBase( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : 
 }
 
 void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) {
-   subMeshs.push_back( m );
-   textures.push_back( t );
+   meshes.push_back( { m, t } );
 }
 
 void ModelBase::draw(Engine::Graphics::Renderer& renderer, Transform transform) {
