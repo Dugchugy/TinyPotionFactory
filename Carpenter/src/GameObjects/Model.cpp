@@ -17,8 +17,7 @@ void Model::draw(Engine::Graphics::Renderer& renderer, const Transform transform
 }
 
 ModelBase::ModelBase(): 
-   subMeshs( std::vector<Engine::Graphics::Mesh>() ),
-   textures( std::vector<Engine:: Graphics::Texture>() ) {}
+   meshes( std::vector<TexturedMesh>() {}
 
 ModelBase::ModelBase( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : ModelBase() {
    addMesh( m, t );
@@ -28,7 +27,7 @@ void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t )
    meshes.push_back( { m, t } );
 }
 
-void ModelBase::draw(Engine::Graphics::Renderer& renderer, Transform transform) {
+void ModelBase::draw( Engine::Graphics::Renderer& renderer, Transform transform ) {
    for ( int i = 0; i < subMeshs.size(); i++ ) {
       std::cout << "drawing mesh " << i << " of model\n";
       renderer.UseTexture( meshes[ i ].texture, GL_TEXTURE0 );
@@ -38,6 +37,10 @@ void ModelBase::draw(Engine::Graphics::Renderer& renderer, Transform transform) 
          transform.rotation().toVec() );
    }
 } //ModelBase::draw( render, texture )
+
+std::vector<TexturedMesh> getMeshes() {
+   return meshes;
+}
 
 ModelManager::ModelManager() {
 
