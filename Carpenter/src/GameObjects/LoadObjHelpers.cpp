@@ -59,6 +59,14 @@ TexCoords PotionParts::parseUV( std::string & line ){
    float u = stof( split[1], nullptr );
    float v = stof( split[2], nullptr );
 
+   if( u > 1 || u < 0 ) {
+      std::cout << "u value of " << u << " is out of bounds\n";
+   }
+
+   if( v > 1 || v < 0 ) {
+      std::cout << "v value of " << v << " is out of bounds\n";
+   }
+
    return { u, v };
 }
 
