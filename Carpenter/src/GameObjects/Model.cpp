@@ -12,7 +12,7 @@ using namespace PotionParts;
 
 Model::Model( ModelBase* base ) : _base( base ) {}
 
-void Model::draw(Engine::Graphics::Renderer renderer, const Transform transform) const {
+void Model::draw(Engine::Graphics::Renderer& renderer, const Transform transform) const {
    _base->draw( renderer, transform );
 }
 
@@ -29,7 +29,7 @@ void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t )
    textures.push_back( t );
 }
 
-void ModelBase::draw(Engine::Graphics::Renderer renderer, Transform transform) {
+void ModelBase::draw(Engine::Graphics::Renderer& renderer, Transform transform) {
    for ( int i = 0; i < subMeshs.size(); i++ ) {
       std::cout << "drawing mesh " << i << " of model\n";
       renderer.UseTexture( textures[ i ], GL_TEXTURE0 );

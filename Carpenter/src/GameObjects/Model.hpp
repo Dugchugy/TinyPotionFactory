@@ -20,7 +20,7 @@ public:
    void addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t );
 
    /// @brief draws this mesh using the given renderer and transform
-   void draw( Engine::Graphics::Renderer renderer, Transform transform );
+   void draw( Engine::Graphics::Renderer& renderer, Transform transform );
    
 private:
 
@@ -34,7 +34,7 @@ public:
    Model( ModelBase* base );
 
    /// @brief draws this Model using the given renderer and transform
-   void draw( Engine::Graphics::Renderer renderer, const Transform transform ) const;
+   void draw( Engine::Graphics::Renderer& renderer, const Transform transform ) const;
 
 private:
 
