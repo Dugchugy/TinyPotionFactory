@@ -90,7 +90,7 @@ Model ModelManager::loadCube( char* textFilename ) {
 
       base = new ModelBase( cube, text );
 
-      base->addMesh( cube, text );
+      //base->addMesh( cube, text );
 
       modelMap.insert( { std::string( textFilename ), base } );
    }
