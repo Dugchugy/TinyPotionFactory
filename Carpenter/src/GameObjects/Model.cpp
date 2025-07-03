@@ -13,7 +13,10 @@ using namespace PotionParts;
 Model::Model( ModelBase* base ) : _base( base ) {}
 
 void Model::draw(Engine::Graphics::Renderer& renderer, const Transform transform) const {
-   _base->draw( renderer, transform );
+
+   if ( _base != nullptr ) {
+      _base->draw( renderer, transform );
+   }
 }
 
 ModelBase::ModelBase(): 
