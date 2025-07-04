@@ -27,3 +27,9 @@ TileObjects will have functions to get their input/output models (what sides the
 ### `GridBoard`
 
 `GridBoard` is the highest level object of the game. it stores a vector of grids that make up the game as well as a collection of all the tiles in the grid. all grids should have a pointer to the GridBoard as well as any tiles that may need it. it has a draw and update function that calls the grid draw and update
+
+## Tiles
+
+### NullTile
+
+default tile returned when no tile is present at the location. has no input or output and does nothing on update or draw. should never be stored in a grid and only returned when no item is in the grid location
