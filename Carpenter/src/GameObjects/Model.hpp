@@ -11,6 +11,16 @@ namespace PotionParts {
 
 /// @brief stores both a mesh and a texture to be used for rendering a model. model itself references the model base to determine its rendering process
 class ModelBase {
+
+private:
+
+   struct TexturedMesh {
+      Engine::Graphics::Mesh mesh;
+      Engine::Graphics::Texture texture;
+   }; 
+
+   std::vector<TexturedMesh> meshes;
+   
 public:
 
    ModelBase();
@@ -22,16 +32,7 @@ public:
    /// @brief draws this mesh using the given renderer and transform
    void draw( Engine::Graphics::Renderer& renderer, Transform transform );
 
-std::vectorTexturedMesh> getMeshes();
-   
-private:
-
-   struct TexturesdMesh {
-      Engine::Graphics::Mesh mesh;
-      Engine::Graphics::Texture texture;
-   }; 
-
-   std::vectorTexturedMesh> meshes;
+   std::vector<TexturedMesh> getMeshes();
 
 }; //ModelBase
 

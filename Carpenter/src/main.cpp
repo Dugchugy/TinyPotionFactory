@@ -11,7 +11,6 @@ class ExampleScene : public Scene {
    private:
    PotionParts::ModelBase base;
    PotionParts::GameObject3D g3D;
-   PotionParts::GameObject3D g4D;
    //PotionParts::GameObject3D cald;
    std::vector< PotionParts::GameObject3D > caulds;
    float time = 0;
@@ -21,9 +20,6 @@ class ExampleScene : public Scene {
    ExampleScene() : 
       Scene("ExampleScene"), 
       g3D(PotionParts::GameObject3D(
-         PotionParts::Transform( PotionParts::Vector3( -1, 0, 10 ) ),
-         PotionParts::ModelManager::getManager().loadCube( "Assets/placeholder.png" ) ) ),
-      g4D(PotionParts::GameObject3D(
          PotionParts::Transform( PotionParts::Vector3( -1, 0, 10 ) ),
          PotionParts::ModelManager::getManager().loadCube( "Assets/placeholder.png" ) ) ),
       label("Label", "Hello World" )
@@ -48,17 +44,15 @@ class ExampleScene : public Scene {
       Scene::Draw();
  
       g3D.transform.rotation().yIs(time);
-      g4D.transform.rotation().yIs(time);
       //cald.transform.rotation().xIs(time);
  
       g3D.draw(Game::getInstance().GetRenderer());
-      g4D.draw(Game::getInstance().GetRenderer());
       std::cout << "rendering cauld\n";
       //cald.draw(Game::getInstance().GetRenderer());
-      std::cout << "rendering cauld2\n";
-      for ( int i = 0; i < 20; i++ ) {
-         caulds[ i ].draw( Game::getInstance().GetRenderer() );
-      }
+      //std::cout << "rendering cauld2\n";
+      //for ( int i = 0; i < 20; i++ ) {
+         //caulds[ i ].draw( Game::getInstance().GetRenderer() );
+      //}
    }
 
    void Update(float dt) override {

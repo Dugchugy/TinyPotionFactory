@@ -20,7 +20,7 @@ void Model::draw(Engine::Graphics::Renderer& renderer, const Transform transform
 }
 
 ModelBase::ModelBase(): 
-   meshes( std::vector<TexturedMesh>() {}
+   meshes( std::vector<TexturedMesh>() ) {}
 
 ModelBase::ModelBase( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : ModelBase() {
    addMesh( m, t );
@@ -31,7 +31,7 @@ void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t )
 }
 
 void ModelBase::draw( Engine::Graphics::Renderer& renderer, Transform transform ) {
-   for ( int i = 0; i < subMeshs.size(); i++ ) {
+   for ( int i = 0; i < meshes.size(); i++ ) {
       std::cout << "drawing mesh " << i << " of model\n";
       renderer.UseTexture( meshes[ i ].texture, GL_TEXTURE0 );
       renderer.DrawMesh( & ( meshes[ i ].mesh ), 
@@ -41,7 +41,7 @@ void ModelBase::draw( Engine::Graphics::Renderer& renderer, Transform transform 
    }
 } //ModelBase::draw( render, texture )
 
-std::vector<TexturedMesh> getMeshes() {
+std::vector<ModelBase::TexturedMesh> ModelBase::getMeshes() {
    return meshes;
 }
 
@@ -94,6 +94,7 @@ Model ModelManager::loadCube( char* textFilename ) {
       Engine::Graphics::Texture text( textFilename );
 
       base = new ModelBase( cube, text );
+      base->addMesh( cube, text );
 
       //base->addMesh( cube, text );
 
