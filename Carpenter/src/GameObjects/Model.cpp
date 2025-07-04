@@ -128,7 +128,7 @@ Model ModelManager::loadObjModel( std::string filename ) {
             if ( Tris.size() > 0 ) {
                std::cout << "new object has " << Tris.size() << " tris\n";
                base->addMesh( LoadedMesh( Tris ), 
-                  Engine::Graphics::Texture( "Assets/Placeholder_2.png") );
+                  Engine::Graphics::Texture( "Assets/Placeholder.png" ) );
             }
             std::cout << "starting object: " << line << "\n";
             //verts = std::vector< Vector3 >();
@@ -162,7 +162,7 @@ Model ModelManager::loadObjModel( std::string filename ) {
          std::cout << "adding last object\n";
          std::cout << "new object has " << Tris.size() << " tris\n";
          base->addMesh( LoadedMesh( Tris ), 
-            Engine::Graphics::Texture( "Assets/Placeholder_3.png") );
+            Engine::Graphics::Texture( "Assets/Placeholder.png" ) );
       }
 
       modelMap.insert( { filename, base } );
