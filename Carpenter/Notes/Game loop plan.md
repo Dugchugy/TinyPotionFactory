@@ -33,3 +33,8 @@ TileObjects will have functions to get their input/output models (what sides the
 ### NullTile
 
 default tile returned when no tile is present at the location. has no input or output and does nothing on update or draw. should never be stored in a grid and only returned when no item is in the grid location
+
+### hand well
+
+a well that can be used to retrieve water. accepts no inputs and outputs only by Drag and drop. can always drag and drop some water out of it
+
