@@ -38,9 +38,9 @@ LoadedMesh PotionParts::loadStlMesh( std::string filename ) {
       calcNorm.normalize();
 
       if( equalError( normal, calcNorm, 0.001f) ) {
-         triangles.push_back( { v1.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v3.toVertex( 1, 1 ) } );
+         triangles.push_back( { v1.toVertex( 0, 0 ), v2.toVertex( 0.5, 0 ), v3.toVertex( 1, 1 ) } );
       } else {
-         triangles.push_back( { v3.toVertex( 0, 0 ), v2.toVertex( 1, 0 ), v1.toVertex( 1, 1 ) } );
+         triangles.push_back( { v3.toVertex( 1, 1 ), v2.toVertex( 0.5, 0 ), v1.toVertex( 0, 0 ) } );
       }
 
       // skip two byte mesh number
