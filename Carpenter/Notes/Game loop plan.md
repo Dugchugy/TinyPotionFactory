@@ -46,6 +46,10 @@ a bottler that can only be used to put potions into bottles. accepts input only 
 
 a cauldron that can be used to mix one fluid with one solid. only accepts input from drag and drop and items can only be output by Drag and drop.
 
-### sales box
+### salesBox
 
 a box that items can be moved into. all items placed in it will be sold and converted into gold. accepts items from all sides (except bottom) and drag and drop
+
+### lecturn
+
+a pedestal with a book on it. used to access the journal for researching new tiles. can only be one. does not accept any input or produce any output
