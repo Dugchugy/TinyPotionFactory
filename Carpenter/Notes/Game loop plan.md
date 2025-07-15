@@ -40,4 +40,8 @@ a well that can be used to retrieve water. accepts no inputs and outputs only by
 
 ### handBottler
 
-a bottler that can only be used to put potions into bottles. accepts input only from drag and drop and outputs only by Drag and drop. accepts a fluid (may also accept bottles if they are added
+a bottler that can only be used to put potions into bottles. accepts input only from drag and drop and outputs only by Drag and drop. accepts a fluid (may also accept bottles if they are added)
+
+### handCauldron 
+
+a cauldron that can be used to mix one fluid with one solid. only accepts input from drag and drop and items can only be output by Drag and drop. 
