@@ -53,3 +53,15 @@ a box that items can be moved into. all items placed in it will be sold and conv
 ### lecturn
 
 a pedestal with a book on it. used to access the journal for researching new tiles. can only be one. does not accept any input or produce any output
+
+## Research
+
+in order to progress in the game and unlock new parts for your factory. you will need to do research.  research will be done with a series of quests, each requiring you to either build a factory component or sell some number of potions (may add rate based quests too). the quests will be set up in a tree structure where quests have pre-reqisits that must be completed before they can be started. not all quests will unlock items
+
+### The Journal Begins
+
+pre-reqisits: None
+
+quest: place lecturn
+
+reward: none
