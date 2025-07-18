@@ -16,7 +16,7 @@ During the prepare stage, the game readies itself for a tick to occur.
 
 During the transfer stage, resources are moved between tiles. Any tiles that can, will attempt to pull input from any adjacent tiles marked for input. Each tile can be updated in parallel to increase efficiency so tile outputs should be guarded to prevent multiple access.
 
-### 3. Updated
+### 3. Update
 
 During the update state, all tiles are updated and their operations occur. during the update phase, each tile takes resources from its input storages and attempts to convert them into resources in it's output storage. tiles may not access the inventories of other tiles at this time. Each tile can be updated in parallel
 
