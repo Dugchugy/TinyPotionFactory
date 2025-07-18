@@ -4,6 +4,26 @@
 
 it should be possible to take the entire grid and all objects on it and serialize them to be save into a file.
 
+## Game tick
+
+The game tick will have 4 parts and all 4 will happen in order for each tick. A game tick will pass as fast as the players device will allow up to 30 ticks per second. Rendering will not be included in the tick and will happen at a rate determined by the players device with no cap.
+
+### 1. Prepare
+
+During the prepare stage, the game readies itself for a tick to occur. 
+
+### 2. Transfer
+
+During the transfer stage, resources are moved between tiles. Any tiles that can, will attempt to pull input from any adjacent tiles marked for input. Each tile can be updated in parallel to increase efficiency so tile outputs should be guarded to prevent multiple access.
+
+### 3. Updated
+
+During the update state, all tiles are updated and their operations occur. during the update phase, each tile takes resources from its input storages and attempts to convert them into resources in it's output storage. tiles may not access the inventories of other tiles at this time. Each tile can be updated in parallel
+
+### 4. Cleanup
+
+during the cleanup state, the game finishes the update. this involves updating counters for total potions sold and potion sale rates as well as checking for any quests that may have been completed. 
+
 ## Objects
 
 ### `TileIdentifier`
