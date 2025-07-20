@@ -85,3 +85,5 @@ pre-reqisits: None
 quest: place lecturn
 
 reward: none
+
+I've been told that all good witches should keep a journal. It's a useful tool to help record their discoveries in the arcane arts. 
