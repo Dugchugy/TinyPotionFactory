@@ -74,6 +74,10 @@ a box that items can be moved into. all items placed in it will be sold and conv
 
 a pedestal with a book on it. used to access the journal for researching new tiles. can only be one. does not accept any input or produce any output
 
+## Non-Tile objects
+
+In addition to the factory and all the tiles that make it up, the player will also be able to see their current gold count and a shop. They will gain gold by selling potions with a specific price for each potion. The shop will show all the tiles they can buy to place in the factory and a price. if the player has enough gold, they will be able to drag a tile from the shop to the factory to purchase it and add it to the factory
+
 ## Research
 
 in order to progress in the game and unlock new parts for your factory. you will need to do research.  research will be done with a series of quests, each requiring you to either build a factory component or sell some number of potions (may add rate based quests too). the quests will be set up in a tree structure where quests have pre-reqisits that must be completed before they can be started. not all quests will unlock items
