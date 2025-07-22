@@ -10,44 +10,18 @@
 using namespace PotionParts;
 
 
-Model::Model( ModelBase* base ) : _base( base ) {}
+ModelLink::ModelLink( Model* base ) : _base( base ) {}
 
-void Model::draw(Engine::Graphics::Renderer& renderer, const Transform transform) const {
+void ModelLink::draw(Engine::Graphics::Renderer& renderer, const Transform transform) const {
 
    if ( _base != nullptr ) {
       _base->draw( renderer, transform );
    }
 }
 
-ModelBase::ModelBase(): 
-   meshes( std::vector<TexturedMesh>() ) {}
-
-ModelBase::ModelBase( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) : ModelBase() {
-   addMesh( m, t );
-}
-
-void ModelBase::addMesh( Engine::Graphics::Mesh m, Engine::Graphics::Texture t ) {
-   meshes.push_back( { m, t } );
-}
-
-void ModelBase::draw( Engine::Graphics::Renderer& renderer, Transform transform ) {
-   for ( int i = 0; i < meshes.size(); i++ ) {
-      std::cout << "drawing mesh " << i << " of model\n";
-      renderer.UseTexture( meshes[ i ].texture, GL_TEXTURE0 );
-      renderer.DrawMesh( & ( meshes[ i ].mesh ), 
-         transform.position().toVec(), 
-         transform.scale().toVec(), 
-         transform.rotation().toVec() );
-   }
-} //ModelBase::draw( render, texture )
-
-std::vector<ModelBase::TexturedMesh> ModelBase::getMeshes() {
-   return meshes;
-}
-
 ModelManager::ModelManager() {
 
-   modelMap = std::unordered_map<std::string, ModelBase*>();
+   modelMap = std::unordered_map<std::string, Model*>();
 
 } //ModelManager::ModelManager()
 
@@ -60,7 +34,7 @@ ModelManager & ModelManager::getManager() {
    return *manager;
 }
 
-ModelBase * ModelManager::checkLoaded( std::string filename ){
+Model * ModelManager::checkLoaded( std::string filename ){
    if ( modelMap.contains( filename ) ) {
       return modelMap.at( filename );
    } else {
@@ -68,7 +42,7 @@ ModelBase * ModelManager::checkLoaded( std::string filename ){
    }
 }
 
-Model ModelManager::loadStlModel( std::string filename ) {
+ModelLink ModelManager::loadStlModel( std::string filename ) {
 
    ModelBase* base = checkLoaded( filename );
 
@@ -82,10 +56,10 @@ Model ModelManager::loadStlModel( std::string filename ) {
       base = checkLoaded( filename );
    }
 
-   return Model( base );
+   return ModelLink( base );
 }
 
-Model ModelManager::loadCube( char* textFilename ) {
+ModelLink ModelManager::loadCube( char* textFilename ) {
 
    ModelBase* base = checkLoaded( std::string( textFilename ) );
 
@@ -101,10 +75,10 @@ Model ModelManager::loadCube( char* textFilename ) {
       modelMap.insert( { std::string( textFilename ), base } );
    }
 
-   return Model( base );
+   return ModelLink( base );
 }
 
-Model ModelManager::loadObjModel( std::string filename ) {
+ModelLink ModelManager::loadObjModel( std::string filename ) {
    
 
    ModelBase* base = checkLoaded( std::string( filename ) );
@@ -170,5 +144,5 @@ Model ModelManager::loadObjModel( std::string filename ) {
 
    std::cout << "returning model\n";
 
-   return Model( base );
+   return ModelLink( base );
 }
