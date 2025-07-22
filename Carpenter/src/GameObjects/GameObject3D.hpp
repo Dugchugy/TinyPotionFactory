@@ -11,10 +11,10 @@ class GameObject3D {
 public:
 
     Transform transform;
-    Model model;
+    ModelLink model;
 
     /// @brief Creates a new game object 3D with the specifed Model using the specified Transform
-    GameObject3D( Transform t, Model m );
+    GameObject3D( Transform t, ModelLink m );
 
     /// @brief Draws the game object using the appropriate renderer
     /// @param renderer the renderer that will be used to draw the object
