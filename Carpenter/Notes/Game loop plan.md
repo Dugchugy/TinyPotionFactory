@@ -76,7 +76,9 @@ a pedestal with a book on it. used to access the journal for researching new til
 
 ## Non-Tile objects
 
-In addition to the factory and all the tiles that make it up, the player will also be able to see their current gold count and a shop. They will gain gold by selling potions with a specific price for each potion. The shop will show all the tiles they can buy to place in the factory and a price. if the player has enough gold, they will be able to drag a tile from the shop to the factory to purchase it and add it to the factory
+In addition to the factory and all the tiles that make it up, the player will also be able to see their current gold count and a shop. They will gain gold by selling potions with a specific price for each potion. The shop will show all the tiles they can buy to place in the factory and a price. if the player has enough gold, they will be able to drag a tile from the shop to the factory to purchase it and add it to the factory.
+
+using the lecturn, the player will be able to research new tiles to unlock them in the shop for future use. most tiles will be locked at the start of the game. 
 
 ## Research
 
