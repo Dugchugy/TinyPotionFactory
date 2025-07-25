@@ -44,13 +44,14 @@ Model * ModelManager::checkLoaded( std::string filename ){
 
 ModelLink ModelManager::loadStlModel( std::string filename ) {
 
-   ModelBase* base = checkLoaded( filename );
+   Model* base = checkLoaded( filename );
 
    if ( base == nullptr ) {
-      LoadedMesh mesh = loadStlMesh( filename );
-      Engine::Graphics::Texture text( "Assets/Placeholder.png" );
+      /*LoadedMesh mesh = loadStlMesh( filename );
+      Engine::Graphics::Texture text( "Assets/Placeholder.png" );*/
 
-      base = new ModelBase( mesh, text );
+      base = new Engine::Assets::Model( "temp" );
+      *base = Engine::Assets::loadStlModel( filename );
       modelMap.insert( { filename, base } );
 
       base = checkLoaded( filename );
@@ -64,14 +65,11 @@ ModelLink ModelManager::loadCube( char* textFilename ) {
    ModelBase* base = checkLoaded( std::string( textFilename ) );
 
    if ( base == nullptr ) {
-      Engine::Graphics::Cube cube;
-      Engine::Graphics::Texture text( textFilename );
+      /*Engine::Graphics::Cube cube;
+      Engine::Graphics::Texture text( textFilename );*/
 
-      base = new ModelBase( cube, text );
-      base->addMesh( cube, text );
-
-      //base->addMesh( cube, text );
-
+      base = new Engine::Assets::Model( "temp" );
+      *base = Engine::Assets::LoadCube( textFilename );
       modelMap.insert( { std::string( textFilename ), base } );
    }
 
@@ -85,7 +83,7 @@ ModelLink ModelManager::loadObjModel( std::string filename ) {
 
    if ( base == nullptr ) {
 
-      base = new ModelBase();
+      /*base = new ModelBase();
 
       std::vector< Vector3 > verts;
       std::vector< TexCoords > uvs;
@@ -137,7 +135,10 @@ ModelLink ModelManager::loadObjModel( std::string filename ) {
          std::cout << "new object has " << Tris.size() << " tris\n";
          base->addMesh( LoadedMesh( Tris ), 
             Engine::Graphics::Texture( "Assets/Placeholder.png" ) );
-      }
+      }*/
+
+      base = new Engine::Assets::Model();
+      *base = Engine::Assets::loadObjModel( filename );
 
       modelMap.insert( { filename, base } );
    }
