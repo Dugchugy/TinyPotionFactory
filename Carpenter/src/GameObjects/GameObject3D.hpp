@@ -18,7 +18,15 @@ public:
 
     /// @brief Draws the game object using the appropriate renderer
     /// @param renderer the renderer that will be used to draw the object
-    void draw( Engine::Graphics::Renderer renderer );
+    virtual void draw( Engine::Graphics::Renderer renderer );
+
+    /**
+     * @brief updates the game object. used to implement a physics tick
+     * @param timeSinceLastUpdate the time it has been since the last update in seconds
+     * 
+     * does nothing by default, should be overrode by any object using it
+     */
+    virtual void update( float timeSinceLastUpdate ) {};
 
 }; //GameObject3D
 
