@@ -10,18 +10,21 @@
 using namespace PotionParts;
 
 
-ModelLink::ModelLink( Model* base ) : _base( base ) {}
+ModelLink::ModelLink( Engine::Assets::Model* base ) : _base( base ) {}
 
-void ModelLink::draw(Engine::Graphics::Renderer& renderer, const Transform transform) const {
+void ModelLink::draw(Engine::Graphics::Renderer& renderer, Transform& transform) const {
 
    if ( _base != nullptr ) {
-      _base->draw( renderer, transform );
+      _base->draw( renderer, 
+                   transform.position().toVec(), 
+                   transform.rotation().toVec(), 
+                   transform.scale().toVec() );
    }
 }
 
 ModelManager::ModelManager() {
 
-   modelMap = std::unordered_map<std::string, Model*>();
+   modelMap = std::unordered_map<std::string, Engine::Assets::Model*>();
 
 } //ModelManager::ModelManager()
 
@@ -34,7 +37,7 @@ ModelManager & ModelManager::getManager() {
    return *manager;
 }
 
-Model * ModelManager::checkLoaded( std::string filename ){
+Engine::Assets::Model * ModelManager::checkLoaded( std::string filename ){
    if ( modelMap.contains( filename ) ) {
       return modelMap.at( filename );
    } else {
@@ -44,14 +47,14 @@ Model * ModelManager::checkLoaded( std::string filename ){
 
 ModelLink ModelManager::loadStlModel( std::string filename ) {
 
-   Model* base = checkLoaded( filename );
+   Engine::Assets::Model* base = checkLoaded( filename );
 
    if ( base == nullptr ) {
       /*LoadedMesh mesh = loadStlMesh( filename );
       Engine::Graphics::Texture text( "Assets/Placeholder.png" );*/
 
-      base = new Engine::Assets::Model( "temp" );
-      *base = Engine::Assets::loadStlModel( filename );
+      
+      base = new Engine::Assets::Model( Engine::Assets::loadStlModel( filename ) );
       modelMap.insert( { filename, base } );
 
       base = checkLoaded( filename );
@@ -62,14 +65,13 @@ ModelLink ModelManager::loadStlModel( std::string filename ) {
 
 ModelLink ModelManager::loadCube( char* textFilename ) {
 
-   ModelBase* base = checkLoaded( std::string( textFilename ) );
+   Engine::Assets::Model* base = checkLoaded( std::string( textFilename ) );
 
    if ( base == nullptr ) {
       /*Engine::Graphics::Cube cube;
       Engine::Graphics::Texture text( textFilename );*/
 
-      base = new Engine::Assets::Model( "temp" );
-      *base = Engine::Assets::LoadCube( textFilename );
+      base = new Engine::Assets::Model( Engine::Assets::loadCube( textFilename ) );
       modelMap.insert( { std::string( textFilename ), base } );
    }
 
@@ -79,7 +81,7 @@ ModelLink ModelManager::loadCube( char* textFilename ) {
 ModelLink ModelManager::loadObjModel( std::string filename ) {
    
 
-   ModelBase* base = checkLoaded( std::string( filename ) );
+   Engine::Assets::Model* base = checkLoaded( std::string( filename ) );
 
    if ( base == nullptr ) {
 
@@ -137,8 +139,7 @@ ModelLink ModelManager::loadObjModel( std::string filename ) {
             Engine::Graphics::Texture( "Assets/Placeholder.png" ) );
       }*/
 
-      base = new Engine::Assets::Model();
-      *base = Engine::Assets::loadObjModel( filename );
+      base = new Engine::Assets::Model( Engine::Assets::loadObjModel( filename ) );
 
       modelMap.insert( { filename, base } );
    }

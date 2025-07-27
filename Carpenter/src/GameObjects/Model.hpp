@@ -11,14 +11,14 @@ namespace PotionParts {
 class ModelLink {
 public:
 
-   ModelLink( Model* base );
+   ModelLink( Engine::Assets::Model* base );
 
    /// @brief draws this Model using the given renderer and transform
-   void draw( Engine::Graphics::Renderer& renderer, const Transform transform ) const;
+   void draw( Engine::Graphics::Renderer& renderer, Transform& transform ) const;
 
 private:
 
-   Model* _base;
+   Engine::Assets::Model* _base;
 
 }; //ModelLink
 
@@ -49,11 +49,11 @@ private:
    ModelManager();
 
    /// @brief checks if a model has been loaded before and returns a pointer to it if it has
-   Model* checkLoaded( std::string filename );
+   Engine::Assets::Model* checkLoaded( std::string filename );
 
    static ModelManager* manager;
 
-   std::unordered_map<std::string, Model*> modelMap;
+   std::unordered_map<std::string, Engine::Assets::Model*> modelMap;
 
 }; //ModelManager
 
