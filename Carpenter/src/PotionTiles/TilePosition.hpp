@@ -19,6 +19,39 @@ public:
    TilePosition( int x, int y );
 
    /**
+    * @brief getter for x
+    * @return x
+    */
+   int x();
+
+   /**
+    * @brief getter for y
+    * @return y
+    */
+   int y();
+
+   /**
+    * @brief setter for x
+    * @param x new x
+    */
+   void xIs( int x );
+
+   /**
+    * @brief setter for y
+    * @param y new y
+    */
+   void yIs( int y );
+
+   /**
+    * @brief setter for position 
+    * @param x x
+    * @param y y
+    * 
+    * sets position to ( x, y )
+    */
+   void positionIs( int x, int y );
+
+   /**
     * @brief piecewise add for two TilePositions
     * @param a a
     * @param b b
