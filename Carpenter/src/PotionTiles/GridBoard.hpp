@@ -1,7 +1,7 @@
 #ifndef GRIDBOARD_HPP
 #define GRIDBOARD_HPP
 
-#include "../GameObjects/GameObject3D.hpp"
+#include "../GameObjects/SerialObject.hpp"
 #include <Renderer.hpp>
 
 namespace PotionGrid {
@@ -9,7 +9,12 @@ namespace PotionGrid {
 /**
  * a collection of grids that are updated as a set.
  */
-class GridBoard : PotionParts::GameObject3D {
+class GridBoard : PotionParts::SerialObject {
+
+    /**
+     * @brief constructs a new GribBoard with empty Grids
+     */
+    GridBoard();
 
     /**
      * @brief Draws the game object using the appropriate renderer
