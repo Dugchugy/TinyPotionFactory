@@ -36,9 +36,9 @@ class ExampleScene : public Scene {
       g3D.transform.rotation().yIs(time);
       cald.transform.rotation().yIs(time);
  
-      g3D.draw(Game::getInstance().GetRenderer());
+      g3D.draw( Game::getInstance().GetRenderer() );
       std::cout << "rendering cauld\n";
-      cald.draw(Game::getInstance().GetRenderer());
+      cald.draw( Game::getInstance().GetRenderer() );
    }
 
    void Update(float dt) override {
