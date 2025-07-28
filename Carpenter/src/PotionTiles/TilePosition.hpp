@@ -26,6 +26,13 @@ public:
     */
    friend TilePosition operator+ ( const TilePosition& a, const TilePosition& b );
 
+   /**
+    * @brief piecewise subtraction for two TilePositions
+    * @param a a
+    * @param b b
+    * @return ( a.x - b.x, a.y - b.y )
+    */
+   friend TilePosition operator- ( const TilePosition& a, const TilePosition& b );
 
 private:
    int _x;
