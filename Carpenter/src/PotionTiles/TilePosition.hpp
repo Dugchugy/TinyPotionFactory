@@ -18,6 +18,14 @@ public:
     */
    TilePosition( int x, int y );
 
+   /**
+    * @brief piecewise add for two TilePositions
+    * @param a a
+    * @param b b
+    * @return ( a.x + b.x, a.y + b.y )
+    */
+   friend TilePosition operator+ ( const TilePosition& a, const TilePosition& b );
+
 
 private:
    int _x;
