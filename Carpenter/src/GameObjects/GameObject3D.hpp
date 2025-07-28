@@ -18,7 +18,7 @@ public:
 
     /// @brief Draws the game object using the appropriate renderer
     /// @param renderer the renderer that will be used to draw the object
-    virtual void draw( Engine::Graphics::Renderer renderer );
+    virtual void draw( Engine::Graphics::Renderer& renderer );
 
     /**
      * @brief updates the game object. used to implement a physics tick
