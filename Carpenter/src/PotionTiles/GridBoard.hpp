@@ -10,6 +10,7 @@ namespace PotionGrid {
  * a collection of grids that are updated as a set.
  */
 class GridBoard : PotionParts::SerialObject {
+public:
 
     /**
      * @brief constructs a new GribBoard with empty Grids
