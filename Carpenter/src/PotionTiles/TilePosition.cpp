@@ -24,3 +24,16 @@ void TilePosition::xIs( int x ) {
 void TilePosition::yIs( int y ) {
    _y = y;
 }
+
+void TilePosition::positionIs( int x, int y ) {
+   _x = x;
+   _y = y;
+}
+
+TilePosition PotionGrid::operator+ ( const TilePosition& a, const TilePosition& b ) {
+   return TilePosition( a.x + b.x, a.y + b.y );
+}
+
+TilePosition PotionGrid::operator- ( const TilePosition& a, const TilePosition& b ) {
+   return TilePosition( a.x - b.x, a.y - b.y );
+}
