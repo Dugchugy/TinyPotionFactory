@@ -16,3 +16,11 @@ int TilePosition::x() {
 int TilePosition::y() {
    return _y
 }
+
+void TilePosition::xIs( int x ) {
+   _x = x;
+}
+
+void TilePosition::yIs( int y ) {
+   _y = y;
+}
