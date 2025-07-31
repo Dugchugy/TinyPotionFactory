@@ -18,7 +18,7 @@ public:
     *
     * increments the next index so each time this is called the index is unique
     */
-   static unsigned long getNextIndex();
+   static unsigned long nextIndex();
 
    /**
     * @brief sets the next index provided by `getNextIndex()`
@@ -30,7 +30,7 @@ public:
 private:
    unsigned long _index;
 
-   static unsigned long nextIndex = 0;
+   static unsigned long _nextIndex = 0;
 
 }; //TileIdentifier
 
