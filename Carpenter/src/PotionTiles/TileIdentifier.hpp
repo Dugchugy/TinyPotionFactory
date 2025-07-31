@@ -16,10 +16,17 @@ public:
 
    TileIdentifier();
 
+   TileIdentifier( TileType type );
+
    /**
     * @brief gets the index for this Identifier
     */
    unsigned long index();
+
+   /**
+    * @brief gets the type for this Tile
+    */
+   TileType type();
 
    /**
     * @brief gets the next available index for identifiers
@@ -37,6 +44,7 @@ public:
 
 private:
    unsigned long _index;
+   TileType _type;
 
    static unsigned long _nextIndex = 0;
 
