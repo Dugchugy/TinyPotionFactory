@@ -3,6 +3,14 @@
 
 namespace PotionGrid {
 
+enum TileType {
+   NullTile,
+   CauldronTile,
+   SalesBoxTile,
+   BottlerTile,
+   LecturnTile
+}; //TileType
+
 class TileIdentifier {
 public:
 
