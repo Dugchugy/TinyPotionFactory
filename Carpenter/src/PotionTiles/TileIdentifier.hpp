@@ -29,6 +29,13 @@ public:
    TileType type();
 
    /**
+    * @brief equality operator for TileIdentifiers
+    *
+    * checks if the index and type are the same on `a` and `b`
+    */
+   friend bool operator==( const TileIdentifier& a, const TileIdentifier& b );
+
+   /**
     * @brief gets the next available index for identifiers
     *
     * increments the next index so each time this is called the index is unique
@@ -36,11 +43,11 @@ public:
    static unsigned long nextIndex();
 
    /**
-    * @brief sets the next index provided by `getNextIndex()`
+    * @brief sets the next index provided by `nextIndex()`
     *
     * used to prevent counting from zero after loading.
     */
-   static void setNextIndex( unsigned long index );
+   static void NextIndexIs( unsigned long index );
 
 private:
    unsigned long _index;
