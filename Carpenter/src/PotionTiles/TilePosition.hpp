@@ -1,6 +1,8 @@
 #ifndef TILEPOSITION_HPP
 #define TILEPOSITION_HPP
 
+#include "GameObjects/Vector3.hpp"
+
 namespace PotionGrid {
 
 class TilePosition {
@@ -17,6 +19,8 @@ public:
     * @param y y
     */
    TilePosition( int x, int y );
+
+   PotionParts::Vector3 toVector();
 
    /**
     * @brief getter for x
