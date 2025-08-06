@@ -47,7 +47,7 @@ public:
     *
     * used to prevent counting from zero after loading.
     */
-   static void NextIndexIs( unsigned long index );
+   static void nextIndexIs( unsigned long index );
 
 private:
    unsigned long _index;
