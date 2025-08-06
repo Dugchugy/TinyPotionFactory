@@ -23,7 +23,7 @@ public:
      * 
      * calls draw in all of the subgrids stored in this gridBoard
      */
-    override void draw( Engine::Graphics::Renderer& renderer ); 
+    virtual void draw( Engine::Graphics::Renderer& renderer ); 
 
     /**
      * @brief updates the game object. used to implement a physics tick
@@ -32,7 +32,7 @@ public:
      * splits the update into the 4 phase update and runs all 4 update phases on the
      * subgrids stored in this object.
      */
-    override void update( float timeSinceLastUpdate );
+    virtual void update( float timeSinceLastUpdate );
 
 }; //GridBoard
 
