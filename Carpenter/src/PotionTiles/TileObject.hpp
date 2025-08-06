@@ -9,12 +9,12 @@ namespace PotionGrid {
 
 class TileObject : public SerialObject {
 
-   TileObject( TilePosition pos );
+   TileObject( TilePosition pos, PotionParts::ModelLink m );
+
+   virtual TileType type();
 
 private:
    TilePosition position;
-
-   virtual TileType type();
 
 }; //TileObject
 
