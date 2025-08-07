@@ -17,21 +17,18 @@ void GridBoard::update( float timeSinceLastUpdate ) {
       tileMap[ currentTile ]->updatePrepare();
    }
 
-   // calls update on subGrids for each phase
    for ( auto iter = tileMap.begin(); iter != tileMap.end(); iter++ ) {
       auto currentTile = iter->first;
 
       tileMap[ currentTile ]->updateTransfer();
    }
 
-   // calls update on subGrids for each phase
    for ( auto iter = tileMap.begin(); iter != tileMap.end(); iter++ ) {
       auto currentTile = iter->first;
 
       tileMap[ currentTile ]->updateUpdate();
    }
 
-   // calls update on subGrids for each phase
    for ( auto iter = tileMap.begin(); iter != tileMap.end(); iter++ ) {
       auto currentTile = iter->first;
 

@@ -4,6 +4,7 @@
 #include "../GameObjects/SerialObject.hpp"
 #include "TileIdentifier.hpp"
 #include "TileObject.hpp"
+#include "TileGrid.hpp"
 
 #include <Renderer.hpp>
 #include <unordered_map>
@@ -40,13 +41,21 @@ public:
 
    TileObject* getTile( TileIdentifier id );
 
+   TileObject* getTile( TilePosition pos );
+
    void addTile( TileObject object, TileIdentifier id );
 
+   void addTile( TileObject object, TilePosition pos );
+
    void delTile( TileIdentifier id );
+
+   void delTile( TilePosition pos );
 
 private:
 
     std::unordered_map< TileIdentifier, TileObject* > tileMap;
+
+    std::vector< TileGrid > subGrid;
 
 }; //GridBoard
 

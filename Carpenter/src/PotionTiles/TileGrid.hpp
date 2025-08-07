@@ -5,7 +5,6 @@
 
 #include "GameObjects/SerialObject.hpp"
 
-#include "GridBoard.hpp"
 #include "TileObject.hpp"
 #include "TilePosition.hpp"
 
