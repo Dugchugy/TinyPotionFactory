@@ -14,7 +14,13 @@ class TileObject : public SerialObject {
 
    virtual TileType type();
 
-   virtual void update( float timeSinceLastUpdate, GridBoard board );
+   virtual void updatePrepare( float timeSinceLastUpdate );
+
+   virtual void updateTransfer( float timeSinceLastUpdate, GridBoard board );
+
+   virtual void updateUpdate( float timeSinceLastUpdate );
+
+   virtual void updateCleanup( float timeSinceLastUpdate );
 
 private:
    TilePosition position;
