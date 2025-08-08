@@ -60,10 +60,23 @@ public:
     */
    void addTile( TileObject object, TileIdentifier id );
 
+   /**
+    * @brief adds a tile at a particular position in the grid
+    * @param object the TileObject to add
+    * @param pos the position to place the tile
+    */
    void addTile( TileObject object, TilePosition pos );
 
+   /**
+    * @brief deletes a tile with a particular identifier
+    * @param id the identifier of the tile to delete
+    */
    void delTile( TileIdentifier id );
 
+   /**
+    * @brief deletes a tile at a particular position
+    * @param pos the position of the tile to delete
+    */
    void delTile( TilePosition pos );
 
 private:
