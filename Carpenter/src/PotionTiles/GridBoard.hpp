@@ -39,10 +39,25 @@ public:
     */
    virtual void update( float timeSinceLastUpdate );
 
+   /**
+    * @brief looks up a tile using its identifier
+    * @param id the identifier to use for the lookup
+    * @return a pointer to the tile with this Identifier (or null if not found)
+    */
    TileObject* getTile( TileIdentifier id );
 
+   /**
+    * @brief looks up a tile using its position
+    * @param pos the position of this tile
+    * @return a pointer to the tile at this position (or null if not found)
+    */
    TileObject* getTile( TilePosition pos );
 
+   /**
+    * @brief adds a tile with a particular identifier to the grids collection
+    * @param object the TileObject to add
+    * @param id the identifier for this tile
+    */
    void addTile( TileObject object, TileIdentifier id );
 
    void addTile( TileObject object, TilePosition pos );
