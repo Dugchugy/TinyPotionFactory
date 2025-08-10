@@ -31,7 +31,7 @@ private:
 
     TilePosition _bottomCorner;
 
-    TileIdentifier[ GRID_SIZE * GRID_SIZE ];
+    TileIdentifier[ GRID_SIZE * GRID_SIZE ] grid;
 
 }; //TileGrid
 
