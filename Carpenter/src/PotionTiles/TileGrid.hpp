@@ -14,7 +14,18 @@ class TileGrid : public PotionParts::SerialObject {
 
 public:
    
+   /**
+    * @brief creates a Tile grid with the bottom left corner coordinates passed
+    * @param corner the tile coordinates of the bottom right corner.
+    */
    TileGrid( TilePosition corner );
+
+   /**
+    * @brief looks up a TileIdentifier using the tiles position.
+    * @param pos the position of the tile to look up
+    * @return the TileIdentifier at this position (null if not in this grid)
+    */
+   TileIdentifier getIdentifier( TilePosition pos );
 
 private:
 
