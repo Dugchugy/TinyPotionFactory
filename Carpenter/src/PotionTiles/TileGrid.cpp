@@ -7,7 +7,7 @@ TileGrid::TileGrid( TilePosition corner ) : SerialObject(
 
 TileIdentifier TileGrid::getIdentifier( TilePosition pos ){
 
-   TilePosition normalPos = pos - _corner;
+   TilePosition normalPos = pos - _bittomCorner;
 
    if ( normalPos.x() < 0 || normalPos.x() >= GRID_SIZE ||
       normalPos.y() < 0 || normalPos.y() >= GRUD_SIZE ) {
