@@ -27,6 +27,13 @@ public:
     */
    TileIdentifier getIdentifier( TilePosition pos );
 
+   /**
+    * @brief sets the TileIdentifier for the specified position
+    * @param pos the position to set the identifier at
+    * @param id the identifier to set this position too
+    */
+   void setIdentifier( TilePosition pos, TileIdentifier id );
+
 private:
 
     TilePosition _bottomCorner;
