@@ -81,6 +81,8 @@ public:
 
 private:
 
+    TileGrid* getClosestGrid( TilePosition pos, bool create );
+
     std::unordered_map< TileIdentifier, TileObject* > tileMap;
 
     std::vector< TileGrid > subGrid;

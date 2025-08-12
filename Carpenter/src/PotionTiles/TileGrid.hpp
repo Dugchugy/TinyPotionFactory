@@ -34,6 +34,8 @@ public:
     */
    void setIdentifier( TilePosition pos, TileIdentifier id );
 
+   TilePosition bottomCorner();
+
 private:
 
     TilePosition _bottomCorner;

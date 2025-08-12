@@ -40,21 +40,50 @@ GridBoard::GridBoard() : SerialObject(
    PotionParts::Transform(), PotionParts::ModelLink( nullptr ) ) {}
 
 TileObject* GridBoard::getTile( TileIdentifier id ){
-    if ( tileMap.contains( id ) ) {
-        return tileMap.at( id );
-    } else {
-        return nullptr;
-    }
+   if ( tileMap.contains( id ) ) {
+      return tileMap.at( id );
+   } else {
+      return nullptr;
+   }
+}
+
+TileGrid* GridBoard::getClosestGrid( TilePosition pos, bool create ) {
+   TilePosition flatPos = TilePosition( pos.x() - ( pos.x() % GRID_SIZE ),
+                                        pos.y() - ( pos.y() % GRID_SIZE ) );
+
+   for ( auto iter = subGrid.begin(); iter != subGrid.end(); iter++ ) {
+      if ( iter->first.bottomCorner() == flatPos ) {
+         return iter->first;
+      }
+   }
+
+   if ( create ) {
+      TileGrid newGrid = TileGrid( flatPos );
+      subGrid.pushBack( newGrid );
+      return subGrid.end()->first
+   }else {
+      return nullptr;
+   }
+}
+
+TileObject* GridBoard::getTile( TilePosition pos ) {
+   auto subGrid = getClosestGrid( pos, false );
+   
+   if ( subGrid ) {
+      return getTile( subGrid.getIdentifier( pos ) );
+   } else {
+      return nullptr;
+   }
 }
 
 void GridBoard::addTile( TileObject object, TileIdentifier id ) {
-    tileMap.insert_or_assign( id, object );
+   tileMap.insert_or_assign( id, object );
 }
 
 void delTile( TileIdentifier id ) {
-    if ( tileMap.contains( id ) ) {
-        TileObject* ptr = tileMap.at( id );
-        tileMap.erase( id );
-        delete ptr;
-    }
+   if ( tileMap.contains( id ) ) {
+      TileObject* ptr = tileMap.at( id );
+      tileMap.erase( id );
+      delete ptr;
+   }
 }

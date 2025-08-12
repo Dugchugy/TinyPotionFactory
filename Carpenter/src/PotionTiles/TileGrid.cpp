@@ -28,3 +28,7 @@ void TileGrid::setIdentifier( TilePosition pos, TileIdentifier id ) {
       grid[ normalPos.y() * GRID_SIZE + normalPos.x() ] = id;
    }
 }
+
+TilePosition TileGrid::bottomCorner() {
+   return _bottomCorner;
+}
