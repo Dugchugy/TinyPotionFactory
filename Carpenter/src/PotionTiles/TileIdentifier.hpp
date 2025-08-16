@@ -1,6 +1,8 @@
 #ifndef TILEIDENTIFIER_HPP
 #define TILEIDENTIFIER_HPP
 
+#include <functional>
+
 namespace PotionGrid {
 
 enum TileType {
@@ -21,19 +23,19 @@ public:
    /**
     * @brief gets the index for this Identifier
     */
-   unsigned long index();
+   unsigned long index() const;
 
    /**
     * @brief gets the type for this Tile
     */
-   TileType type();
+   TileType type() const;
 
    /**
-    * @brief equality operator for TileIdentifiers
-    *
-    * checks if the index and type are the same on `a` and `b`
+    * @brief checks if this tileIdentifier is equal to the passed identifier
+    * 
+    * checks if the index and type are the same on both
     */
-   friend bool operator==( const TileIdentifier& a, const TileIdentifier& b );
+   bool operator==( const TileIdentifier& comp ) const;
 
    /**
     * @brief gets the next available index for identifiers
@@ -53,10 +55,17 @@ private:
    unsigned long _index;
    TileType _type;
 
-   static unsigned long _nextIndex = 0;
+   static unsigned long _nextIndex;
 
 }; //TileIdentifier
 
 } //PotionGrid 
+
+template <>
+struct std::hash< PotionGrid::TileIdentifier > {
+   std::size_t operator() ( const PotionGrid::TileIdentifier& k ) const {
+      return k.index();
+   }
+}; //std::hash< PotionGrid::TileIdentifier >
 
 #endif //TILEIDENTIFIER_HPP

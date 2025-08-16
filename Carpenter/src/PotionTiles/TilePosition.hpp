@@ -1,7 +1,7 @@
 #ifndef TILEPOSITION_HPP
 #define TILEPOSITION_HPP
 
-#include "GameObjects/Vector3.hpp"
+#include "../GameObjects/Vector3.hpp"
 
 namespace PotionGrid {
 
@@ -70,6 +70,14 @@ public:
     * @return ( a.x - b.x, a.y - b.y )
     */
    friend TilePosition operator- ( const TilePosition& a, const TilePosition& b );
+
+   /**
+    * @brief equals operator for TilePositions
+    * @param a a
+    * @param b b
+    * @return ( a.x == b.x && a.y == b.y )
+    */
+   friend bool operator== ( const TilePosition& a, const TilePosition& b );
 
 private:
    int _x;

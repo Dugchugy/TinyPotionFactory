@@ -12,11 +12,11 @@ TileIdentifier::TileIdentifier( TileType type ) {
    _index = nextIndex();
 }
 
-TileType TileIdentifier::type() {
+TileType TileIdentifier::type() const {
    return _type;
 }
 
-unsigned long TileIdentifier::index() {
+unsigned long TileIdentifier::index() const {
    return _index;
 }
 
@@ -28,6 +28,6 @@ void TileIdentifier::nextIndexIs( unsigned long nextIndex ) {
    _nextIndex = nextIndex;
 }
 
-bool PotionGrid::operator==( const TileIdentifier& a, const TileIdentifier& b ) {
-   return a._index == b._index && a._type == b._type;
+bool TileIdentifier::operator==( const TileIdentifier& comp ) const {
+   return _type == comp._type && _index == comp._index;
 }

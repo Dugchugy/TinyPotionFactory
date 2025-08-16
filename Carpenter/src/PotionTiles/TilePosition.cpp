@@ -41,3 +41,7 @@ TilePosition PotionGrid::operator+ ( const TilePosition& a, const TilePosition& 
 TilePosition PotionGrid::operator- ( const TilePosition& a, const TilePosition& b ) {
    return TilePosition( a._x - b._x, a._y - b._y );
 }
+
+bool PotionGrid::operator== ( const TilePosition& a, const TilePosition& b ) {
+   return ( a._x == b._x && a._y == b._y );
+}

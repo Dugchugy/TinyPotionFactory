@@ -3,7 +3,7 @@
 
 #define GRID_SIZE 16
 
-#include "GameObjects/SerialObject.hpp"
+#include "../GameObjects/SerialObject.hpp"
 
 #include "TileObject.hpp"
 #include "TilePosition.hpp"
@@ -40,7 +40,7 @@ private:
 
     TilePosition _bottomCorner;
 
-    TileIdentifier[ GRID_SIZE * GRID_SIZE ] grid;
+    TileIdentifier grid[ GRID_SIZE * GRID_SIZE ];
 
 }; //TileGrid
 

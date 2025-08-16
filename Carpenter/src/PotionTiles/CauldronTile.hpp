@@ -18,7 +18,7 @@ class CauldronTile : public TileObject {
    /**
     * @brief returns that this is a cauldron
     */
-   virtual TileType type();
+   virtual TileType tileType();
 
 }; //CauldronTile 
 

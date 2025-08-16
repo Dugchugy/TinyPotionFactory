@@ -1,11 +1,11 @@
 #include "TileObject.hpp"
 
-#include "GameObjects/Transform.hpp"
+#include "../GameObjects/Transform.hpp"
 
 using namespace PotionGrid;
 using PotionParts::Vector3;
 
-TileType TileObject::type() {
+TileType TileObject::tileType() {
    return TileType::NullTile;
 }
 
@@ -14,7 +14,7 @@ TileObject::TileObject( TilePosition pos, PotionParts::ModelLink m ) : SerialObj
 
 void TileObject::updatePrepare( float timeSinceLastUpdate ) {}
 
-void TileObject::updateTransfer( float timeSinceLastUpdate, GridBoard board ) {}
+void TileObject::updateTransfer( float timeSinceLastUpdate/*, GridBoard board*/ ) {}
 
 void TileObject::updateUpdate( float timeSinceLastUpdate ) {}
 

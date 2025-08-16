@@ -5,7 +5,7 @@ using namespace PotionGrid;
 CauldronTile::CauldronTile( TilePosition pos ) :
  TileObject( pos, PotionParts::ModelManager::getManager().loadObjModel( "Assets/cauldren.obj" ) ) {}
 
-CauldronTile::type() {
+TileType CauldronTile::tileType() {
    return TileType::CauldronTile;
 }
 

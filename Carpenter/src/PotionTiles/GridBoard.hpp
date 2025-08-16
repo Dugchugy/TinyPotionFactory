@@ -2,11 +2,12 @@
 #define GRIDBOARD_HPP
 
 #include "../GameObjects/SerialObject.hpp"
+
 #include "TileIdentifier.hpp"
 #include "TileObject.hpp"
 #include "TileGrid.hpp"
 
-#include <Renderer.hpp>
+#include <Graphics/Renderer.hpp>
 #include <unordered_map>
 
 namespace PotionGrid {
@@ -14,7 +15,7 @@ namespace PotionGrid {
 /**
  * a collection of grids that are updated as a set.
  */
-class GridBoard : PotionParts::SerialObject {
+class GridBoard : public PotionParts::SerialObject {
 public:
 
    /**
@@ -58,14 +59,14 @@ public:
     * @param object the TileObject to add
     * @param id the identifier for this tile
     */
-   void addTile( TileObject object, TileIdentifier id );
+   void addTile( TileObject* object, TileIdentifier id );
 
    /**
     * @brief adds a tile at a particular position in the grid
     * @param object the TileObject to add
     * @param pos the position to place the tile
     */
-   void addTile( TileObject object, TilePosition pos );
+   void addTile( TileObject* object, TilePosition pos );
 
    /**
     * @brief deletes a tile with a particular identifier
