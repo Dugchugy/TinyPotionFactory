@@ -3,5 +3,9 @@
 using namespace PotionGrid;
 
 CauldronTile::CauldronTile( TilePosition pos ) :
- TileObject( pos, ModelLink() );
+ TileObject( pos, PotionParts::ModelLink() ) {}
+
+CauldronTile::type() {
+   return TileType::CauldronTile;
+}
 
