@@ -2,9 +2,10 @@
 #include <UI/UILabel.hpp>
 #include <iostream>
 #include <Graphics/Shapes.hpp>
-#include "GameObjects/GameObject3D.hpp"
-#include "GameObjects/Model.hpp"
+//#include "GameObjects/GameObject3D.hpp"
+//#include "GameObjects/Model.hpp"
 #include "PotionTiles/GridBoard.hpp"
+#include "PotionTiles/CauldronTile.hpp"
 
 using namespace Engine;
 
@@ -29,6 +30,9 @@ class ExampleScene : public Scene {
       board()
       {
          AddChild(&label);
+
+         auto cauld = new PotionGrid::CauldronTile( PotionGrid::TilePosition() );
+         board.addTile( PotionGrid::TilePosition(), cauld );
       }
 
    void Draw() override {
