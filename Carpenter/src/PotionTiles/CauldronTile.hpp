@@ -1,11 +1,17 @@
 #ifndef CAULDRONTILE_HPP
 #define CAULDRONTILE_HPP
 
+#include "badInclude.h"
+
 #include "TileObject.hpp"
 #include "TilePosition.hpp"
 #include "TileIdentifier.hpp"
 
+#include "badInclude.h"
+
 namespace PotionGrid {
+
+#include "badInclude.h"
 
 class CauldronTile : public TileObject {
 
@@ -21,6 +27,8 @@ class CauldronTile : public TileObject {
    virtual TileType tileType();
 
 }; //CauldronTile 
+
+#include "badInclude.h"
 
 } //PotionGrid
 
