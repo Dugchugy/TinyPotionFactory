@@ -23,6 +23,7 @@ class CauldronTile : public TileObject {
 
    /**
     * @brief returns that this is a cauldron
+    * @retrun TileType::CauldronTile
     */
    virtual TileType tileType();
 
