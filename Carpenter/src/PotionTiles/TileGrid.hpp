@@ -34,6 +34,10 @@ public:
     */
    void setIdentifier( TilePosition pos, TileIdentifier id );
 
+   /**
+    * @brief gets the position of the tile in the bottom left corner of the grid
+    * @return the position of the bottom right tile
+    */
    TilePosition bottomCorner();
 
 private:
