@@ -76,8 +76,16 @@ TileObject* GridBoard::getTile( TilePosition pos ) {
    }
 }
 
-void GridBoard::addTile( TileObject* object, TileIdentifier id ) {
-   tileMap.insert_or_assign( id, object );
+void GridBoard::addTile( TileObject* object ) {
+   tileMap.insert_or_assign( object->id(), object );
+}
+
+void GridBoard::addTile( TileObject* object, TilePosition pos ) {
+   tileMap.insert_or_assign( object->id(), object );
+
+   auto curGrid = getClosestGrid( pos, true );
+
+   curGrid->setIdentifier( pos, object->id() );
 }
 
 void GridBoard::delTile( TileIdentifier id ) {

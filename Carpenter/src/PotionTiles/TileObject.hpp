@@ -23,8 +23,11 @@ public:
 
    virtual void updateCleanup( float timeSinceLastUpdate );
 
+   TileIdentifier id() const;
+
 private:
    TilePosition position;
+   TileIdentifier _id;
 
 }; //TileObject
 

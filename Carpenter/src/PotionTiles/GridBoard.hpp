@@ -59,7 +59,7 @@ public:
     * @param object the TileObject to add
     * @param id the identifier for this tile
     */
-   void addTile( TileObject* object, TileIdentifier id );
+   void addTile( TileObject* object );
 
    /**
     * @brief adds a tile at a particular position in the grid
