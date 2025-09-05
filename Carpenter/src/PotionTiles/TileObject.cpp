@@ -13,7 +13,7 @@ TileObject::TileObject( TilePosition pos, PotionParts::ModelLink m ) :
    position( pos ),
    PotionParts::SerialObject( PotionParts::Transform( pos.toVector(), Vector3(), 
    Vector3( 0.5f ) ), m ),
-   _id( TileIdentifier( tileType() ) ) {}
+   idSet( false ) {}
 
 void TileObject::updatePrepare( float timeSinceLastUpdate ) {}
 
@@ -23,6 +23,12 @@ void TileObject::updateUpdate( float timeSinceLastUpdate ) {}
 
 void TileObject::updateCleanup( float timeSinceLastUpdate ) {}
 
-TileIdentifier TileObject::id() const {
-   return _id;
+TileIdentifier TileObject::id() {
+   if ( idSet ) {
+      return _id;
+   } else {
+      _id = TileIdentifier( tileType() );
+      idSet = true;
+      return _id;
+   }
 }
