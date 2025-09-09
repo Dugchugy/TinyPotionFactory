@@ -33,3 +33,7 @@ void TileIdentifier::nextIndexIs( unsigned long nextIndex ) {
 bool TileIdentifier::operator==( const TileIdentifier& comp ) const {
    return _type == comp._type && _index == comp._index;
 }
+
+std::ostream& PotionGrid::operator<<( const TileIdentifier& id, std::ostream& out ) {
+   out << "tileId{ " << id._index << ", " << id._type << " }";
+}

@@ -2,6 +2,7 @@
 #define TILEIDENTIFIER_HPP
 
 #include <functional>
+#include <iostream>
 
 namespace PotionGrid {
 
@@ -50,6 +51,11 @@ public:
     * used to prevent counting from zero after loading.
     */
    static void nextIndexIs( unsigned long index );
+
+   /**
+    * @brief prints the tile identifier
+    */
+   friend std::ostream& operator<< ( const TileIdentifier& id, std::ostream& ref );
 
 private:
    unsigned long _index;
