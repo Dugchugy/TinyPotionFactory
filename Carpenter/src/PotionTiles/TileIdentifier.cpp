@@ -2,6 +2,8 @@
 
 using namespace PotionGrid;
 
+unsigned long TileIdentifier::_nextIndex = 0;
+
 TileIdentifier::TileIdentifier() {
    _type = TileType::NullTile;
    _index = 0;
@@ -21,11 +23,11 @@ unsigned long TileIdentifier::index() const {
 }
 
 unsigned long TileIdentifier::nextIndex() {
-   return _nextIndex;
+   return TileIdentifier::_nextIndex++;
 }
 
 void TileIdentifier::nextIndexIs( unsigned long nextIndex ) {
-   _nextIndex = nextIndex;
+   TileIdentifier::_nextIndex = nextIndex;
 }
 
 bool TileIdentifier::operator==( const TileIdentifier& comp ) const {
