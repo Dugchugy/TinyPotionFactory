@@ -2,6 +2,7 @@
 #include <UI/UILabel.hpp>
 #include <iostream>
 #include <Graphics/Shapes.hpp>
+#include <GameObjects/Camera.hpp>
 //#include "GameObjects/GameObject3D.hpp"
 //#include "GameObjects/Model.hpp"
 #include "PotionTiles/GridBoard.hpp"
@@ -17,6 +18,8 @@ class ExampleScene : public Scene {
    float time = 0;
    UI::UILabel label;
 
+   Camera cam;
+
    public:
    ExampleScene() : 
       Scene("ExampleScene"), 
@@ -27,13 +30,28 @@ class ExampleScene : public Scene {
       //cald( PotionParts::GameObject3D( 
          //PotionParts::Transform( PotionParts::Vector3( 1, 0, 10 ) ),
          //PotionParts::ModelManager::getManager().loadObjModel( "Assets/cauldren.obj" ) ) )
-      board()
+      board(),
+      cam( "main cam", 60.0f )
       {
          AddChild(&label);
 
          auto cauld = new CauldronTile( PotionGrid::TilePosition() );
          board.addTile( cauld, PotionGrid::TilePosition() );
+
+         // links the camera to the renderer
+         //cam.Position = { 0, 5, 0 };
+         //cam.Rotation = { 90, 0, 0 };
+         //Game::getInstance().GetRenderer().SetCameraReference( cam );
       }
+
+   void Init() override {
+      
+
+      // links the camera to the renderer
+      //cam.Position = { 0, 5, 0 };
+      //cam.Rotation = { 90, 0, 0 };
+      Game::getInstance().GetRenderer().SetCameraReference( cam );
+   }
 
    void Draw() override {
 
@@ -46,6 +64,8 @@ class ExampleScene : public Scene {
       //g3D.draw( Game::getInstance().GetRenderer() );
       //std::cout << "rendering cauld\n";
       //cald.draw( Game::getInstance().GetRenderer() );
+
+      //cam.Rotation.y = time;
 
       board.draw( Game::getInstance().GetRenderer() );
    }
