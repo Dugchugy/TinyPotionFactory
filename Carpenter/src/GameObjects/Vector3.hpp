@@ -3,6 +3,7 @@
 
 #include<Utils.hpp>
 #include <Graphics/Mesh.hpp>
+#include <ostream>
 
 namespace PotionParts {
 
@@ -93,6 +94,8 @@ public:
    /// @param v2 the second vector
    /// @return true if x, y, and z match for both vectors, false otherwise
    friend bool operator==( Vector3 const& v1, Vector3 const& v2 );
+
+   friend std::ostream& operator<< ( std::ostream& stream, Vector3 const& v );
 
 private:
 
