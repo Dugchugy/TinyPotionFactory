@@ -12,7 +12,7 @@ TileType TileObject::tileType() {
 TileObject::TileObject( TilePosition pos, PotionParts::ModelLink m ) : 
    position( pos ),
    PotionParts::SerialObject( PotionParts::Transform( pos.toVector(), Vector3(), 
-   Vector3( 0.1f ) ), m ),
+   Vector3( 0.5f ) ), m ),
    idSet( false ) {}
 
 void TileObject::updatePrepare( float timeSinceLastUpdate ) {}

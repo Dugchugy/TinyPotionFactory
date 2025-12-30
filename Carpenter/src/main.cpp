@@ -38,7 +38,11 @@ class ExampleScene : public Scene {
          AddChild(&label);
 
          auto cauld = new CauldronTile( PotionGrid::TilePosition() );
+         auto cauld2 = new CauldronTile( PotionGrid::TilePosition( 1, 1 ) );
+         auto cauld3 = new CauldronTile( PotionGrid::TilePosition( -1, 0 ) );
          board.addTile( cauld, PotionGrid::TilePosition() );
+         board.addTile( cauld2, PotionGrid::TilePosition( 1, 1 ) );
+         board.addTile( cauld3, PotionGrid::TilePosition( -1, 0 ) );
       }
 
    void Init() override {

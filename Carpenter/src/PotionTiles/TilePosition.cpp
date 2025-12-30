@@ -10,7 +10,7 @@ TilePosition::TilePosition( int x, int y ) {
 }
 
 PotionParts::Vector3 TilePosition::toVector() {
-   return PotionParts::Vector3( _x, _y, 0 );
+   return PotionParts::Vector3( _x, 0, _y );
 }
 
 int TilePosition::x() {
