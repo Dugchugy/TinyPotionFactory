@@ -13,11 +13,11 @@ using namespace Engine;
 
 class ExampleScene : public Scene {
    private:
-   PotionParts::GameObject3D g3D;
+   //PotionParts::GameObject3D g3D;
    //PotionParts::GameObject3D cald;
    PotionGrid::GridBoard board;
    float time = 0;
-   UI::UILabel label;
+   //UI::UILabel label;
 
    Camera cam;
    bool need_to_link_cam = true;
@@ -25,17 +25,17 @@ class ExampleScene : public Scene {
    public:
    ExampleScene() : 
       Scene("ExampleScene"), 
-      g3D(PotionParts::GameObject3D(
-         PotionParts::Transform( PotionParts::Vector3( 0, 0, 0 ) ),
-         PotionParts::ModelManager::getManager().loadCube( "Assets/placeholder.png" ) ) ),
-      label("Label", "Hello World" ),
+      //g3D(PotionParts::GameObject3D(
+         //PotionParts::Transform( PotionParts::Vector3( 0, 0, 0 ) ),
+         //PotionParts::ModelManager::getManager().loadCube( "Assets/placeholder.png" ) ) ),
+      //label("Label", "Hello World" ),
       //cald( PotionParts::GameObject3D( 
          //PotionParts::Transform( PotionParts::Vector3( 1, 0, 10 ) ),
          //PotionParts::ModelManager::getManager().loadObjModel( "Assets/cauldren.obj" ) ) )
       board(),
       cam( "main cam", 1.0f )
       {
-         AddChild(&label);
+         //AddChild(&label);
 
          auto cauld = new CauldronTile( PotionGrid::TilePosition() );
          auto cauld2 = new CauldronTile( PotionGrid::TilePosition( 1, 1 ) );
