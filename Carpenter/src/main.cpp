@@ -45,7 +45,7 @@ class ExampleScene : public Scene {
          board.addTile( cauld3, PotionGrid::TilePosition( -1, 0 ) );
       }
 
-   void Init() override {
+   /* virtual void Init() override {
       std::cout << "starting init\n";
 
       // links the camera to the renderer
@@ -53,7 +53,7 @@ class ExampleScene : public Scene {
       Game::getInstance().GetRenderer().SetCameraReference( cam );
       cam.Position = { 1.0f, 0.0f, 0.0f };
       std::cout << "initial cam pos: (" << cam.Position.x << ", " << cam.Position.y << ", " << cam.Position.z << ")\n";
-   }
+   } */
 
    void Draw() override {
 
