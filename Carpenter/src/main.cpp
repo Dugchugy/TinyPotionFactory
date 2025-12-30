@@ -7,55 +7,60 @@
 //#include "GameObjects/Model.hpp"
 #include "PotionTiles/GridBoard.hpp"
 #include "PotionTiles/CauldronTile.hpp"
+#include <string>
 
 using namespace Engine;
 
 class ExampleScene : public Scene {
    private:
-   //PotionParts::GameObject3D g3D;
+   PotionParts::GameObject3D g3D;
    //PotionParts::GameObject3D cald;
    PotionGrid::GridBoard board;
    float time = 0;
    UI::UILabel label;
 
    Camera cam;
+   bool need_to_link_cam = true;
 
    public:
    ExampleScene() : 
       Scene("ExampleScene"), 
-      //g3D(PotionParts::GameObject3D(
-         //PotionParts::Transform( PotionParts::Vector3( -1, 0, 10 ) ),
-         //PotionParts::ModelManager::getManager().loadCube( "Assets/placeholder.png" ) ) ),
+      g3D(PotionParts::GameObject3D(
+         PotionParts::Transform( PotionParts::Vector3( 0, 0, 0 ) ),
+         PotionParts::ModelManager::getManager().loadCube( "Assets/placeholder.png" ) ) ),
       label("Label", "Hello World" ),
       //cald( PotionParts::GameObject3D( 
          //PotionParts::Transform( PotionParts::Vector3( 1, 0, 10 ) ),
          //PotionParts::ModelManager::getManager().loadObjModel( "Assets/cauldren.obj" ) ) )
       board(),
-      cam( "main cam", 60.0f )
+      cam( "main cam", 1.0f )
       {
          AddChild(&label);
 
          auto cauld = new CauldronTile( PotionGrid::TilePosition() );
          board.addTile( cauld, PotionGrid::TilePosition() );
-
-         // links the camera to the renderer
-         //cam.Position = { 0, 5, 0 };
-         //cam.Rotation = { 90, 0, 0 };
-         //Game::getInstance().GetRenderer().SetCameraReference( cam );
       }
 
    void Init() override {
-      
+      std::cout << "starting init\n";
 
       // links the camera to the renderer
-      //cam.Position = { 0, 5, 0 };
       //cam.Rotation = { 90, 0, 0 };
       Game::getInstance().GetRenderer().SetCameraReference( cam );
+      cam.Position = { 1.0f, 0.0f, 0.0f };
+      std::cout << "initial cam pos: (" << cam.Position.x << ", " << cam.Position.y << ", " << cam.Position.z << ")\n";
    }
 
    void Draw() override {
 
-      std::cout << "starting draw\n";
+      if ( need_to_link_cam ) {
+         Game::getInstance().GetRenderer().SetCameraReference( cam );
+         cam.Position = { 0, 5, 0 };
+         cam.Rotation = { 90, 0, 0 };
+         need_to_link_cam = false;
+      }
+
+      //std::cout << "starting draw\n";
       Scene::Draw();
  
       //g3D.transform.rotation().yIs(time);
@@ -65,7 +70,11 @@ class ExampleScene : public Scene {
       //std::cout << "rendering cauld\n";
       //cald.draw( Game::getInstance().GetRenderer() );
 
-      //cam.Rotation.y = time;
+      //cam.Rotation.x = time;
+
+      //label.SetText( std::string( "current rotation: " ) + std::to_string( time ) );
+
+      std::cout << "cam pos: (" << cam.Position.x << ", " << cam.Position.y << ", " << cam.Position.z << ")\n";
 
       board.draw( Game::getInstance().GetRenderer() );
    }
