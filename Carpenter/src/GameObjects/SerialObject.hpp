@@ -5,12 +5,16 @@
 #include "Transform.hpp"
 #include "Model.hpp"
 
+namespace PotionParts {
+
 /**
  * stores on object that can be serialized and written into a file
  */
 class SerialObject : public GameObject3D {
 public:
    SerialObject( Transform t, ModelLink m ) : GameObject3D( t, m ) {}
+};
+
 }
 
 #endif //SERIALOBJECT_HPP

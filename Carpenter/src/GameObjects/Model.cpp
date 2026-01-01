@@ -4,9 +4,6 @@
 #include <iostream>
 #include <vector>
 
-#include "LoadObjHelpers.hpp"
-#include "AssetStream.hpp"
-
 using namespace PotionParts;
 
 

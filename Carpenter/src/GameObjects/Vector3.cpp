@@ -97,3 +97,8 @@ Vector3 PotionParts::cross( Vector3 const& a, Vector3 const& b ){
         ( a._x * b._y ) - ( a._y*b._x )
     );
 }
+
+std::ostream& PotionParts::operator<< ( std::ostream& stream, Vector3 const& v ) {
+    stream << "(" << v.x() << ", " << v.y() << ", " << v.z() << ")";
+    return stream;
+}
