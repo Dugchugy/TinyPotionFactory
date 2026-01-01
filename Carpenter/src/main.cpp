@@ -7,6 +7,7 @@
 //#include "GameObjects/Model.hpp"
 #include "PotionTiles/GridBoard.hpp"
 #include "PotionTiles/CauldronTile.hpp"
+#include "PotionTiles/LecturnTile.hpp"
 #include <string>
 
 using namespace Engine;
@@ -39,10 +40,10 @@ class ExampleScene : public Scene {
 
          auto cauld = new CauldronTile( PotionGrid::TilePosition() );
          auto cauld2 = new CauldronTile( PotionGrid::TilePosition( 1, 1 ) );
-         auto cauld3 = new CauldronTile( PotionGrid::TilePosition( -1, 0 ) );
+         auto lect = new LecturnTile( PotionGrid::TilePosition( -1, 0 ) );
          board.addTile( cauld, PotionGrid::TilePosition() );
          board.addTile( cauld2, PotionGrid::TilePosition( 1, 1 ) );
-         board.addTile( cauld3, PotionGrid::TilePosition( -1, 0 ) );
+         board.addTile( lect, PotionGrid::TilePosition( -1, 0 ) );
       }
 
    /* virtual void Init() override {
