@@ -67,8 +67,8 @@ class ExampleScene : public Scene {
          Game::getInstance().GetRenderer().SetCameraReference( cam );
          //auto defaultShader = new Graphics::Shader()
          //td::cout << "current shader:\n" << defaultShader
-         cam.Position = { 0, 5, 0 };
-         cam.Rotation = { 90, 0, 0 };
+         cam.Position = { 0, -5, 5 };
+         cam.Rotation = { 315, 0, 0 };
          need_to_link_cam = false;
       }
 
