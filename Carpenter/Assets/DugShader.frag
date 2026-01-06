@@ -11,7 +11,7 @@ void main() {
    if (image.a < 0.1)
       discard;
 
-      float lighting = dot(v_Normal, vec3(-0.1, 1.0, -0.5) / sqrt(2.26));
+      float lighting = dot(v_Normal, vec3(-0.1, 1.0, -0.5) / sqrt(1.26));
 
       gl_FragColor = image * vec4(vec3(lighting), 1.0);
 }

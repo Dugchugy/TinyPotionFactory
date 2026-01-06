@@ -11,7 +11,7 @@ TileType TileObject::tileType() {
 
 TileObject::TileObject( TilePosition pos, PotionParts::ModelLink m ) : 
    position( pos ),
-   PotionParts::SerialObject( PotionParts::Transform( pos.toVector(), Vector3(), 
+   PotionParts::SerialObject( PotionParts::Transform( pos.toVector(), Vector3( 0, 0, 180 ), 
    Vector3( 0.5f ) ), m ),
    idSet( false ) {}
 
