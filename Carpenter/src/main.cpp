@@ -3,6 +3,7 @@
 #include <iostream>
 #include <Graphics/Shapes.hpp>
 #include <GameObjects/Camera.hpp>
+#include <Graphics/Shader.hpp>
 //#include "GameObjects/GameObject3D.hpp"
 //#include "GameObjects/Model.hpp"
 #include "PotionTiles/GridBoard.hpp"
@@ -21,6 +22,7 @@ class ExampleScene : public Scene {
    //UI::UILabel label;
 
    Camera cam;
+   Graphics::Shader shader;
    bool need_to_link_cam = true;
 
    public:
@@ -34,7 +36,8 @@ class ExampleScene : public Scene {
          //PotionParts::Transform( PotionParts::Vector3( 1, 0, 10 ) ),
          //PotionParts::ModelManager::getManager().loadObjModel( "Assets/cauldren.obj" ) ) )
       board(),
-      cam( "main cam", 1.0f )
+      cam( "main cam", 1.0f ),
+      shader( "Assets/DugShader.frag" )
       {
          //AddChild(&label);
 
@@ -59,9 +62,13 @@ class ExampleScene : public Scene {
    void Draw() override {
 
       if ( need_to_link_cam ) {
+         //shader.GetShaderProgram();
+         Game::getInstance().GetRenderer().UseShader( shader );
          Game::getInstance().GetRenderer().SetCameraReference( cam );
-         cam.Position = { 0, 5, 0 };
-         cam.Rotation = { 90, 0, 0 };
+         //auto defaultShader = new Graphics::Shader()
+         //td::cout << "current shader:\n" << defaultShader
+         cam.Position = { 0, -5, 3 };
+         cam.Rotation = { 305, 0, 0 };
          need_to_link_cam = false;
       }
 
@@ -79,7 +86,7 @@ class ExampleScene : public Scene {
 
       //label.SetText( std::string( "current rotation: " ) + std::to_string( time ) );
 
-      std::cout << "cam pos: (" << cam.Position.x << ", " << cam.Position.y << ", " << cam.Position.z << ")\n";
+      std::cout << "cam rotation: (" << cam.Rotation.x << ", " << cam.Rotation.y << ", " << cam.Rotation.z << ")\n";
 
       board.draw( Game::getInstance().GetRenderer() );
    }
