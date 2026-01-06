@@ -1,0 +1,17 @@
+precision mediump float;
+
+varying vec2 v_UV;
+varying vec3 v_Normal;
+uniform mat4 u_Transform;
+
+uniform sampler2D u_Color;
+
+void main() {
+   vec4 image = texture2D(u_Color, v_UV);
+   if (image.a < 0.1)
+      discard;
+
+      float lighting = dot(v_Normal, vec3(-0.1, 1.0, -0.5) / sqrt(2.26));
+
+      gl_FragColor = image * vec4(vec3(lighting), 1.0);
+}
