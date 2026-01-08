@@ -9,6 +9,7 @@
 
 #include <Graphics/Renderer.hpp>
 #include <unordered_map>
+#include <vector>
 
 namespace PotionGrid {
 
