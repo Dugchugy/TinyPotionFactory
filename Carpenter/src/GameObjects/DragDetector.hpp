@@ -8,8 +8,6 @@
 
 #include "MouseReactor.hpp"
 
-using namespace Engine;
-
 namespace PotionParts {
 
 //Input::Mouse& mouse{Input::Mouse::GetInstance()};
@@ -21,6 +19,8 @@ private:
 
     std::vector<MouseReactor*> reactors;
 
+    Engine::Input::InputManager manager;
+
 public:
 
     /**
@@ -28,14 +28,14 @@ public:
      * updated each frame but will create its own input manager to
      * moniter the mouse button as needed
      */
-    DragDetector()
+    DragDetector();
 
     /**
      * Updates the current state of the mouse. checks the button and updates the position
      * 
      * this will call all of the register reactors for the mouse object
      */
-    void update()
+    void update();
 
     /**
      * adds a new reactor to the reactor list
@@ -47,7 +47,7 @@ public:
     /**
      * Removes all the reactors from the Drag detector
      */
-    void clearReactors()
+    void clearReactors();
 
 }; //DragDetector
 
