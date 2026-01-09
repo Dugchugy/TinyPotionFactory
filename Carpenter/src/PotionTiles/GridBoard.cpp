@@ -4,14 +4,11 @@
 #include "../GameObjects/Model.hpp"
 #include "TileObject.hpp"
 
-#include <iostream>
-
 using namespace PotionGrid;
 
 void GridBoard::draw( Engine::Graphics::Renderer& renderer ) {
    // calls draw on subGrids
    for ( auto iter = tileMap.begin(); iter != tileMap.end(); iter++ ) {
-      std::cout << "drawing tile\n";
       auto currentTile = iter->second;
       currentTile->draw( renderer );
    }

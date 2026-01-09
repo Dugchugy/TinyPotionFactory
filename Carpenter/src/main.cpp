@@ -11,9 +11,12 @@
 #include "PotionTiles/LecturnTile.hpp"
 #include <string>
 
+#include "GameObjects/DragDetector.hpp"
+#include "GameObjects/MouseReactor.hpp"
+
 using namespace Engine;
 
-class ExampleScene : public Scene {
+class ExampleScene : public Scene, public PotionParts::MouseReactor {
    private:
    //PotionParts::GameObject3D g3D;
    //PotionParts::GameObject3D cald;
@@ -23,6 +26,7 @@ class ExampleScene : public Scene {
 
    Camera cam;
    Graphics::Shader shader;
+   PotionParts::DragDetector detector;
    bool need_to_link_cam = true;
 
    public:
@@ -47,6 +51,8 @@ class ExampleScene : public Scene {
          board.addTile( cauld, PotionGrid::TilePosition() );
          board.addTile( cauld2, PotionGrid::TilePosition( 1, 1 ) );
          board.addTile( lect, PotionGrid::TilePosition( -1, 0 ) );
+
+         detector.addReactor( this );
       }
 
    /* virtual void Init() override {
@@ -86,13 +92,19 @@ class ExampleScene : public Scene {
 
       //label.SetText( std::string( "current rotation: " ) + std::to_string( time ) );
 
-      std::cout << "cam rotation: (" << cam.Rotation.x << ", " << cam.Rotation.y << ", " << cam.Rotation.z << ")\n";
+      //std::cout << "cam rotation: (" << cam.Rotation.x << ", " << cam.Rotation.y << ", " << cam.Rotation.z << ")\n";
 
       board.draw( Game::getInstance().GetRenderer() );
    }
 
    void Update(float dt) override {
       time += 2 * dt;
+
+      detector.update();
+   }
+
+   virtual void OnUpdate( PotionParts::MouseState state, PotionParts::MouseState previous_state ) override {
+      std::cout << "mouse updated, position is " << state.mouse_x << ", " << state.mouse_y << "\n";
    }
 };
 
