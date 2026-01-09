@@ -23,7 +23,7 @@ class MouseReactor {
      * @param state the current state of the mouse
      * @param previous_state the state the mouse was in before the update
      */
-    void OnUpdate( MouseState state, MouseState previous_state ) {}
+    virtual void OnUpdate( MouseState state, MouseState previous_state ) {}
 }; //MouseReactor
 
 } // PotionParts
